@@ -45,7 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function performSearch() {
       const query = searchInput.value.trim();
       if (query) {
-        window.location.href = '/search/?q=' + encodeURIComponent(query);
+        // Use defined_searchURL set by Hugo template, fall back to /search/
+        const searchBase = (typeof defined_searchURL !== 'undefined') ? defined_searchURL : '/search/';
+        window.location.href = searchBase + '?q=' + encodeURIComponent(query);
       }
     }
 
