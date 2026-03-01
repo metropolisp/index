@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+  <head><script src="/index/clark-lang/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=index/clark-lang/livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   <title>Search Results - CLARK</title>
   <meta name="description" content="Search results for documentation">
   <meta name="author" content="Joshua Steven Grant (ie: Jost Grant)">
   <meta name="keywords" content="common lisp, distributed computing, spatial computing, programming">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="/logo.svg">
-  <link rel="canonical" href="/index/clark-lang/search/">
+  <link rel="icon" type="image/svg+xml" href="/index/clark-lang/logo.svg">
+  <link rel="canonical" href="http://localhost:1313/index/clark-lang/search/">
 
   
   <link rel="stylesheet" type="text/css" href="/index/clark-lang/css/bootstrap.min.css">
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   
-  <link rel="alternate" type="application/rss+xml" href="/feeds/news/all.rss.xml" title="RSS Feed">
+  <link rel="alternate" type="application/rss+xml" href="/index/clark-lang/feeds/news/all.rss.xml" title="RSS Feed">
 </head>
   <body>
     
@@ -119,7 +119,10 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1>Search Results</h1>
+      <h1>
+        Search Results
+        <small id="search-scope-badge" class="text-secondary ms-2 text-uppercase" style="font-weight:600; display:none;"></small>
+      </h1>
 
       
       <div class="search-page-input mb-4">
@@ -169,8 +172,19 @@ document.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
   const initialQuery = urlParams.get('q') || '';
 
-  console.log('Search page loaded, URL:', window.location.search);
-  console.log('Initial query:', initialQuery);
+  
+  const scope = (urlParams.get('scope') || 'docs').toLowerCase();
+  const scopeBadge = document.getElementById('search-scope-badge');
+  if (scopeBadge) {
+    if (scope === 'spec') {
+      scopeBadge.textContent = 'SPECIFICATION';
+    } else if (scope === 'refc') {
+      scopeBadge.textContent = 'REFERENCE';
+    } else {
+      scopeBadge.textContent = 'DOCUMENTATION';
+    }
+    scopeBadge.style.display = 'inline-block';
+  }
 
   if (initialQuery) {
     console.log('Calling performSearch with:', initialQuery);
@@ -206,18 +220,64 @@ document.addEventListener('DOMContentLoaded', function() {
     resultsContainer.style.display = 'none';
 
     
+    const urlScope = (new URLSearchParams(window.location.search)).get('scope') || 'docs';
+
+    
     const docsPages = [
-      { title: 'Introduction', url: '/docs/introduction/', category: 'overview' },
-      { title: 'Community', url: '/docs/community/', category: 'community' },
-      { title: 'Contributing', url: '/docs/contributing/', category: 'community' },
-      { title: 'API Reference', url: '/docs/api-reference/', category: 'reference' },
-      { title: 'Language Reference', url: '/docs/language-reference/', category: 'reference' },
-      { title: 'Configuration', url: '/docs/configuration/', category: 'reference' },
-      { title: 'Troubleshooting', url: '/docs/troubleshooting/', category: 'support' }
+      { title: "\"Basic Lisp Syntax\"", url: "\/index\/clark-lang\/docs\/getting-started\/tutorials\/basic-syntax\/", category: "general" },
+      { title: "\"Design\"", url: "\/index\/clark-lang\/docs\/language\/design\/", category: "general" },
+      { title: "\"Introduction\"", url: "\/index\/clark-lang\/docs\/introduction\/", category: "general" },
+      { title: "\"Reference\"", url: "\/index\/clark-lang\/docs\/api\/reference\/", category: "general" },
+      { title: "\"Style Guide\"", url: "\/index\/clark-lang\/docs\/language\/style-guide\/", category: "general" },
+      { title: "\"Data Types\"", url: "\/index\/clark-lang\/docs\/language\/reference\/data-types\/", category: "general" },
+      { title: "\"Ergonomics\"", url: "\/index\/clark-lang\/docs\/language\/ergonomics\/", category: "general" },
+      { title: "\"Getting Started\"", url: "\/index\/clark-lang\/docs\/getting-started\/", category: "getting-started" },
+      { title: "\"Parting\"", url: "\/index\/clark-lang\/docs\/misc\/parting\/", category: "general" },
+      { title: "\"Widget Collection\"", url: "\/index\/clark-lang\/docs\/misc\/parting\/collection\/", category: "general" },
+      { title: "\"Functions\"", url: "\/index\/clark-lang\/docs\/language\/reference\/functions\/", category: "general" },
+      { title: "\"Macros\"", url: "\/index\/clark-lang\/docs\/language\/reference\/macros\/", category: "general" },
+      { title: "\"Tutorials\"", url: "\/index\/clark-lang\/docs\/getting-started\/tutorials\/", category: "learning" },
+      { title: "\"Examples\"", url: "\/index\/clark-lang\/docs\/getting-started\/examples\/", category: "learning" },
+      { title: "\"The API\"", url: "\/index\/clark-lang\/docs\/api\/", category: "reference" },
+      { title: "\"Motivations\"", url: "\/index\/clark-lang\/docs\/introduction\/motivations\/", category: "general" },
+      { title: "\"The Language\"", url: "\/index\/clark-lang\/docs\/language\/", category: "general" },
+      { title: "\"Considerations\"", url: "\/index\/clark-lang\/docs\/introduction\/considerations\/", category: "general" },
+      { title: "\"Goals And Non-Goals\"", url: "\/index\/clark-lang\/docs\/introduction\/goals-x-non\/", category: "general" },
+      { title: "\"Troubleshooting\"", url: "\/index\/clark-lang\/docs\/troubleshooting\/", category: "support" },
+      { title: "\"Community\"", url: "\/index\/clark-lang\/docs\/community\/", category: "general" },
+      { title: "\"FAQ(s)\"", url: "\/index\/clark-lang\/docs\/introduction\/faqs\/", category: "support" },
+      { title: "\"Configuration\"", url: "\/index\/clark-lang\/docs\/configuration\/", category: "reference" },
+      { title: "\"Contributing\"", url: "\/index\/clark-lang\/docs\/contributing\/", category: "general" },
+      { title: "\"Glossary\"", url: "\/index\/clark-lang\/docs\/glossary\/", category: "general" },
+      { title: "\"Misc\"", url: "\/index\/clark-lang\/docs\/misc\/", category: "misc" },
+      { title: "\"Reference\"", url: "\/index\/clark-lang\/docs\/language\/reference\/", category: "general" },
+      { title: "\"Documentation\"", url: "\/index\/clark-lang\/docs\/", category: "general" },
     ];
 
     
-    const searchPromises = docsPages.map(page => searchPageContent(page, query));
+    const specPages = [
+      { title: "\"Directory\"", url: "\/index\/clark-lang\/spec\/directory\/", category: "general" },
+      { title: "\"Primitives\"", url: "\/index\/clark-lang\/spec\/primitives\/", category: "language" },
+      { title: "\"Specification\"", url: "\/index\/clark-lang\/spec\/", category: "general" },
+    ];
+
+    
+    const refcPages = [
+      { title: "\"Directory\"", url: "\/index\/clark-lang\/refc\/directory\/", category: "general" },
+      { title: "\"Reference\"", url: "\/index\/clark-lang\/refc\/", category: "general" },
+    ];
+
+    let pagesToSearch;
+    if (urlScope === 'spec') {
+      pagesToSearch = specPages;
+    } else if (urlScope === 'refc') {
+      pagesToSearch = refcPages;
+    } else {
+      pagesToSearch = docsPages;
+    }
+
+    
+    const searchPromises = pagesToSearch.map(page => searchPageContent(page, query));
 
     Promise.all(searchPromises).then(results => {
       const allResults = results.flat();
@@ -495,6 +555,8 @@ footer a:hover {
 <script src="/index/clark-lang/js/pentogonal-prism-logo.js"></script>
 
 <script>
+  var defined_baseURL = "\/index\/clark-lang\/";
+  var defined_searchURL = "\/index\/clark-lang\/search\/";
   
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -1024,7 +1086,7 @@ footer a:hover {
         searchButton.addEventListener('click', function() {
           const query = docsSearch.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}`;
           }
         });
       }
@@ -1034,7 +1096,7 @@ footer a:hover {
         if (e.key === 'Enter') {
           const query = this.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}`;
           }
         }
       });
@@ -1048,7 +1110,7 @@ footer a:hover {
           overviewBtn.addEventListener('click', function() {
             const query = docsOverviewSearch.value.trim();
             if (query) {
-              window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+              window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}`;
             }
           });
         }
@@ -1056,7 +1118,7 @@ footer a:hover {
           if (e.key === 'Enter') {
             const query = this.value.trim();
             if (query) {
-              window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+              window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}`;
             }
           }
         });
@@ -1072,7 +1134,7 @@ footer a:hover {
         specButton.addEventListener('click', function() {
           const query = specSearch.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=spec`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}&scope=spec`;
           }
         });
       }
@@ -1080,7 +1142,7 @@ footer a:hover {
         if (e.key === 'Enter') {
           const query = this.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=spec`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}&scope=spec`;
           }
         }
       });
@@ -1095,7 +1157,7 @@ footer a:hover {
         refcButton.addEventListener('click', function() {
           const query = refcSearch.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=refc`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}&scope=refc`;
           }
         });
       }
@@ -1103,7 +1165,7 @@ footer a:hover {
         if (e.key === 'Enter') {
           const query = this.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=refc`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}&scope=refc`;
           }
         }
       });

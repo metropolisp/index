@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Functions on CLARK</title>
-    <link>/index/clark-lang/docs/language/reference/functions/</link>
+    <link>http://localhost:1313/index/clark-lang/docs/language/reference/functions/</link>
     <description>Recent content in Functions on CLARK</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="/index/clark-lang/feeds/docs/language/reference/functions/all.rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index/clark-lang/feeds/docs/language/reference/functions/all.rss.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+  <head><script src="/index/clark-lang/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=index/clark-lang/livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   <title>Documentation - CLARK</title>
   <meta name="description" content="Complete documentation for Clark">
   <meta name="author" content="Joshua Steven Grant (ie: Jost Grant)">
   <meta name="keywords" content="common lisp, distributed computing, spatial computing, programming">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="/logo.svg">
-  <link rel="canonical" href="/index/clark-lang/docs/">
+  <link rel="icon" type="image/svg+xml" href="/index/clark-lang/logo.svg">
+  <link rel="canonical" href="http://localhost:1313/index/clark-lang/docs/">
 
   
   <link rel="stylesheet" type="text/css" href="/index/clark-lang/css/bootstrap.min.css">
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   
-  <link rel="alternate" type="application/rss+xml" href="/feeds/news/all.rss.xml" title="RSS Feed">
+  <link rel="alternate" type="application/rss+xml" href="/index/clark-lang/feeds/news/all.rss.xml" title="RSS Feed">
 </head>
   <body class="docs-page">
     
@@ -114,983 +114,13 @@
       
       
       
-<div class="doc-action-bar border-bottom d-flex">
-  <div class="container-fluid">
-    <div class="d-flex w-100 align-items-center justify-content-between">
-      <button id="left-sidebar-toggle" class="btn btn-outline-secondary btn-sm" aria-label="Toggle left sidebar">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <div class="d-none d-md-block text-center flex-grow-1 mx-3">
+      <div class="container">
         
-        <nav aria-label="breadcrumb" class="breadcrumb-nav">
-          <ol class="breadcrumb mb-0">
-            
-            
-            
-            
-            
-            <li class="breadcrumb-item active has-siblings" aria-current="page">
-              
-              Documentation
-              
-            
-              
-              <button class="breadcrumb-dropdown-toggle" aria-label="Show siblings">
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="breadcrumb-dropdown">
-                
-                <a href="/index/clark-lang/rels/" class="breadcrumb-dropdown-item">Releases</a>
-                
-                <a href="/index/clark-lang/spec/" class="breadcrumb-dropdown-item">Specification</a>
-                
-                <a href="/index/clark-lang/refc/" class="breadcrumb-dropdown-item">Reference</a>
-                
-                <a href="/index/clark-lang/news/" class="breadcrumb-dropdown-item">The News Desk</a>
-                
-                <a href="/index/clark-lang/todo/" class="breadcrumb-dropdown-item">[TODO]</a>
-                
-                <a href="/index/clark-lang/chat/" class="breadcrumb-dropdown-item">Chat</a>
-                
-                <a href="/index/clark-lang/docs/" class="breadcrumb-dropdown-item current-page">Documentation</a>
-                
-                <a href="/index/clark-lang/posts/" class="breadcrumb-dropdown-item">Posts</a>
-                
-                <a href="/index/clark-lang/search/" class="breadcrumb-dropdown-item">Search Results</a>
-                
-                <a href="/index/clark-lang/try/" class="breadcrumb-dropdown-item">Try</a>
-                
-              </div>
-              
-              
-              
-              
-              <span class="breadcrumb-separator"> / </span>
-              <button class="breadcrumb-add-toggle" aria-label="Show children">
-                <i class="fas fa-plus"></i>
-              </button>
-              <div class="breadcrumb-dropdown">
-                
-                <a href="/index/clark-lang/docs/introduction/" class="breadcrumb-dropdown-item">
-                  Introduction
-                </a>
-                
-                <a href="/index/clark-lang/docs/getting-started/" class="breadcrumb-dropdown-item">
-                  Getting Started
-                </a>
-                
-                <a href="/index/clark-lang/docs/api/" class="breadcrumb-dropdown-item">
-                  The API
-                </a>
-                
-                <a href="/index/clark-lang/docs/language/" class="breadcrumb-dropdown-item">
-                  The Language
-                </a>
-                
-                <a href="/index/clark-lang/docs/troubleshooting/" class="breadcrumb-dropdown-item">
-                  Troubleshooting
-                </a>
-                
-                <a href="/index/clark-lang/docs/community/" class="breadcrumb-dropdown-item">
-                  Community
-                </a>
-                
-                <a href="/index/clark-lang/docs/configuration/" class="breadcrumb-dropdown-item">
-                  Configuration
-                </a>
-                
-                <a href="/index/clark-lang/docs/contributing/" class="breadcrumb-dropdown-item">
-                  Contributing
-                </a>
-                
-                <a href="/index/clark-lang/docs/glossary/" class="breadcrumb-dropdown-item">
-                  Glossary
-                </a>
-                
-                <a href="/index/clark-lang/docs/misc/" class="breadcrumb-dropdown-item">
-                  Misc
-                </a>
-                
-              </div>
-              
-            </li>
-          </ol>
-        </nav>
-      </div>
-      <button id="right-sidebar-toggle" class="btn btn-outline-secondary btn-sm ms-auto" aria-label="Toggle right sidebar">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-    </div>
-  </div>
-</div>
-      <style>
-      .doc-action-bar {
-        position: fixed;
-        width: 100%;
-        z-index: 1020;
-      }
-      .main-content {
-        padding-top: 33px !important;
-      }
-      @media (max-width: 767px) {
-        body {
-          padding-top: 0 !important;
-        }
-        .main-content {
-           
-        }
-        .sidebar-left, .sidebar-right {
-           
-        }
-      }
-      </style>
-      <div class="container-fluid">
-        <div class="row">
-          
-          <nav class="col-md-3 d-none d-md-block sidebar-left">
-            <div class="sidebar-sticky">
-              
-              <div class="sidebar-search mb-3">
-                <div class="input-group">
-                  <input type="text" id="docs-search" class="form-control" placeholder="Search docs..." aria-label="Search documentation">
-                  <div class="input-group-append">
-                    <span class="input-group-text"><i class="fas fa-search"></i></span>
-                  </div>
-                </div>
-                  
-              <h5 class="sidebar-heading">Documentation</h5>
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a class="nav-link overview-link" href="/docs/">
-                    <i class="fa-solid fa-clone"></i> Overview
-                  </a>
-                </li>
-                
-                
-                
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/introduction/">
-    <i class="fas fa-info-circle"></i> Introduction
-  </a>
-
-  
-  
-  
-  
-    
-    
-      
-      
-    
-  
-    
-    
-      
-      
-    
-  
-    
-    
-      
-      
-    
-  
-    
-    
-      
-      
-    
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-
-  
-  <ul class="nav flex-column sub-nav">
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/introduction/motivations/">
-    <i class="fas fa-lightbulb"></i> Motivations
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/introduction/considerations/">
-    <i class="fas fa-balance-scale"></i> Considerations
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/introduction/goals-x-non/">
-    <i class="fas fa-bullseye"></i> Goals And Non-Goals
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/introduction/faqs/">
-    <i class="fas fa-question-circle"></i> FAQ(s)
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-  </ul>
-  
-</li>
-
-                
-                
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/getting-started/">
-    <i class="fas fa-rocket"></i> Getting Started
-  </a>
-
-  
-  
-  
-  
-    
-    
-      
-      
-    
-  
-    
-    
-      
-      
-    
-  
-  
-    
-    
-  
-    
-    
-  
-
-  
-  <ul class="nav flex-column sub-nav">
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/getting-started/tutorials/">
-    <i class="fas fa-graduation-cap"></i> Tutorials
-  </a>
-
-  
-  
-  
-  
-    
-    
-      
-      
-    
-  
-    
-    
-      
-      
-    
-  
-    
-    
-      
-      
-    
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-
-  
-  <ul class="nav flex-column sub-nav">
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/getting-started/tutorials/basic-syntax/">
-    <i class="fas fa-graduation-cap"></i> Basic Lisp Syntax
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/getting-started/tutorials/godot-nodes/">
-    <i class="fas fa-graduation-cap"></i> Working with Godot Nodes
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/getting-started/tutorials/game-objects/">
-    <i class="fas fa-graduation-cap"></i> Creating Game Objects
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-  </ul>
-  
-</li>
-
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/getting-started/examples/">
-    <i class="fas fa-lightbulb"></i> Examples
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-  </ul>
-  
-</li>
-
-                
-                
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/api/">
-    <i class="fas fa-plug"></i> The API
-  </a>
-
-  
-  
-  
-  
-    
-    
-      
-      
-    
-  
-  
-    
-    
-  
-
-  
-  <ul class="nav flex-column sub-nav">
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/api/reference/">
-    <i class="fas fa-file-code"></i> Reference
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-  </ul>
-  
-</li>
-
-                
-                
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/language/">
-    <i class="fas fa-code"></i> The Language
-  </a>
-
-  
-  
-  
-  
-    
-    
-      
-      
-    
-  
-    
-    
-      
-      
-    
-  
-    
-    
-      
-      
-    
-  
-    
-    
-      
-      
-    
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-
-  
-  <ul class="nav flex-column sub-nav">
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/language/design/">
-    <i class="fas fa-file"></i> Design
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/language/style-guide/">
-    <i class="fas fa-palette"></i> Style Guide
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/language/ergonomics/">
-    <i class="fas fa-file"></i> Ergonomics
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/language/reference/">
-    <i class="fas fa-book"></i> Reference
-  </a>
-
-  
-  
-  
-  
-    
-    
-      
-      
-    
-  
-    
-    
-      
-      
-    
-  
-    
-    
-      
-      
-    
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-
-  
-  <ul class="nav flex-column sub-nav">
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/language/reference/data-types/">
-    <i class="fas fa-database"></i> Data Types
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/language/reference/functions/">
-    <i class="fas fa-code"></i> Functions
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/language/reference/macros/">
-    <i class="fas fa-magic"></i> Macros
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-  </ul>
-  
-</li>
-
-    
-  </ul>
-  
-</li>
-
-                
-                
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/troubleshooting/">
-    <i class="fas fa-wrench"></i> Troubleshooting
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-                
-                
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/community/">
-    <i class="fas fa-users"></i> Community
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-                
-                
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/configuration/">
-    <i class="fas fa-cogs"></i> Configuration
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-                
-                
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/contributing/">
-    <i class="fas fa-handshake"></i> Contributing
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-                
-                
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/glossary/">
-    <i class="fas fa-book-open"></i> Glossary
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-                
-                
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/misc/">
-    <i class="fas fa-folder-open"></i> Misc
-  </a>
-
-  
-  
-  
-  
-    
-    
-      
-      
-    
-  
-  
-    
-    
-  
-
-  
-  <ul class="nav flex-column sub-nav">
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/misc/parting/">
-    <i class="fas fa-palette"></i> Parting
-  </a>
-
-  
-  
-  
-  
-    
-    
-      
-      
-    
-  
-  
-    
-    
-  
-
-  
-  <ul class="nav flex-column sub-nav">
-    
-      
-
-
-
-
-
-<li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/misc/parting/collection/">
-    <i class="fas fa-file"></i> Widget Collection
-  </a>
-
-  
-  
-  
-  
-  
-
-  
-</li>
-
-    
-  </ul>
-  
-</li>
-
-    
-  </ul>
-  
-</li>
-
-                
-              </ul>
-            </div>
-          </nav>
-
-          
-          <main class="col-md-6 col-12 px-md-4 px-3">
-            
 <div class="docs-overview">
   <div class="container">
     
-    <div class="docs-content">
-      <h1 class="visually-hidden">Documentation</h1>
+    
+    <div class="docs-header">
       <hr>
 <h1 id="documentation">Documentation</h1>
 <p>Welcome to the comprehensive documentation for Clark, a Common Lisp-based language for distributed and spatial computing. Whether you&rsquo;re just getting started or looking for advanced features, you&rsquo;ll find everything you need here.</p>
@@ -1099,24 +129,679 @@
 <h2 id="sections">Sections</h2>
 <!-- The docs overview will be automatically generated below -->
     </div>
+
+    <div class="sidebar-search mb-3">
+      <div class="input-group input-group-lg">
+        <input type="text" id="docs-search-overview" class="form-control" placeholder="Search docs..." aria-label="Search documentation">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fas fa-search"></i></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="docs-controls">
+      <button id="expand-all">Expand Everything</button>
+    </div>
+    <div class="docs-grid">
+      
+        <div class="docs-stack">
+          <a href="http://localhost:1313/index/clark-lang/docs/introduction/" class="docs-card-link docs-card-general docs-parent">
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-info-circle"></i>
+              </div>
+              <div class="docs-card-content">
+                <h3 class="docs-card-title">
+                  Introduction
+                </h3>
+                <p class="docs-card-description">An overview of what Clark is and what it does</p>
+                <div class="docs-card-meta">
+                  <span class="docs-category">General</span>
+                </div>
+              </div>
+              <div class="docs-card-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              
+              <div class="docs-stack-indicator">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              
+            </div>
+          </a>
+          
+          <div class="docs-children">
+            
+              
+                <a href="http://localhost:1313/index/clark-lang/docs/introduction/motivations/" class="docs-card-link docs-card-general docs-child">
+                  <div class="docs-card">
+                    <div class="docs-card-icon">
+                      <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="docs-card-content">
+                      <h3 class="docs-card-title">
+                        Motivations
+                      </h3>
+                      <p class="docs-card-description">The motivations behind Clark&#39;s development</p>
+                      <div class="docs-card-meta">
+                        <span class="docs-category">General</span>
+                      </div>
+                    </div>
+                    <div class="docs-card-arrow">
+                      <i class="fas fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </a>
+              
+            
+              
+                <a href="http://localhost:1313/index/clark-lang/docs/introduction/considerations/" class="docs-card-link docs-card-general docs-child">
+                  <div class="docs-card">
+                    <div class="docs-card-icon">
+                      <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="docs-card-content">
+                      <h3 class="docs-card-title">
+                        Considerations
+                      </h3>
+                      <p class="docs-card-description">Key considerations for using Clark</p>
+                      <div class="docs-card-meta">
+                        <span class="docs-category">General</span>
+                      </div>
+                    </div>
+                    <div class="docs-card-arrow">
+                      <i class="fas fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </a>
+              
+            
+              
+                <a href="http://localhost:1313/index/clark-lang/docs/introduction/goals-x-non/" class="docs-card-link docs-card-general docs-child">
+                  <div class="docs-card">
+                    <div class="docs-card-icon">
+                      <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="docs-card-content">
+                      <h3 class="docs-card-title">
+                        Goals And Non-Goals
+                      </h3>
+                      <p class="docs-card-description">Understand what Clark aims to achieve and what it explicitly does not</p>
+                      <div class="docs-card-meta">
+                        <span class="docs-category">General</span>
+                      </div>
+                    </div>
+                    <div class="docs-card-arrow">
+                      <i class="fas fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </a>
+              
+            
+              
+                <a href="http://localhost:1313/index/clark-lang/docs/introduction/faqs/" class="docs-card-link docs-card-support docs-child">
+                  <div class="docs-card">
+                    <div class="docs-card-icon">
+                      <i class="fas fa-question-circle"></i>
+                    </div>
+                    <div class="docs-card-content">
+                      <h3 class="docs-card-title">
+                        FAQ(s)
+                      </h3>
+                      <p class="docs-card-description">Frequently asked questions about Clark</p>
+                      <div class="docs-card-meta">
+                        <span class="docs-category">Support</span>
+                      </div>
+                    </div>
+                    <div class="docs-card-arrow">
+                      <i class="fas fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </a>
+              
+            
+          </div>
+          
+        </div>
+      
+        <div class="docs-stack">
+          <a href="http://localhost:1313/index/clark-lang/docs/getting-started/" class="docs-card-link docs-card-getting-started docs-parent">
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <div class="docs-card-content">
+                <h3 class="docs-card-title">
+                  Getting Started
+                </h3>
+                <p class="docs-card-description">Quick start guide for Clark</p>
+                <div class="docs-card-meta">
+                  <span class="docs-category">Getting-Started</span>
+                </div>
+              </div>
+              <div class="docs-card-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              
+              <div class="docs-stack-indicator">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              
+            </div>
+          </a>
+          
+          <div class="docs-children">
+            
+              
+                <div class="docs-child-with-grandchildren">
+                  <a href="http://localhost:1313/index/clark-lang/docs/getting-started/tutorials/" class="docs-card-link docs-card-learning docs-child">
+                    <div class="docs-card">
+                      <div class="docs-card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                      </div>
+                      <div class="docs-card-content">
+                        <h3 class="docs-card-title">
+                          Tutorials
+                        </h3>
+                        <p class="docs-card-description">Step-by-step tutorials for Clark</p>
+                        <div class="docs-card-meta">
+                          <span class="docs-category">Learning</span>
+                        </div>
+                      </div>
+                      <div class="docs-card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="docs-grandchildren">
+                    
+                      <div class="docs-grandchild-container">
+                        <div class="docs-grandchild-square" data-synopsis="Learn the fundamentals of Lisp syntax in Clark">
+                          <div class="docs-grandchild-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                          </div>
+                          <div class="docs-grandchild-row">
+                            <div class="docs-grandchild-content">
+                              <h3 class="docs-grandchild-title">Basic Lisp Syntax</h3>
+                              <p class="docs-grandchild-description">Learn the fundamentals of Lisp syntax in Clark</p>
+                            </div>
+                            <div class="docs-card-arrow">
+                              <i class="fas fa-chevron-right"></i>
+                            </div>
+                          </div>
+                          <a href="http://localhost:1313/index/clark-lang/docs/getting-started/tutorials/basic-syntax/" class="docs-grandchild-link"></a>
+                        </div>
+                        
+                      </div>
+                    
+                  </div>
+                </div>
+              
+            
+              
+                <a href="http://localhost:1313/index/clark-lang/docs/getting-started/examples/" class="docs-card-link docs-card-learning docs-child">
+                  <div class="docs-card">
+                    <div class="docs-card-icon">
+                      <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="docs-card-content">
+                      <h3 class="docs-card-title">
+                        Examples
+                      </h3>
+                      <p class="docs-card-description">Code examples and tutorials for Clark</p>
+                      <div class="docs-card-meta">
+                        <span class="docs-category">Learning</span>
+                      </div>
+                    </div>
+                    <div class="docs-card-arrow">
+                      <i class="fas fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </a>
+              
+            
+          </div>
+          
+        </div>
+      
+        <div class="docs-stack">
+          <a href="http://localhost:1313/index/clark-lang/docs/api/" class="docs-card-link docs-card-reference docs-parent">
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-plug"></i>
+              </div>
+              <div class="docs-card-content">
+                <h3 class="docs-card-title">
+                  The API
+                </h3>
+                <p class="docs-card-description">Overview of Clark&#39;s Common Lisp API</p>
+                <div class="docs-card-meta">
+                  <span class="docs-category">Reference</span>
+                </div>
+              </div>
+              <div class="docs-card-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              
+              <div class="docs-stack-indicator">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              
+            </div>
+          </a>
+          
+          <div class="docs-children">
+            
+              
+                <a href="http://localhost:1313/index/clark-lang/docs/api/reference/" class="docs-card-link docs-card-general docs-child">
+                  <div class="docs-card">
+                    <div class="docs-card-icon">
+                      <i class="fas fa-file-code"></i>
+                    </div>
+                    <div class="docs-card-content">
+                      <h3 class="docs-card-title">
+                        Reference
+                      </h3>
+                      <p class="docs-card-description">Complete reference for Clark&#39;s Common Lisp API</p>
+                      <div class="docs-card-meta">
+                        <span class="docs-category">General</span>
+                      </div>
+                    </div>
+                    <div class="docs-card-arrow">
+                      <i class="fas fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </a>
+              
+            
+          </div>
+          
+        </div>
+      
+        <div class="docs-stack">
+          <a href="http://localhost:1313/index/clark-lang/docs/language/" class="docs-card-link docs-card-general docs-parent">
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <div class="docs-card-content">
+                <h3 class="docs-card-title">
+                  The Language
+                </h3>
+                <p class="docs-card-description">Clark language guides and style</p>
+                <div class="docs-card-meta">
+                  <span class="docs-category">General</span>
+                </div>
+              </div>
+              <div class="docs-card-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              
+              <div class="docs-stack-indicator">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              
+            </div>
+          </a>
+          
+          <div class="docs-children">
+            
+              
+                <a href="http://localhost:1313/index/clark-lang/docs/language/design/" class="docs-card-link docs-card-general docs-child">
+                  <div class="docs-card">
+                    <div class="docs-card-icon">
+                      <i class="fas fa-file"></i>
+                    </div>
+                    <div class="docs-card-content">
+                      <h3 class="docs-card-title">
+                        Design
+                      </h3>
+                      <p class="docs-card-description">Clark language design principles and architecture</p>
+                      <div class="docs-card-meta">
+                        <span class="docs-category">General</span>
+                      </div>
+                    </div>
+                    <div class="docs-card-arrow">
+                      <i class="fas fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </a>
+              
+            
+              
+                <a href="http://localhost:1313/index/clark-lang/docs/language/style-guide/" class="docs-card-link docs-card-general docs-child">
+                  <div class="docs-card">
+                    <div class="docs-card-icon">
+                      <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="docs-card-content">
+                      <h3 class="docs-card-title">
+                        Style Guide
+                      </h3>
+                      <p class="docs-card-description">Best practices and conventions for writing Clark Lisp code</p>
+                      <div class="docs-card-meta">
+                        <span class="docs-category">General</span>
+                      </div>
+                    </div>
+                    <div class="docs-card-arrow">
+                      <i class="fas fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </a>
+              
+            
+              
+                <a href="http://localhost:1313/index/clark-lang/docs/language/ergonomics/" class="docs-card-link docs-card-general docs-child">
+                  <div class="docs-card">
+                    <div class="docs-card-icon">
+                      <i class="fas fa-file"></i>
+                    </div>
+                    <div class="docs-card-content">
+                      <h3 class="docs-card-title">
+                        Ergonomics
+                      </h3>
+                      <p class="docs-card-description">Clark language ergonomics and developer experience</p>
+                      <div class="docs-card-meta">
+                        <span class="docs-category">General</span>
+                      </div>
+                    </div>
+                    <div class="docs-card-arrow">
+                      <i class="fas fa-chevron-right"></i>
+                    </div>
+                  </div>
+                </a>
+              
+            
+              
+                <div class="docs-child-with-grandchildren">
+                  <a href="http://localhost:1313/index/clark-lang/docs/language/reference/" class="docs-card-link docs-card-general docs-child">
+                    <div class="docs-card">
+                      <div class="docs-card-icon">
+                        <i class="fas fa-book"></i>
+                      </div>
+                      <div class="docs-card-content">
+                        <h3 class="docs-card-title">
+                          Reference
+                        </h3>
+                        <p class="docs-card-description">Complete reference for Clark&#39;s Lisp language features</p>
+                        <div class="docs-card-meta">
+                          <span class="docs-category">General</span>
+                        </div>
+                      </div>
+                      <div class="docs-card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="docs-grandchildren">
+                    
+                      <div class="docs-grandchild-container">
+                        <div class="docs-grandchild-square" data-synopsis="Overview of built-in data types and their usage in Clark Lisp">
+                          <div class="docs-grandchild-icon">
+                            <i class="fas fa-database"></i>
+                          </div>
+                          <div class="docs-grandchild-row">
+                            <div class="docs-grandchild-content">
+                              <h3 class="docs-grandchild-title">Data Types</h3>
+                              <p class="docs-grandchild-description">Overview of built-in data types and their usage in Clark Lisp</p>
+                            </div>
+                            <div class="docs-card-arrow">
+                              <i class="fas fa-chevron-right"></i>
+                            </div>
+                          </div>
+                          <a href="http://localhost:1313/index/clark-lang/docs/language/reference/data-types/" class="docs-grandchild-link"></a>
+                        </div>
+                        
+                      </div>
+                    
+                      <div class="docs-grandchild-container">
+                        <div class="docs-grandchild-square" data-synopsis="Guide to defining and using functions in Clark Lisp">
+                          <div class="docs-grandchild-icon">
+                            <i class="fas fa-code"></i>
+                          </div>
+                          <div class="docs-grandchild-row">
+                            <div class="docs-grandchild-content">
+                              <h3 class="docs-grandchild-title">Functions</h3>
+                              <p class="docs-grandchild-description">Guide to defining and using functions in Clark Lisp</p>
+                            </div>
+                            <div class="docs-card-arrow">
+                              <i class="fas fa-chevron-right"></i>
+                            </div>
+                          </div>
+                          <a href="http://localhost:1313/index/clark-lang/docs/language/reference/functions/" class="docs-grandchild-link"></a>
+                        </div>
+                        
+                      </div>
+                    
+                      <div class="docs-grandchild-container">
+                        <div class="docs-grandchild-square" data-synopsis="Understanding and creating macros in Clark Lisp">
+                          <div class="docs-grandchild-icon">
+                            <i class="fas fa-magic"></i>
+                          </div>
+                          <div class="docs-grandchild-row">
+                            <div class="docs-grandchild-content">
+                              <h3 class="docs-grandchild-title">Macros</h3>
+                              <p class="docs-grandchild-description">Understanding and creating macros in Clark Lisp</p>
+                            </div>
+                            <div class="docs-card-arrow">
+                              <i class="fas fa-chevron-right"></i>
+                            </div>
+                          </div>
+                          <a href="http://localhost:1313/index/clark-lang/docs/language/reference/macros/" class="docs-grandchild-link"></a>
+                        </div>
+                        
+                      </div>
+                    
+                  </div>
+                </div>
+              
+            
+          </div>
+          
+        </div>
+      
+        <div class="docs-stack">
+          <a href="http://localhost:1313/index/clark-lang/docs/troubleshooting/" class="docs-card-link docs-card-support docs-parent">
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-wrench"></i>
+              </div>
+              <div class="docs-card-content">
+                <h3 class="docs-card-title">
+                  Troubleshooting
+                </h3>
+                <p class="docs-card-description">Common issues and solutions for Clark</p>
+                <div class="docs-card-meta">
+                  <span class="docs-category">Support</span>
+                </div>
+              </div>
+              <div class="docs-card-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              
+            </div>
+          </a>
+          
+        </div>
+      
+        <div class="docs-stack">
+          <a href="http://localhost:1313/index/clark-lang/docs/community/" class="docs-card-link docs-card-general docs-parent">
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="docs-card-content">
+                <h3 class="docs-card-title">
+                  Community
+                </h3>
+                <p class="docs-card-description">Join the Clark community and connect with other developers</p>
+                <div class="docs-card-meta">
+                  <span class="docs-category">General</span>
+                </div>
+              </div>
+              <div class="docs-card-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              
+            </div>
+          </a>
+          
+        </div>
+      
+        <div class="docs-stack">
+          <a href="http://localhost:1313/index/clark-lang/docs/configuration/" class="docs-card-link docs-card-reference docs-parent">
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-cogs"></i>
+              </div>
+              <div class="docs-card-content">
+                <h3 class="docs-card-title">
+                  Configuration
+                </h3>
+                <p class="docs-card-description">Configuration options and settings for Clark</p>
+                <div class="docs-card-meta">
+                  <span class="docs-category">Reference</span>
+                </div>
+              </div>
+              <div class="docs-card-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              
+            </div>
+          </a>
+          
+        </div>
+      
+        <div class="docs-stack">
+          <a href="http://localhost:1313/index/clark-lang/docs/contributing/" class="docs-card-link docs-card-general docs-parent">
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <div class="docs-card-content">
+                <h3 class="docs-card-title">
+                  Contributing
+                </h3>
+                <p class="docs-card-description">How to contribute to Clark</p>
+                <div class="docs-card-meta">
+                  <span class="docs-category">General</span>
+                </div>
+              </div>
+              <div class="docs-card-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              
+            </div>
+          </a>
+          
+        </div>
+      
+        <div class="docs-stack">
+          <a href="http://localhost:1313/index/clark-lang/docs/glossary/" class="docs-card-link docs-card-general docs-parent">
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <div class="docs-card-content">
+                <h3 class="docs-card-title">
+                  Glossary
+                </h3>
+                <p class="docs-card-description">Definitions and explanations of Clark terminology</p>
+                <div class="docs-card-meta">
+                  <span class="docs-category">General</span>
+                </div>
+              </div>
+              <div class="docs-card-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              
+            </div>
+          </a>
+          
+        </div>
+      
+        <div class="docs-stack">
+          <a href="http://localhost:1313/index/clark-lang/docs/misc/" class="docs-card-link docs-card-misc docs-parent">
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-folder-open"></i>
+              </div>
+              <div class="docs-card-content">
+                <h3 class="docs-card-title">
+                  Misc
+                </h3>
+                <p class="docs-card-description">Miscellaneous content and showcases</p>
+                <div class="docs-card-meta">
+                  <span class="docs-category">Misc</span>
+                </div>
+              </div>
+              <div class="docs-card-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              
+              <div class="docs-stack-indicator">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              
+            </div>
+          </a>
+          
+          <div class="docs-children">
+            
+              
+                <div class="docs-child-with-grandchildren">
+                  <a href="http://localhost:1313/index/clark-lang/docs/misc/parting/" class="docs-card-link docs-card-general docs-child">
+                    <div class="docs-card">
+                      <div class="docs-card-icon">
+                        <i class="fas fa-palette"></i>
+                      </div>
+                      <div class="docs-card-content">
+                        <h3 class="docs-card-title">
+                          Parting
+                        </h3>
+                        <p class="docs-card-description">Showy and glamorous widgets to aid documentation writing</p>
+                        <div class="docs-card-meta">
+                          <span class="docs-category">General</span>
+                        </div>
+                      </div>
+                      <div class="docs-card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="docs-grandchildren">
+                    
+                      <div class="docs-grandchild-container">
+                        <div class="docs-grandchild-square" data-synopsis="Demonstration of parting widgets and styling">
+                          <div class="docs-grandchild-icon">
+                            <i class="fas fa-file"></i>
+                          </div>
+                          <div class="docs-grandchild-row">
+                            <div class="docs-grandchild-content">
+                              <h3 class="docs-grandchild-title">Widget Collection</h3>
+                              <p class="docs-grandchild-description">Demonstration of parting widgets and styling</p>
+                            </div>
+                            <div class="docs-card-arrow">
+                              <i class="fas fa-chevron-right"></i>
+                            </div>
+                          </div>
+                          <a href="http://localhost:1313/index/clark-lang/docs/misc/parting/collection/" class="docs-grandchild-link"></a>
+                        </div>
+                        
+                      </div>
+                    
+                  </div>
+                </div>
+              
+            
+          </div>
+          
+        </div>
+      
+    </div>
     
   </div>
 </div>
-          </main>
-
-          
-          <aside class="col-md-3 d-none d-md-block sidebar-right">
-            <div class="sidebar-sticky">
-              <h5 class="sidebar-heading">On This Page</h5>
-              <nav id="TableOfContents">
-  <ul>
-    <li><a href="#quick-start">Quick Start</a></li>
-    <li><a href="#sections">Sections</a></li>
-  </ul>
-</nav>
-            </div>
-          </aside>
-        </div>
       </div>
       
 
@@ -1146,16 +831,16 @@
         
       
         
-      
-        
-      
-        
           
             
           
           
             
           
+        
+      
+        
+      
         
       
         
@@ -1169,8 +854,8 @@
     
 
     <a href="/index/clark-lang/" class="cta-btn" aria-label="Up a Level"><i class="fas fa-chevron-up"></i></a>
-      <a href="/index/clark-lang/chat/" class="cta-btn" aria-label="Previous"><i class="fas fa-chevron-left"></i></a>
-    <a href="/index/clark-lang/posts/" class="cta-btn" aria-label="Next"><i class="fas fa-chevron-right"></i></a>
+      <a href="/index/clark-lang/news/" class="cta-btn" aria-label="Previous"><i class="fas fa-chevron-left"></i></a>
+    <a href="/index/clark-lang/todo/" class="cta-btn" aria-label="Next"><i class="fas fa-chevron-right"></i></a>
     
     
     
@@ -1230,8 +915,8 @@
   </div>
   <div class="other-ctas" style="display: flex; gap: 1rem; justify-content: center;">
 
-      <a href="/docs/" class="cta-btn wide-btn" aria-label="Overview"><i class="fas fa-book"></i></a>
-      <a href="/search/" class="cta-btn wide-btn" aria-label="Search"><i class="fas fa-search"></i></a>
+      <a href="/index/clark-lang/docs/" class="cta-btn wide-btn" aria-label="Overview"><i class="fas fa-book"></i></a>
+      <a href="/index/clark-lang/search/" class="cta-btn wide-btn" aria-label="Search"><i class="fas fa-search"></i></a>
   </div>
 </div>
 <style>
@@ -1288,7 +973,7 @@
             <div class="col-md-6">
               <small class="text-muted">
                 <i class="fas fa-clock"></i>
-                Last edited: January 1, 0001
+                Last edited: December 16, 2025
               </small>
             </div>
             <div class="col-md-6 text-md-right">
@@ -1366,6 +1051,8 @@ footer a:hover {
 <script src="/index/clark-lang/js/pentogonal-prism-logo.js"></script>
 
 <script>
+  var defined_baseURL = "\/index\/clark-lang\/";
+  var defined_searchURL = "\/index\/clark-lang\/search\/";
   
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -1895,7 +1582,7 @@ footer a:hover {
         searchButton.addEventListener('click', function() {
           const query = docsSearch.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}`;
           }
         });
       }
@@ -1905,7 +1592,7 @@ footer a:hover {
         if (e.key === 'Enter') {
           const query = this.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}`;
           }
         }
       });
@@ -1919,7 +1606,7 @@ footer a:hover {
           overviewBtn.addEventListener('click', function() {
             const query = docsOverviewSearch.value.trim();
             if (query) {
-              window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+              window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}`;
             }
           });
         }
@@ -1927,7 +1614,7 @@ footer a:hover {
           if (e.key === 'Enter') {
             const query = this.value.trim();
             if (query) {
-              window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+              window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}`;
             }
           }
         });
@@ -1943,7 +1630,7 @@ footer a:hover {
         specButton.addEventListener('click', function() {
           const query = specSearch.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=spec`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}&scope=spec`;
           }
         });
       }
@@ -1951,7 +1638,7 @@ footer a:hover {
         if (e.key === 'Enter') {
           const query = this.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=spec`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}&scope=spec`;
           }
         }
       });
@@ -1966,7 +1653,7 @@ footer a:hover {
         refcButton.addEventListener('click', function() {
           const query = refcSearch.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=refc`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}&scope=refc`;
           }
         });
       }
@@ -1974,7 +1661,7 @@ footer a:hover {
         if (e.key === 'Enter') {
           const query = this.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=refc`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}&scope=refc`;
           }
         }
       });

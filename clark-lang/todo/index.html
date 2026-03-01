@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+  <head><script src="/index/clark-lang/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=index/clark-lang/livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   <title>[TODO] - CLARK</title>
   <meta name="description" content="CLARK: Meta-Lisp ">
   <meta name="author" content="Joshua Steven Grant (ie: Jost Grant)">
   <meta name="keywords" content="common lisp, distributed computing, spatial computing, programming">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="/logo.svg">
-  <link rel="canonical" href="/index/clark-lang/todo/">
+  <link rel="icon" type="image/svg+xml" href="/index/clark-lang/logo.svg">
+  <link rel="canonical" href="http://localhost:1313/index/clark-lang/todo/">
 
   
   <link rel="stylesheet" type="text/css" href="/index/clark-lang/css/bootstrap.min.css">
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   
-  <link rel="alternate" type="application/rss+xml" href="/feeds/news/all.rss.xml" title="RSS Feed">
+  <link rel="alternate" type="application/rss+xml" href="/index/clark-lang/feeds/news/all.rss.xml" title="RSS Feed">
 </head>
   <body>
     
@@ -412,6 +412,8 @@ footer a:hover {
 <script src="/index/clark-lang/js/pentogonal-prism-logo.js"></script>
 
 <script>
+  var defined_baseURL = "\/index\/clark-lang\/";
+  var defined_searchURL = "\/index\/clark-lang\/search\/";
   
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -941,7 +943,7 @@ footer a:hover {
         searchButton.addEventListener('click', function() {
           const query = docsSearch.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}`;
           }
         });
       }
@@ -951,7 +953,7 @@ footer a:hover {
         if (e.key === 'Enter') {
           const query = this.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}`;
           }
         }
       });
@@ -965,7 +967,7 @@ footer a:hover {
           overviewBtn.addEventListener('click', function() {
             const query = docsOverviewSearch.value.trim();
             if (query) {
-              window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+              window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}`;
             }
           });
         }
@@ -973,7 +975,7 @@ footer a:hover {
           if (e.key === 'Enter') {
             const query = this.value.trim();
             if (query) {
-              window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+              window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}`;
             }
           }
         });
@@ -989,7 +991,7 @@ footer a:hover {
         specButton.addEventListener('click', function() {
           const query = specSearch.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=spec`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}&scope=spec`;
           }
         });
       }
@@ -997,7 +999,7 @@ footer a:hover {
         if (e.key === 'Enter') {
           const query = this.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=spec`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}&scope=spec`;
           }
         }
       });
@@ -1012,7 +1014,7 @@ footer a:hover {
         refcButton.addEventListener('click', function() {
           const query = refcSearch.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=refc`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}&scope=refc`;
           }
         });
       }
@@ -1020,7 +1022,7 @@ footer a:hover {
         if (e.key === 'Enter') {
           const query = this.value.trim();
           if (query) {
-            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=refc`;
+            window.location.href = `${defined_searchURL}?q=${encodeURIComponent(query)}&scope=refc`;
           }
         }
       });
