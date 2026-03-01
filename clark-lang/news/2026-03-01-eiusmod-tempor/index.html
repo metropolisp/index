@@ -468,6 +468,12 @@ footer a:hover {
     updateParens();
     updateHeroParens();
 
+    
+    
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function(){ updateHeroParens(); });
+    }
+
     var container = document.getElementById('content') || document.querySelector('.container') || document.body;
     if (container && ro) ro.observe(container);
 
