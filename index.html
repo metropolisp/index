@@ -62,7 +62,7 @@
 
     th, td {
         padding: 20px 24px;
-        text-align: left;
+        text-align: center;
     }
 
     th {
@@ -71,6 +71,7 @@
         font-size: 0.85rem;
         letter-spacing: 1px;
         border-bottom: 2px solid var(--line);
+        background: var(--hover);
     }
 
     tbody tr {
@@ -81,6 +82,8 @@
 
     tbody tr:hover {
         background: var(--hover);
+        outline: 2px dashed var(--muted);
+        outline-offset: -2px;
     }
 
     .project-name {
@@ -110,12 +113,12 @@
         <table>
             <thead>
                 <tr>
-                    <th>Project</th>
-                    <th>Description</th>
+                    <th>Name</th>
+                    <th>Desc</th>
                 </tr>
             </thead>
             <tbody>
-                <tr onclick="window.open('/clark-lang/index.html', '_blank')">
+                <tr onclick="window.open('/index/clark-lang/index.html', '_blank')">
                     <td class="project-name">Clark-Lang</td>
                     <td class="description">A Meta Lisp.</td>
                 </tr>
