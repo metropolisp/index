@@ -1,0 +1,108 @@
+/* Soccer Field Inspired Syntax Highlighting Theme */
+
+/* Background */
+.bg { background-color:#f0f8e7; }
+/* PreWrapper */
+.chroma { background-color:#f0f8e7; border: 1px solid #4CAF50; }
+
+/* Error */
+.chroma .err { color:#f8f8f8;background-color:#d32f2f }
+
+/* LineLink */
+.chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
+
+/* LineTableTD */
+.chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
+
+/* LineTable */
+.chroma .lntable { border-spacing:0;padding:0;margin:0;border:0; }
+
+/* LineHighlight */
+.chroma .hl { background-color:#e8f5e8 }
+
+/* LineNumbersTable */
+.chroma .lnt { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#2e7d32 }
+
+/* LineNumbers */
+.chroma .ln { white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#2e7d32 }
+
+/* Line */
+.chroma .line { display:flex; }
+
+/* Keywords */
+.chroma .k { color:#1565c0; font-weight: bold; }
+.chroma .kc { color:#1565c0; font-weight: bold; }
+.chroma .kd { color:#1565c0; font-weight: bold; }
+.chroma .kn { color:#1565c0; font-weight: bold; }
+.chroma .kp { color:#1565c0; font-weight: bold; }
+.chroma .kr { color:#1565c0; font-weight: bold; }
+.chroma .kt { color:#1565c0; font-weight: bold; }
+
+/* Names */
+.chroma .na { color:#1b5e20 }
+.chroma .nc { color:#1b5e20; font-weight: bold; }
+.chroma .no { color:#2e7d32 }
+.chroma .nd { color:#2e7d32 }
+.chroma .ni { color:#4CAF50 }
+.chroma .nl { color:#1b5e20; font-weight: bold; }
+.chroma .nn { color:#1b5e20 }
+.chroma .nx { color:#1b5e20 }
+.chroma .nt { color:#2e7d32 }
+.chroma .nb { color:#4CAF50; font-weight: bold; }
+.chroma .bp { color:#388e3c }
+.chroma .nv { color:#1b5e20 }
+.chroma .vc { color:#1b5e20 }
+.chroma .vg { color:#1b5e20 }
+.chroma .vi { color:#1b5e20 }
+.chroma .vm { color:#1b5e20 }
+.chroma .nf { color:#4CAF50; font-weight: bold; }
+.chroma .fm { color:#4CAF50; font-weight: bold; }
+
+/* Strings */
+.chroma .s { color:#e65100 }
+.chroma .sa { color:#e65100 }
+.chroma .sb { color:#e65100 }
+.chroma .sc { color:#e65100 }
+.chroma .dl { color:#e65100 }
+.chroma .sd { color:#e65100 }
+.chroma .s2 { color:#e65100 }
+.chroma .se { color:#bf360c }
+.chroma .sh { color:#e65100 }
+.chroma .si { color:#e65100 }
+.chroma .sx { color:#e65100 }
+.chroma .sr { color:#e65100 }
+.chroma .s1 { color:#e65100 }
+.chroma .ss { color:#bf360c }
+
+/* Numbers */
+.chroma .m { color:#6a1b9a }
+.chroma .mb { color:#6a1b9a }
+.chroma .mf { color:#6a1b9a }
+.chroma .mh { color:#6a1b9a }
+.chroma .mi { color:#6a1b9a }
+.chroma .il { color:#6a1b9a }
+.chroma .mo { color:#6a1b9a }
+
+/* Operators */
+.chroma .o { color:#0d47a1 }
+.chroma .ow { color:#0d47a1 }
+
+/* Punctuation */
+.chroma .p { color:#1b5e20 }
+
+/* Comments */
+.chroma .c { color:#757575; font-style: italic; }
+.chroma .ch { color:#757575; font-style: italic; }
+.chroma .cm { color:#757575; font-style: italic; }
+.chroma .c1 { color:#757575; font-style: italic; }
+.chroma .cs { color:#616161; font-style: italic; }
+.chroma .cp { color:#757575; font-style: italic; }
+.chroma .cpf { color:#757575; font-style: italic; }
+
+/* Generic */
+.chroma .gd { color:#d32f2f;background-color:#ffcdd2 }
+.chroma .ge { color:#1b5e20; font-style: italic; }
+.chroma .gi { color:#2e7d32;background-color:#c8e6c9 }
+.chroma .go { color:#1b5e20 }
+.chroma .gl { text-decoration:underline }
+.chroma .w { color:#f0f8e7 }

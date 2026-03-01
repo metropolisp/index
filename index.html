@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>METROP( )LISP - Project Index</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --bg: #e5e5e5;
+        --text: #2a2a2a;
+        --muted: #555;
+        --line: #cfcfcf;
+        --hover: #dcdcdc;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 40px 20px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 800px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        letter-spacing: 4px;
+        margin-bottom: 12px;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 500;
+        color: var(--muted);
+        margin-bottom: 40px;
+        letter-spacing: 2px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #f2f2f2;
+    }
+
+    th, td {
+        padding: 20px 24px;
+        text-align: left;
+    }
+
+    th {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        border-bottom: 2px solid var(--line);
+    }
+
+    tbody tr {
+        border-bottom: 1px solid var(--line);
+        transition: background 0.2s ease;
+        cursor: pointer;
+    }
+
+    tbody tr:hover {
+        background: var(--hover);
+    }
+
+    .project-name {
+        font-weight: 600;
+        color: var(--text);
+    }
+
+    .description {
+        color: var(--muted);
+        font-size: 1rem;
+    }
+
+    @media (max-width: 600px) {
+        th:nth-child(2),
+        td:nth-child(2) {
+            display: none;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>METROP( )LISP</h1>
+        <h2>Project Index</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Project</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onclick="window.open('/clark-lang/index.html', '_blank')">
+                    <td class="project-name">Clark-Lang</td>
+                    <td class="description">A Meta Lisp.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

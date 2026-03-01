@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <title>Troubleshooting - CLARK</title>
+  <meta name="description" content="Common issues and solutions for Clark">
+  <meta name="author" content="Joshua Steven Grant (ie: Jost Grant)">
+  <meta name="keywords" content="common lisp, distributed computing, spatial computing, programming">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/logo.svg">
+  <link rel="canonical" href="/index/clark-lang/docs/troubleshooting/">
+
+  
+  <link rel="stylesheet" type="text/css" href="/index/clark-lang/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/index/clark-lang/css/chroma.css">
+  <link rel="stylesheet" type="text/css" href="/index/clark-lang/css/custom.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  
+  <link rel="alternate" type="application/rss+xml" href="/feeds/news/all.rss.xml" title="RSS Feed">
+</head>
+  <body class="docs-page">
+    
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+  <div class="container">
+
+  <a href="/index/clark-lang/" class="navbar-brand">
+    <div class="navbar-logo prism-root" aria-hidden="true" title="Clark logo"></div>
+    <span>CLARK</span>
+  </a>
+
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+          data-target="#navbar_collapse" aria-controls="navbar_collapse"
+          aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbar_collapse">
+      <ul class="navbar-nav mr-auto">
+        
+        
+        
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/index/clark-lang/try/">Try</a>
+          </li>
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/index/clark-lang/rels/">Rels</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/index/clark-lang/news/">News</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/index/clark-lang/spec/">Spec</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/index/clark-lang/refc/">Refc</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/index/clark-lang/docs/">Docs</a>
+        </li>
+
+        
+          
+        
+          
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/index/clark-lang/chat/">Chat</a>
+            </li>
+          
+        
+          
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/index/clark-lang/todo/">[TODO]</a>
+            </li>
+          
+        
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/index/clark-lang/feeds/news/all.rss.xml" aria-label="RSS Feed">
+            <i class="fas fa-rss" style="font-size: 1.2em;"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/sponsors/metropolisp" target="_blank" aria-label="Support">
+            <i class="fas fa-dollar-sign" style="font-size: 1.2em;"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/metropolisp/clark-lang" target="_blank" aria-label="GitHub Repository">
+            <i class="fab fa-github" style="font-size: 1.2em;"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <button id="theme-toggle" class="nav-link btn btn-link" aria-label="Toggle theme">
+            <i class="fas fa-moon" id="theme-icon"></i>
+          </button>
+        </li>
+      </ul>
+  </div>
+
+  </div>
+</nav>
+
+    <div class="main-content">
+      
+      
+      
+<div class="doc-action-bar border-bottom d-flex">
+  <div class="container-fluid">
+    <div class="d-flex w-100 align-items-center justify-content-between">
+      <button id="left-sidebar-toggle" class="btn btn-outline-secondary btn-sm" aria-label="Toggle left sidebar">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="d-none d-md-block text-center flex-grow-1 mx-3">
+        
+        <nav aria-label="breadcrumb" class="breadcrumb-nav">
+          <ol class="breadcrumb mb-0">
+            
+            
+            
+            
+            
+            
+            <li class="breadcrumb-item has-siblings">
+              
+              <a href="/index/clark-lang/docs/" title="Documentation"><i class="fas fa-book"></i></a>
+              
+              
+            </li>
+            
+            
+            
+            <li class="breadcrumb-item active has-siblings" aria-current="page">
+              
+              Troubleshooting
+              
+            
+              
+              <button class="breadcrumb-dropdown-toggle" aria-label="Show siblings">
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="breadcrumb-dropdown">
+                
+                <a href="/index/clark-lang/docs/introduction/" class="breadcrumb-dropdown-item">Introduction</a>
+                
+                <a href="/index/clark-lang/docs/getting-started/" class="breadcrumb-dropdown-item">Getting Started</a>
+                
+                <a href="/index/clark-lang/docs/api/" class="breadcrumb-dropdown-item">The API</a>
+                
+                <a href="/index/clark-lang/docs/language/" class="breadcrumb-dropdown-item">The Language</a>
+                
+                <a href="/index/clark-lang/docs/troubleshooting/" class="breadcrumb-dropdown-item current-page">Troubleshooting</a>
+                
+                <a href="/index/clark-lang/docs/community/" class="breadcrumb-dropdown-item">Community</a>
+                
+                <a href="/index/clark-lang/docs/configuration/" class="breadcrumb-dropdown-item">Configuration</a>
+                
+                <a href="/index/clark-lang/docs/contributing/" class="breadcrumb-dropdown-item">Contributing</a>
+                
+                <a href="/index/clark-lang/docs/glossary/" class="breadcrumb-dropdown-item">Glossary</a>
+                
+                <a href="/index/clark-lang/docs/misc/" class="breadcrumb-dropdown-item">Misc</a>
+                
+              </div>
+              
+              
+              
+              
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <button id="right-sidebar-toggle" class="btn btn-outline-secondary btn-sm ms-auto" aria-label="Toggle right sidebar">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</div>
+      <style>
+      .doc-action-bar {
+        position: fixed;
+        width: 100%;
+        z-index: 1020;
+      }
+      .main-content {
+        padding-top: 33px !important;
+      }
+      @media (max-width: 767px) {
+        body {
+          padding-top: 0 !important;
+        }
+        .main-content {
+           
+        }
+        .sidebar-left, .sidebar-right {
+           
+        }
+      }
+      </style>
+      <div class="container-fluid">
+        <div class="row">
+          
+          <nav class="col-md-3 d-none d-md-block sidebar-left">
+            <div class="sidebar-sticky">
+              
+              <div class="sidebar-search mb-3">
+                <div class="input-group">
+                  <input type="text" id="docs-search" class="form-control" placeholder="Search docs..." aria-label="Search documentation">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                  </div>
+                </div>
+                  
+              <h5 class="sidebar-heading">Documentation</h5>
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link overview-link" href="/docs/">
+                    <i class="fa-solid fa-clone"></i> Overview
+                  </a>
+                </li>
+                
+                
+                
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/introduction/">
+    <i class="fas fa-info-circle"></i> Introduction
+  </a>
+
+  
+  
+  
+  
+    
+    
+      
+      
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+      
+      
+    
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+  
+  <ul class="nav flex-column sub-nav">
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/introduction/motivations/">
+    <i class="fas fa-lightbulb"></i> Motivations
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/introduction/considerations/">
+    <i class="fas fa-balance-scale"></i> Considerations
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/introduction/goals-x-non/">
+    <i class="fas fa-bullseye"></i> Goals And Non-Goals
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/introduction/faqs/">
+    <i class="fas fa-question-circle"></i> FAQ(s)
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+  </ul>
+  
+</li>
+
+                
+                
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/getting-started/">
+    <i class="fas fa-rocket"></i> Getting Started
+  </a>
+
+  
+  
+  
+  
+    
+    
+      
+      
+    
+  
+    
+    
+      
+      
+    
+  
+  
+    
+    
+  
+    
+    
+  
+
+  
+  <ul class="nav flex-column sub-nav">
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/getting-started/tutorials/">
+    <i class="fas fa-graduation-cap"></i> Tutorials
+  </a>
+
+  
+  
+  
+  
+    
+    
+      
+      
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+      
+      
+    
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+  
+  <ul class="nav flex-column sub-nav">
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/getting-started/tutorials/basic-syntax/">
+    <i class="fas fa-graduation-cap"></i> Basic Lisp Syntax
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/getting-started/tutorials/godot-nodes/">
+    <i class="fas fa-graduation-cap"></i> Working with Godot Nodes
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/getting-started/tutorials/game-objects/">
+    <i class="fas fa-graduation-cap"></i> Creating Game Objects
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+  </ul>
+  
+</li>
+
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/getting-started/examples/">
+    <i class="fas fa-lightbulb"></i> Examples
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+  </ul>
+  
+</li>
+
+                
+                
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/api/">
+    <i class="fas fa-plug"></i> The API
+  </a>
+
+  
+  
+  
+  
+    
+    
+      
+      
+    
+  
+  
+    
+    
+  
+
+  
+  <ul class="nav flex-column sub-nav">
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/api/reference/">
+    <i class="fas fa-file-code"></i> Reference
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+  </ul>
+  
+</li>
+
+                
+                
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/language/">
+    <i class="fas fa-code"></i> The Language
+  </a>
+
+  
+  
+  
+  
+    
+    
+      
+      
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+      
+      
+    
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+  
+  <ul class="nav flex-column sub-nav">
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/language/design/">
+    <i class="fas fa-file"></i> Design
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/language/style-guide/">
+    <i class="fas fa-palette"></i> Style Guide
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/language/ergonomics/">
+    <i class="fas fa-file"></i> Ergonomics
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/language/reference/">
+    <i class="fas fa-book"></i> Reference
+  </a>
+
+  
+  
+  
+  
+    
+    
+      
+      
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+      
+      
+    
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+  
+  <ul class="nav flex-column sub-nav">
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/language/reference/data-types/">
+    <i class="fas fa-database"></i> Data Types
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/language/reference/functions/">
+    <i class="fas fa-code"></i> Functions
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/language/reference/macros/">
+    <i class="fas fa-magic"></i> Macros
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+  </ul>
+  
+</li>
+
+    
+  </ul>
+  
+</li>
+
+                
+                
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link active" href="/index/clark-lang/docs/troubleshooting/">
+    <i class="fas fa-wrench"></i> Troubleshooting
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+                
+                
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/community/">
+    <i class="fas fa-users"></i> Community
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+                
+                
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/configuration/">
+    <i class="fas fa-cogs"></i> Configuration
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+                
+                
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/contributing/">
+    <i class="fas fa-handshake"></i> Contributing
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+                
+                
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/glossary/">
+    <i class="fas fa-book-open"></i> Glossary
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+                
+                
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/misc/">
+    <i class="fas fa-folder-open"></i> Misc
+  </a>
+
+  
+  
+  
+  
+    
+    
+      
+      
+    
+  
+  
+    
+    
+  
+
+  
+  <ul class="nav flex-column sub-nav">
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/misc/parting/">
+    <i class="fas fa-palette"></i> Parting
+  </a>
+
+  
+  
+  
+  
+    
+    
+      
+      
+    
+  
+  
+    
+    
+  
+
+  
+  <ul class="nav flex-column sub-nav">
+    
+      
+
+
+
+
+
+<li class="nav-item">
+  <a class="nav-link" href="/index/clark-lang/docs/misc/parting/collection/">
+    <i class="fas fa-file"></i> Widget Collection
+  </a>
+
+  
+  
+  
+  
+  
+
+  
+</li>
+
+    
+  </ul>
+  
+</li>
+
+    
+  </ul>
+  
+</li>
+
+                
+              </ul>
+            </div>
+          </nav>
+
+          
+          <main class="col-md-6 col-12 px-md-4 px-3">
+            
+<div class="docs-overview">
+  <div class="container">
+    
+    <div class="docs-content">
+      <h1 class="visually-hidden">Troubleshooting</h1>
+      <h1 id="troubleshooting">Troubleshooting</h1>
+
+
+
+
+
+
+<div class="parting-placeholder">
+  <div class="placeholder-content">
+    <i class="fas fa-tools"></i>
+    <p>
+</p>
+  </div>
+</div>
+
+<style>
+.parting-placeholder {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 1rem 0;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.placeholder-content {
+  color: #666;
+}
+
+.placeholder-content i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #999;
+}
+
+.placeholder-content p {
+  margin: 0;
+  font-style: italic;
+}
+</style>
+
+    </div>
+    
+  </div>
+</div>
+          </main>
+
+          
+          <aside class="col-md-3 d-none d-md-block sidebar-right">
+            <div class="sidebar-sticky">
+              <h5 class="sidebar-heading">On This Page</h5>
+              <nav id="TableOfContents"></nav>
+            </div>
+          </aside>
+        </div>
+      </div>
+      
+
+      
+
+
+
+
+
+
+<div class="doc-bottom-buttons" style="margin: 2rem 0 1rem 0;">
+  <div class="prev-next-row" style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 0.5rem;">
+    
+    
+    
+    
+    
+      
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+            
+          
+          
+            
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+
+    <a href="/index/clark-lang/docs/" class="cta-btn" aria-label="Up a Level"><i class="fas fa-chevron-up"></i></a>
+      <a href="/index/clark-lang/docs/language/" class="cta-btn" aria-label="Previous"><i class="fas fa-chevron-left"></i></a>
+    <a href="/index/clark-lang/docs/community/" class="cta-btn" aria-label="Next"><i class="fas fa-chevron-right"></i></a>
+    
+    
+    
+    
+    
+    
+    <div class="breadcrumb-item" style="position: relative;">
+      <button class="cta-btn breadcrumb-dropdown-toggle disabled" aria-label="Down a Level">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+      
+    </div>
+  </div>
+  <div class="other-ctas" style="display: flex; gap: 1rem; justify-content: center;">
+
+      <a href="/docs/" class="cta-btn wide-btn" aria-label="Overview"><i class="fas fa-book"></i></a>
+      <a href="/search/" class="cta-btn wide-btn" aria-label="Search"><i class="fas fa-search"></i></a>
+  </div>
+</div>
+<style>
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 2px solid #7c3aed;
+}
+
+.cta-btn.wide-btn {
+    width: auto;
+    height: auto;
+    padding: 0.75em 3em;
+  }
+  .cta-btn {
+    color: #7c3aed;
+    background: #fff;
+    border-radius: 0.5em;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .cta-btn:hover, .cta-btn:focus {
+    background: #7c3aed;
+    color: #fff;
+    text-decoration: none !important;
+  }
+   
+  .cta-btn, .cta-btn * {
+    text-decoration: none !important;
+  }
+   
+  .cta-btn:focus {
+    outline: none;
+  }
+ 
+.cta-btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  border-color: #ccc;
+  color: #ccc;
+}
+</style>
+
+
+      
+      <div class="page-metadata mt-4 py-3 border-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <small class="text-muted">
+                <i class="fas fa-clock"></i>
+                Last edited: January 1, 0001
+              </small>
+            </div>
+            <div class="col-md-6 text-md-right">
+              <small>
+                <a href="https://github.com//metropolisp/clark-lang/edit/main/www/contentdocs/troubleshooting/_index.md" class="text-decoration-none" target="_blank" rel="noopener">
+                  <i class="fas fa-edit"></i>
+                  Make changes
+                </a>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style type="text/css">
+footer {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: var(--theme-primary) !important;
+  color: white;
+  border-top: 10px solid var(--theme-secondary);
+  padding: 2em;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: var(--theme-secondary);
+  text-decoration: underline dotted;
+}
+
+.post-footer {
+  background-color: #f0e6ff;
+  border-top: 2px dashed #d1b3ff;
+  padding: 1em;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6A0DAD;
+  margin-top: 2em;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(75, 0, 130, 0.05);
+}
+
+.post-footer a {
+  color: #6A0DAD;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.post-footer a:hover {
+  color: #EEA727;
+  text-decoration: underline dotted;
+}
+</style>
+
+<footer>
+  <hr />
+  <p><a href="https://metropolisp.com">Λ METROPOLISP Project.</a></p>
+  <p><em>Dual-Licensed Under The <a href="https://opensource.org/licenses/MIT">MIT</a> & <a href="https://opensource.org/licenses/BSD-2-Clause">BSD-2</a>,</em></p>
+  <p><em>Where Possible; Please See <a href="https://github.com/metropolisp/clark-lang/LEGAL.txt">For Exceptions.</a></em></p>
+</footer>
+
+    
+<script type="text/javascript" src="/index/clark-lang/js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" src="/index/clark-lang/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+<script src="/index/clark-lang/js/pentogonal-prism-logo.js"></script>
+
+<script>
+  
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl, { html: true });
+  });
+
+  
+  tooltipList.forEach(function(tooltip, index) {
+    var trigger = tooltipTriggerList[index];
+    var locked = false;
+
+    trigger.addEventListener('mouseenter', function() {
+      tooltip.show();
+    });
+
+    trigger.addEventListener('mouseleave', function() {
+      if (!locked) {
+        tooltip.hide();
+      }
+    });
+
+    trigger.addEventListener('click', function() {
+      locked = !locked;
+      if (locked) {
+        tooltip.show();
+        trigger.style.color = 'orange';
+      } else {
+        tooltip.hide();
+        trigger.style.color = '#6f42c1';
+      }
+    });
+  });
+
+  
+  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+  var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl);
+  });
+
+  
+  popoverTriggerList.forEach(function(trigger) {
+    var popover = bootstrap.Popover.getInstance(trigger);
+    var hideTimeout;
+
+    function showPopover() {
+      clearTimeout(hideTimeout);
+      popover.show();
+    }
+
+    function hidePopover() {
+      hideTimeout = setTimeout(function() {
+        popover.hide();
+      }, 150);
+    }
+
+    trigger.addEventListener('mouseenter', showPopover);
+    trigger.addEventListener('mouseleave', hidePopover);
+
+    trigger.addEventListener('shown.bs.popover', function() {
+      var popoverElement = document.querySelector('.popover');
+      if (popoverElement) {
+        popoverElement.addEventListener('mouseenter', function() {
+          clearTimeout(hideTimeout);
+        });
+        popoverElement.addEventListener('mouseleave', hidePopover);
+      }
+    });
+  });
+</script>
+
+<script>
+(function(){
+  function updateParens() {
+    var span = document.querySelector('.fill-parens');
+    var title = document.querySelector('.no-border .title');
+    if (!span || !title) return;
+    if (window.innerWidth < 768) { span.textContent = ''; return; }
+
+    
+    var container = document.getElementById('content') || document.querySelector('.container') || document.body;
+    var titleRect = title.getBoundingClientRect();
+    var containerRect = container.getBoundingClientRect();
+    var available = Math.max(0, containerRect.right - titleRect.right - 8); 
+    if (available <= 0) { span.textContent = ''; return; }
+
+    
+    var meas = document.createElement('span');
+    meas.style.visibility = 'hidden';
+    meas.style.position = 'absolute';
+    meas.style.whiteSpace = 'nowrap';
+    var computed = window.getComputedStyle(title);
+    meas.style.font = computed.font || (computed.fontSize + ' ' + computed.fontFamily);
+    meas.textContent = ')';
+    document.body.appendChild(meas);
+    var charWidth = meas.getBoundingClientRect().width || 8;
+    document.body.removeChild(meas);
+
+    
+    var zoomTest = document.createElement('div');
+    zoomTest.style.fontSize = '16px';
+    zoomTest.style.visibility = 'hidden';
+    zoomTest.style.position = 'absolute';
+    document.body.appendChild(zoomTest);
+    var zoomComputed = window.getComputedStyle(zoomTest).fontSize;
+    document.body.removeChild(zoomTest);
+    var zoom = parseFloat(zoomComputed) / 16;
+
+    var count = Math.floor(available / charWidth);
+    if (zoom === 1) count -= 4;
+    count = Math.max(0, count);
+
+    
+    var style = window.getComputedStyle(document.documentElement);
+    var startColor = style.getPropertyValue('--theme-primary') || style.getPropertyValue('--theme-secondary') || '#4B0082';
+    
+    var containerBg = window.getComputedStyle(container).backgroundColor || window.getComputedStyle(document.body).backgroundColor || '#ffffff';
+
+    
+    function parseColor(col) {
+      col = col.trim();
+      if (col.indexOf('rgb') === 0) {
+        var m = col.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (m) return {r: +m[1], g: +m[2], b: +m[3]};
+      }
+      
+      if (col.indexOf('#') === 0) {
+        var hex = col.substring(1);
+        if (hex.length === 3) hex = hex.split('').map(function(c){ return c + c; }).join('');
+        return {r: parseInt(hex.substring(0,2),16), g: parseInt(hex.substring(2,4),16), b: parseInt(hex.substring(4,6),16)};
+      }
+      return {r:0,g:0,b:0};
+    }
+
+    
+    function mixWithWhite(rgb, amount){
+      return { r: Math.round(rgb.r * (1 - amount) + 255 * amount),
+               g: Math.round(rgb.g * (1 - amount) + 255 * amount),
+               b: Math.round(rgb.b * (1 - amount) + 255 * amount) };
+    }
+
+    var c1 = parseColor(startColor);
+    var c2 = mixWithWhite(parseColor(containerBg), 0.9);
+
+    if (count === 0) { span.textContent = ''; return; }
+    var html = '';
+    for (var i = 0; i < count; i++) {
+      var t = count === 1 ? 1 : i / (count - 1); 
+      var r = Math.round(c1.r * (1 - t) + c2.r * t);
+      var g = Math.round(c1.g * (1 - t) + c2.g * t);
+      var b = Math.round(c1.b * (1 - t) + c2.b * t);
+      html += '<span style="color: rgb(' + r + ',' + g + ',' + b + ')">)</span>';
+    }
+    span.innerHTML = html;
+  }
+
+  
+  function updateHeroParens() {
+    var host = document.querySelector('.hero-parens');
+    var hero = document.querySelector('.hero-wrapper');
+    if (!host || !hero) return;
+
+    var rect = hero.getBoundingClientRect();
+    
+    if (rect.width < 420 || window.innerWidth < 420) { host.textContent = ''; return; }
+
+    var computed = window.getComputedStyle(host);
+    var meas = document.createElement('span');
+    meas.style.visibility = 'hidden';
+    meas.style.position = 'absolute';
+    meas.style.whiteSpace = 'nowrap';
+    meas.style.font = computed.font || (computed.fontSize + ' ' + computed.fontFamily);
+    
+    meas.style.letterSpacing = computed.letterSpacing || 'normal';
+    meas.textContent = ')';
+    document.body.appendChild(meas);
+    var charWidth = meas.getBoundingClientRect().width || 8;
+    
+    var lineH = parseFloat(computed.lineHeight) || Math.max(12, parseFloat(computed.fontSize) * 1.05);
+    document.body.removeChild(meas);
+
+    
+    
+    var padLeft = parseFloat(computed.paddingLeft) || 0;
+    var padRight = parseFloat(computed.paddingRight) || 0;
+    var padTop = parseFloat(computed.paddingTop) || 0;
+    var padBottom = parseFloat(computed.paddingBottom) || 0;
+    var availableWidth = Math.max(0, rect.width - padLeft - padRight - 2);
+    var availableHeight = Math.max(0, rect.height - padTop - padBottom - 2);
+
+    
+    var cols = Math.max(1, Math.ceil((availableWidth * 1.05) / charWidth) + 4);
+    var rows = Math.max(1, Math.ceil((availableHeight * 1.02) / lineH) + 2);
+
+    
+    host._charWidth = charWidth;
+    host._lineH = lineH;
+    host._padLeft = padLeft;
+    host._padTop = padTop;
+    host._cols = cols;
+    host._rows = rows;
+
+    
+    var startColor = '#673589';
+
+    function parseColor(col) {
+      col = (col || '').trim();
+      if (col.indexOf('rgb') === 0) {
+        var m = col.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (m) return {r:+m[1], g:+m[2], b:+m[3]};
+      }
+      if (col.indexOf('#') === 0) {
+        var hex = col.substring(1);
+        if (hex.length === 3) hex = hex.split('').map(function(c){ return c + c; }).join('');
+        return { r: parseInt(hex.substring(0,2),16), g: parseInt(hex.substring(2,4),16), b: parseInt(hex.substring(4,6),16) };
+      }
+      return {r:0,g:0,b:0};
+    }
+
+    var useColor = parseColor(startColor);
+
+    var html = '';
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        var R = useColor.r;
+        var G = useColor.g;
+        var B = useColor.b;
+        html += '<span style="color: rgb(' + R + ',' + G + ',' + B + ')">)</span>';
+      }
+      if (r < rows - 1) html += '\n';
+    }
+
+    host.innerHTML = html;
+
+    
+    
+    
+    if (!host._heroHoverInit) {
+      host._heroHoverInit = true;
+      var prevIdx = null;
+      host.addEventListener('mousemove', function(e){
+        var rect = host.getBoundingClientRect();
+        var x = e.clientX - rect.left - padLeft;
+        var y = e.clientY - rect.top - padTop;
+        if (x < 0 || y < 0) return;
+        var col = Math.floor(x / charWidth);
+        var row = Math.floor(y / lineH);
+        if (col >= cols) col = cols - 1;
+        if (row >= rows) row = rows - 1;
+        var idx = row * cols + col;
+        if (idx === prevIdx) return;
+        if (prevIdx !== null && host.children[prevIdx]) host.children[prevIdx].classList.remove('hover');
+        if (host.children[idx]) host.children[idx].classList.add('hover');
+        prevIdx = idx;
+      });
+      host.addEventListener('mouseleave', function(){
+        if (prevIdx !== null && host.children[prevIdx]) host.children[prevIdx].classList.remove('hover');
+        prevIdx = null;
+      });
+    }
+  }
+
+  var ro;
+  if (window.ResizeObserver) {
+    ro = new ResizeObserver(function(){ updateParens(); });
+  }
+
+  
+  window.__prismSuppressParens = false;
+
+  document.addEventListener('DOMContentLoaded', function(){
+    updateParens();
+    updateHeroParens();
+
+    var container = document.getElementById('content') || document.querySelector('.container') || document.body;
+    if (container && ro) ro.observe(container);
+
+    var heroEl = document.querySelector('.hero-wrapper');
+    if (heroEl && window.ResizeObserver) {
+      var heroRo = new ResizeObserver(function(){ updateHeroParens(); });
+      heroRo.observe(heroEl);
+    }
+
+    
+    
+    if (heroEl) {
+      heroEl.addEventListener('mousemove', function(e){
+        if (window.__prismSuppressParens) return;
+        var host = document.querySelector('.hero-parens');
+        if (!host || !host._charWidth) return;
+        var rect = host.getBoundingClientRect();
+        var x = e.clientX - rect.left - host._padLeft;
+        var y = e.clientY - rect.top - host._padTop;
+
+        
+        
+        
+        if (x < 0 || y < 0 || x > rect.width - host._padRight || y > rect.height - host._padBottom) {
+          if (host._prevHover !== undefined && host.children[host._prevHover]) {
+            host.children[host._prevHover].classList.remove('hover');
+          }
+          host._prevHover = undefined;
+          return;
+        }
+
+        var col = Math.floor(x / host._charWidth);
+        var row = Math.floor(y / host._lineH);
+        if (col >= host._cols) col = host._cols - 1;
+        if (row >= host._rows) row = host._rows - 1;
+        var idx = row * host._cols + col;
+        if (host._prevHover === idx) return;
+        if (host._prevHover !== undefined && host.children[host._prevHover]) {
+          var prevEl = host.children[host._prevHover];
+          prevEl.classList.remove('hover');
+          
+          prevEl.classList.add('hover-out');
+          setTimeout(function(){ prevEl.classList.remove('hover-out'); }, 1300);
+        }
+        if (host.children[idx]) host.children[idx].classList.add('hover');
+        host._prevHover = idx;
+      });
+      heroEl.addEventListener('mouseleave', function(){
+        if (window.__prismSuppressParens) return;
+        var host = document.querySelector('.hero-parens');
+        if (host && host._prevHover !== undefined && host.children[host._prevHover]) {
+          host.children[host._prevHover].classList.remove('hover');
+        }
+        if (host) host._prevHover = undefined;
+      });
+    }
+
+    window.addEventListener('resize', function(){ updateParens(); updateHeroParens(); });
+
+    
+    const leftSidebarToggle = document.getElementById('left-sidebar-toggle');
+    const rightSidebarToggle = document.getElementById('right-sidebar-toggle');
+    const leftSidebar = document.querySelector('.sidebar-left');
+    const rightSidebar = document.querySelector('.sidebar-right');
+    
+    const mainContent = document.querySelector('main.col-md-6, main');
+
+    
+    function isMobile() {
+      return window.innerWidth < 768;
+    }
+
+    
+    function initializeSidebarStates() {
+      
+      const nav = document.querySelector('.navbar');
+      if (nav) {
+        const navHeight = nav.offsetHeight;
+        document.body.style.setProperty('padding-top', navHeight + 'px', 'important');
+      }
+      
+      
+      const toggleBar = document.querySelector('.doc-action-bar');
+      if (nav && toggleBar) {
+        const navHeight = nav.offsetHeight;
+        toggleBar.style.setProperty('top', navHeight + 'px', 'important');
+        
+        
+        const mainContent = document.querySelector('.main-content');
+        if (mainContent) {
+          mainContent.style.setProperty('padding-top', '33px', 'important');
+        }
+      }
+      
+      if (isMobile()) {
+        
+        if (leftSidebar) leftSidebar.classList.add('sidebar-mobile-hidden');
+        if (rightSidebar) rightSidebar.classList.add('sidebar-mobile-hidden');
+      } else {
+        
+        if (leftSidebar) leftSidebar.classList.remove('sidebar-mobile-hidden');
+        if (rightSidebar) rightSidebar.classList.remove('sidebar-mobile-hidden');
+      }
+      updateMainContentColumns();
+    }
+
+    
+    initializeSidebarStates();
+
+    
+    window.addEventListener('resize', function() {
+      initializeSidebarStates();
+    });
+
+    
+    function updateMainContentColumns() {
+      if (!mainContent) return;
+      
+      if (isMobile()) {
+        
+        const leftVisible = leftSidebar && !leftSidebar.classList.contains('sidebar-mobile-hidden');
+        const rightVisible = rightSidebar && !rightSidebar.classList.contains('sidebar-mobile-hidden');
+        
+        mainContent.classList.remove('col-12', 'col-9', 'col-6');
+        
+        if (leftVisible || rightVisible) {
+          mainContent.classList.add('col-9'); 
+        } else {
+          mainContent.classList.add('col-12'); 
+        }
+      } else {
+        
+        const leftVisible = leftSidebar ? window.getComputedStyle(leftSidebar).display !== 'none' : false;
+        const rightVisible = rightSidebar ? window.getComputedStyle(rightSidebar).display !== 'none' : false;
+
+        
+        mainContent.classList.remove('col-md-6', 'col-md-9', 'col-md-12', 'centered-content');
+
+        if (!leftVisible && !rightVisible) {
+          
+          mainContent.classList.add('col-md-12', 'centered-content');
+        } else if (!leftVisible || !rightVisible) {
+          
+          mainContent.classList.add('col-md-9');
+        } else {
+          
+          mainContent.classList.add('col-md-6');
+        }
+      }
+    }
+
+    
+    function toggleMobileSidebar(showLeft) {
+      if (!isMobile()) return;
+      
+      
+      if (leftSidebar) leftSidebar.classList.add('sidebar-mobile-hidden');
+      if (rightSidebar) rightSidebar.classList.add('sidebar-mobile-hidden');
+      
+      
+      if (showLeft && leftSidebar) {
+        leftSidebar.classList.remove('sidebar-mobile-hidden');
+      } else if (!showLeft && rightSidebar) {
+        rightSidebar.classList.remove('sidebar-mobile-hidden');
+      }
+      
+      
+      const toggleBar = document.querySelector('.doc-action-bar');
+      if (toggleBar) {
+        const top = (toggleBar.offsetTop + toggleBar.offsetHeight) + 'px';
+        if (showLeft && leftSidebar) {
+          leftSidebar.style.setProperty('top', top, 'important');
+        } else if (!showLeft && rightSidebar) {
+          rightSidebar.style.setProperty('top', top, 'important');
+        }
+      }
+      
+      updateMainContentColumns();
+    }
+
+    if (leftSidebarToggle && leftSidebar) {
+      leftSidebarToggle.addEventListener('click', function() {
+        if (isMobile()) {
+          
+          const isCurrentlyVisible = !leftSidebar.classList.contains('sidebar-mobile-hidden');
+          if (isCurrentlyVisible) {
+            
+            leftSidebar.classList.add('sidebar-mobile-hidden');
+          } else {
+            
+            toggleMobileSidebar(true);
+          }
+        } else {
+          
+          leftSidebar.classList.toggle('collapsed');
+        }
+        updateMainContentColumns();
+        
+        
+        const icon = this.querySelector('i');
+        if (icon) {
+          if (isMobile()) {
+            const isVisible = !leftSidebar.classList.contains('sidebar-mobile-hidden');
+            icon.className = isVisible ? 'fas fa-chevron-left' : 'fas fa-chevron-right';
+          } else {
+            const isCollapsed = leftSidebar.classList.contains('collapsed');
+            icon.className = isCollapsed ? 'fas fa-chevron-right' : 'fas fa-chevron-left';
+          }
+        }
+      });
+    }
+
+    if (rightSidebarToggle && rightSidebar) {
+      rightSidebarToggle.addEventListener('click', function() {
+        if (isMobile()) {
+          
+          const isCurrentlyVisible = !rightSidebar.classList.contains('sidebar-mobile-hidden');
+          if (isCurrentlyVisible) {
+            
+            rightSidebar.classList.add('sidebar-mobile-hidden');
+          } else {
+            
+            toggleMobileSidebar(false);
+          }
+        } else {
+          
+          rightSidebar.classList.toggle('collapsed');
+        }
+        updateMainContentColumns();
+        
+        
+        const icon = this.querySelector('i');
+        if (icon) {
+          if (isMobile()) {
+            const isVisible = !rightSidebar.classList.contains('sidebar-mobile-hidden');
+            icon.className = isVisible ? 'fas fa-chevron-right' : 'fas fa-chevron-left';
+          } else {
+            const isCollapsed = rightSidebar.classList.contains('collapsed');
+            icon.className = isCollapsed ? 'fas fa-chevron-left' : 'fas fa-chevron-right';
+          }
+        }
+      });
+    }
+
+    
+    const docsSearch = document.getElementById('docs-search');
+    const navItems = document.querySelectorAll('.sidebar-left .nav-item');
+
+    if (docsSearch && navItems.length > 0) {
+      
+      const searchButton = docsSearch.parentElement.querySelector('.input-group-text');
+      if (searchButton) {
+        searchButton.style.cursor = 'pointer';
+        searchButton.addEventListener('click', function() {
+          const query = docsSearch.value.trim();
+          if (query) {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+          }
+        });
+      }
+
+      
+      docsSearch.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const query = this.value.trim();
+          if (query) {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+          }
+        }
+      });
+
+      
+      const docsOverviewSearch = document.getElementById('docs-search-overview');
+      if (docsOverviewSearch) {
+        const overviewBtn = docsOverviewSearch.parentElement.querySelector('.input-group-text');
+        if (overviewBtn) {
+          overviewBtn.style.cursor = 'pointer';
+          overviewBtn.addEventListener('click', function() {
+            const query = docsOverviewSearch.value.trim();
+            if (query) {
+              window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+            }
+          });
+        }
+        docsOverviewSearch.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            const query = this.value.trim();
+            if (query) {
+              window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+            }
+          }
+        });
+      }
+    }
+
+    
+    const specSearch = document.getElementById('spec-search');
+    if (specSearch) {
+      const specButton = specSearch.parentElement.querySelector('.input-group-text');
+      if (specButton) {
+        specButton.style.cursor = 'pointer';
+        specButton.addEventListener('click', function() {
+          const query = specSearch.value.trim();
+          if (query) {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=spec`;
+          }
+        });
+      }
+      specSearch.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const query = this.value.trim();
+          if (query) {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=spec`;
+          }
+        }
+      });
+    }
+
+    
+    const refcSearch = document.getElementById('refc-search');
+    if (refcSearch) {
+      const refcButton = refcSearch.parentElement.querySelector('.input-group-text');
+      if (refcButton) {
+        refcButton.style.cursor = 'pointer';
+        refcButton.addEventListener('click', function() {
+          const query = refcSearch.value.trim();
+          if (query) {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=refc`;
+          }
+        });
+      }
+      refcSearch.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const query = this.value.trim();
+          if (query) {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=refc`;
+          }
+        }
+      });
+    }
+  });
+})();
+
+
+(function() {
+  var carousel = document.querySelector('.quote-carousel');
+  var quotes = document.querySelectorAll('.quote-carousel .quote');
+  var current = 0;
+  
+  function showQuote(index) {
+    quotes.forEach(function(quote, i) {
+      quote.classList.toggle('active', i === index);
+    });
+  }
+  
+  function nextQuote() {
+    current = (current + 1) % quotes.length;
+    showQuote(current);
+  }
+  
+  if (quotes.length > 1) {
+    
+    setInterval(nextQuote, 5000);
+    
+    
+    carousel.addEventListener('click', nextQuote);
+  }
+})();
+</script>
+
+
+<script>
+(function() {
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    const dropdownToggles = document.querySelectorAll('.breadcrumb-dropdown-toggle, .breadcrumb-add-toggle');
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    dropdownToggles.forEach(function(toggle) {
+      const dropdown = toggle.nextElementSibling;
+      const listItem = toggle.closest('.breadcrumb-item');
+      let hideTimeout;
+      let isToggledOpen = false;
+      
+      
+      function showDropdown() {
+        clearTimeout(hideTimeout);
+        
+        document.querySelectorAll('.breadcrumb-dropdown').forEach(function(d) {
+          if (d !== dropdown) d.style.display = 'none';
+        });
+        document.querySelectorAll('.breadcrumb-item').forEach(function(item) {
+          item.classList.remove('sibling-toggled', 'children-toggled');
+        });
+        dropdown.style.display = 'block';
+        if (toggle.classList.contains('breadcrumb-dropdown-toggle')) {
+          listItem.classList.add('sibling-toggled');
+        } else if (toggle.classList.contains('breadcrumb-add-toggle')) {
+          listItem.classList.add('children-toggled');
+          
+          const rect = toggle.getBoundingClientRect();
+          const parentRect = listItem.getBoundingClientRect();
+          
+          const leftOffset = rect.left - parentRect.left;
+          dropdown.style.left = leftOffset + 'px';
+        }
+      }
+      
+      
+      function hideDropdown() {
+        if (!isToggledOpen) {
+          hideTimeout = setTimeout(function() {
+            dropdown.style.display = 'none';
+            listItem.classList.remove('sibling-toggled', 'children-toggled');
+          }, 150);
+        }
+      }
+      
+      
+      if (!isTouchDevice) {
+        function handleMouseEnter() {
+          if (!isToggledOpen) {
+            showDropdown();
+          }
+        }
+        
+        function handleMouseLeave() {
+          if (!isToggledOpen) {
+            hideDropdown();
+          }
+        }
+        
+        toggle.addEventListener('mouseenter', handleMouseEnter);
+        toggle.addEventListener('mouseleave', handleMouseLeave);
+        dropdown.addEventListener('mouseenter', function() {
+          if (!isToggledOpen) {
+            clearTimeout(hideTimeout);
+          }
+        });
+        dropdown.addEventListener('mouseleave', handleMouseLeave);
+      }
+      
+      
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (isToggledOpen) {
+          
+          dropdown.style.display = 'none';
+          listItem.classList.remove('sibling-toggled', 'children-toggled');
+          isToggledOpen = false;
+        } else {
+          
+          isToggledOpen = true;
+          showDropdown();
+        }
+      });
+      
+      
+      document.addEventListener('click', function(e) {
+        if (!listItem.contains(e.target) && isToggledOpen) {
+          dropdown.style.display = 'none';
+          listItem.classList.remove('sibling-toggled', 'children-toggled');
+          isToggledOpen = false;
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<script type="text/javascript" src="/index/clark-lang/js/custom.js"></script>
+  </body>
+</html>

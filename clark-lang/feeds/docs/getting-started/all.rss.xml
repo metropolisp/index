@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Getting Started on CLARK</title>
+    <link>/index/clark-lang/docs/getting-started/</link>
+    <description>Recent content in Getting Started on CLARK</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="/index/clark-lang/feeds/docs/getting-started/all.rss.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+	<meta name="generator" content="Hugo 0.155.3">
+  <meta charset="utf-8">
+  <title>CLARK</title>
+  <meta name="description" content="CLARK: Meta-Lisp ">
+  <meta name="author" content="Joshua Steven Grant (ie: Jost Grant)">
+  <meta name="keywords" content="common lisp, distributed computing, spatial computing, programming">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/logo.svg">
+  <link rel="canonical" href="/index/clark-lang/">
+
+  
+  <link rel="stylesheet" type="text/css" href="/index/clark-lang/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/index/clark-lang/css/chroma.css">
+  <link rel="stylesheet" type="text/css" href="/index/clark-lang/css/custom.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  
+  <link rel="alternate" type="application/rss+xml" href="/feeds/news/all.rss.xml" title="RSS Feed">
+</head>
+  <body>
+    
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+  <div class="container">
+
+  <a href="/index/clark-lang/" class="navbar-brand">
+    <div class="navbar-logo prism-root" aria-hidden="true" title="Clark logo"></div>
+    <span>CLARK</span>
+  </a>
+
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+          data-target="#navbar_collapse" aria-controls="navbar_collapse"
+          aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbar_collapse">
+      <ul class="navbar-nav mr-auto">
+        
+        
+        
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/index/clark-lang/try/">Try</a>
+          </li>
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/index/clark-lang/rels/">Rels</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/index/clark-lang/news/">News</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/index/clark-lang/spec/">Spec</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/index/clark-lang/refc/">Refc</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/index/clark-lang/docs/">Docs</a>
+        </li>
+
+        
+          
+        
+          
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/index/clark-lang/chat/">Chat</a>
+            </li>
+          
+        
+          
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/index/clark-lang/todo/">[TODO]</a>
+            </li>
+          
+        
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/index/clark-lang/feeds/news/all.rss.xml" aria-label="RSS Feed">
+            <i class="fas fa-rss" style="font-size: 1.2em;"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/sponsors/metropolisp" target="_blank" aria-label="Support">
+            <i class="fas fa-dollar-sign" style="font-size: 1.2em;"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/metropolisp/clark-lang" target="_blank" aria-label="GitHub Repository">
+            <i class="fab fa-github" style="font-size: 1.2em;"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <button id="theme-toggle" class="nav-link btn btn-link" aria-label="Toggle theme">
+            <i class="fas fa-moon" id="theme-icon"></i>
+          </button>
+        </li>
+      </ul>
+  </div>
+
+  </div>
+</nav>
+    
+    <div class="main-content">
+      <div class="container">
+        <div class="row">
+          
+          <div id="content" class="col-md-12">
+            
+<style>
+.accent-color {
+  color: var(--theme-accent);
+}.brighter-color {
+  color: color-mix(in srgb, var(--theme-primary), white 33%);
+}.bold-lith {
+  font-weight: 800;
+}.no-border {
+  border-bottom: none;
+  margin-top: 0.2em;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  display: flex;
+  align-items: baseline;
+}
+.no-border .title {
+  white-space: normal;
+  word-break: break-word;
+  letter-spacing: 0.02em;
+  max-width: 150vw;
+  text-align: center;
+  display: inline-block;
+}
+.open-paren {
+  color: var(--theme-primary);
+  margin-right: 0.25rem;
+  font-weight: 700;
+  opacity: 0.95;
+  font-family: inherit;
+  line-height: inherit;
+}
+
+ 
+.no-border .title a {
+  color: #8654ab !important;
+}
+
+@media (max-width: 768px) {
+  .fill-parens {
+    display: none;
+  }
+  .no-border .title {
+    white-space: normal;
+  }
+}
+</style>
+<h1 class="no-border"><span class="title"><span class="open-paren">'(</span><a href="https://lisp-lang.org/" target="_blank" rel="noopener noreferrer" class="text-muted fw-light">Common-Lisp</a> × <a href="/docs/introduction/" target="_blank" rel="noopener noreferrer" class="text-muted fw-light">More Super-Powers</a>; The Backbone Of <a href="https://github.com/metropolisp" target="_blank" rel="noopener noreferrer" class="text-muted fw-light">Metropolisp</a> !)</span></h1>
+
+
+
+<div class="hero-wrapper">
+  <div class="background"><div class="hero-parens" aria-hidden="true"></div></div>
+  <div style="text-align: center; position: relative; height: 100%; display:flex; align-items:center; justify-content:center;">
+      <div class="hero-logo prism-root" aria-hidden="true"></div>
+    </div>
+  <style>
+  .hero-wrapper {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: clamp(360px, 55vh, 640px);
+    margin-bottom: 0;
+  }
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: color-mix(in srgb, var(--theme-primary), white 10%);
+    z-index: -2;
+  }
+  .background::before {
+     
+    content: "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))" "\A"
+             "))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1.2rem;             
+    line-height: 1.2;          
+    letter-spacing: -0.04em;    
+    color: rgba(255,255,255,0.06);
+    font-family: 'Inter', monospace;
+    white-space: pre;
+    overflow: hidden;
+    padding: 0.5rem;            
+    z-index: -1;
+    pointer-events: none;
+  }
+  .hero-logo {
+    transition: filter 0.5s ease;
+  }
+
+   
+  .background::before { display: none !important; }
+
+   
+  .hero-parens {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    line-height: 1.2;
+    letter-spacing: -0.05em;
+    color: rgba(255,255,255,0.06);
+    font-family: 'Inter', monospace;
+    white-space: pre;
+    overflow: hidden;
+    padding: 0.5rem;
+    z-index: -1;
+     
+    pointer-events: auto;
+    display: block;
+  }
+
+   
+  .hero-parens span {
+     
+    transition: color 0.1s ease;
+  }
+  .hero-parens span.hover {
+    color: var(--theme-secondary) !important;
+     
+    transition-duration: 0.1s;
+  }
+  .hero-parens span.hover-out {
+    color: rgba(255,255,255,0.06);
+     
+    transition-duration: 1.2s;
+  }
+
+  .hero-logo:hover {
+    filter: brightness(2) drop-shadow(0 0 100px white);
+  }
+  </style>
+
+  <style>
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+  }
+  </style>
+</div>
+
+
+<style type="text/css">
+.notice-section {
+     
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+
+    background: var(--theme-bg-white);
+    border-top: 4px dashed var(--theme-primary);
+    border-right: 4px dashed var(--theme-primary);
+    border-bottom: 4px dashed var(--theme-primary);
+    border-left: 4px dashed var(--theme-primary);
+    border-radius: 0;  
+     
+    padding: 1rem 0 0.10rem 0;
+    box-sizing: border-box;
+    overflow: visible;
+  }
+.notice-section h3 {
+  color: var(--theme-primary);
+  background: var(--theme-bg-white);  
+  border-top: 4px solid var(--theme-primary);
+  border-right: 4px solid var(--theme-primary);
+  border-bottom: 4px solid var(--theme-primary);
+  border-left: 4px solid var(--theme-primary);
+  margin-bottom: 0.125rem;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  transition: background 0.3s cubic-bezier(.4,2,.6,1), color 0.3s cubic-bezier(.4,2,.6,1), border-color 0.3s cubic-bezier(.4,2,.6,1);
+}
+
+.notice-toggle-arrow {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  color: var(--theme-primary);
+  font-size: 1.6rem;
+  font-weight: bold;
+  pointer-events: none;
+  user-select: none;
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1), color 0.3s cubic-bezier(.4,2,.6,1);
+}
+
+.notice-section.expanded h3 {
+  color: #fff;
+  background: var(--theme-primary);
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
+}
+
+.notice-section.expanded .notice-toggle-arrow {
+  color: #fff;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+ 
+.notice-section p {
+  color: var(--theme-text);
+  margin-bottom: 0;
+  display: none;
+  margin-top: 1rem;
+  text-align: center;
+  width: 75%;
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.notice-section.expanded p {
+  display: block;
+  margin-bottom: 0.5rem;  
+}
+
+.notice-section.expanded {
+   
+}
+
+ 
+.notice-section.expanded p {
+  order: 1;  
+}
+.notice-section.expanded .notice-close {
+  order: 2;
+}
+
+.notice-section a {
+  color: white;
+  text-decoration: underline;
+}
+
+ 
+.notice-inner {
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  position: relative;
+
+   
+  display: flex;
+  flex-direction: column;
+}
+
+ 
+.notice-close {
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0.25rem auto 0.5rem;
+  background: var(--theme-primary);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+   
+  order: 1;
+}
+.notice-close:hover { filter: brightness(0.92); transform: translateY(-1px); }
+.notice-close:focus { outline: 3px solid rgba(134,84,171,0.25); outline-offset: 2px; }
+
+.notice-title-text {
+  display: inline-block;
+  text-align: center;
+  width: auto;
+  margin: 0 auto;
+}
+
+@media (max-width: 767.98px) {
+  .notice-section {
+     
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    width: 100vw;
+     
+    box-sizing: border-box;
+  }
+  .notice-inner {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+   
+   
+   
+  .notice-section h3 {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+</style>
+
+<div class="notice-section">
+  <div class="notice-inner">
+    <button class="notice-close" type="button" aria-label="Dismiss notice" onclick="dismissNotice(event,this)">×</button>
+    <h3 style="margin-top: 0.25rem; position: relative;" onclick="toggleNotice(this)">
+      <span class="notice-title-text">NOTICE</span>
+      <span class="notice-toggle-arrow">&#9660;</span>
+    </h3>
+    <p>
+      This project is inherently exploratory and experimental -- we're pioneering the use of Common Lisp for distributed and spatial computing. This should be considered in perpetual beta, so... probably don't use this for "serious projects". We offer no compatibility promise between versions, no stability promises in general, or any warranty at all implicit or implied.
+    </p>
+  </div>
+</div>
+
+<script>
+
+function toggleNotice(el) {
+  
+  var sec = el && el.closest && el.closest('.notice-section');
+  if (sec) sec.classList.toggle('expanded');
+}
+
+
+function dismissNotice(evt, btn) {
+  if (evt && evt.stopPropagation) evt.stopPropagation();
+  var sec = btn && btn.closest && btn.closest('.notice-section');
+  if (sec) sec.style.display = 'none';
+}
+</script>
+
+
+<div class="hero-section">
+  <style>
+  .hero-section {
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+  .hero-section h2 {
+    color: var(--theme-text);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .hero-section .lead {
+    font-size: 1.2rem;
+    color: var(--theme-text);
+    font-style: italic;
+    text-align: center;
+  }
+  </style>
+
+  <h2>On My World, The S- Means Hope</h2>
+  <p class="lead">Providing An Extensive, Extensible, Feature-Rich Platform To Build "Anything" In Lisp. Curb Your Enthusiasm, This Is Closer To Vaporware Than Minimally Viable Product Right Now. But ... Uh, We're Getting There!</p>
+</div>
+
+<div class="cta-section">
+  <style>
+    .cta-section { display: flex; gap: 1rem; justify-content: center; align-items: center; margin: -2rem 0 6rem 0; flex-wrap: wrap; }
+    .cta-section .btn { min-width: 180px; }
+  </style>
+  <a class="btn btn-lg btn-primary" href="/rels/" target="_blank" rel="noopener">Download</a>
+  <a class="btn btn-lg btn-outline-primary" href="/docs/introduction/">Read Docs</a>
+</div>
+
+
+<style>
+.did-you-know-section {
+  background: var(--theme-bg-white);
+  border: 2px solid var(--theme-primary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 0 auto 0.5rem;
+  position: relative;
+  display: block;
+  max-width: 900px;
+  height: 160px;
+}
+
+ 
+@media (max-width: 768px) {
+  .did-you-know-section {
+    height: auto;
+    min-height: 160px;
+    padding: 1rem;
+  }
+  
+  .did-you-know-section h4 {
+    font-size: 1rem;
+  }
+  
+  .did-you-know-section .quote {
+    font-size: 1rem;
+  }
+}
+.did-you-know-section::before {
+  content: '';
+  position: absolute;
+  bottom: -26px;
+  right: 30px;
+  width: 0;
+  height: 0;
+  border-left: 26px solid transparent;
+  border-right: 26px solid transparent;
+  border-top: 26px solid var(--theme-primary);
+}
+.did-you-know-section::after {
+  content: '';
+  position: absolute;
+  bottom: -24px;
+  right: 31px;
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-top: 24px solid var(--theme-bg-white);
+}
+.did-you-know-section h4 {
+  color: var(--theme-primary);
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+.did-you-know-section .quote {
+  font-style: italic;
+  color: #6c757d;
+  margin: 0;
+  text-align: center;
+  font-size: 1.1rem;
+}
+.quote-carousel .quote {
+  display: none;
+}
+.quote-carousel .quote.active {
+  display: block;
+}
+</style>
+
+<div class="did-you-know-section">
+  <h4>Did You Know?</h4>
+  <div class="quote-carousel">
+    <div class="quote active">
+      Clark continues Lisp's legacy in modern computing, evolving from game development roots like NaughtyDog's G.O.A.L. to power distributed and spatial systems.
+    </div>
+    <div class="quote">
+      Lisp is the second oldest high-level programming-language family that's still in use today; It's been around since 1958!
+    </div>
+    <div class="quote">
+      Lisp used to be super-relevant in the 1980s as a graphics, ai, operating-system implementation language..
+    </div>
+    <div class="quote">
+      One of Lisp's central ideas is homoiconicity. This means that programs can treat their own code as data, allowing for powerful metaprogramming techniques. Code is data; Data is code.
+    </div>
+    <div class="quote">
+      Lisp was invented by John McCarthy, the man who coined the term AI (Artificial Intelligence).
+    </div>
+    <div class="quote">
+      Lisp is actually an oddly weighted acronym. LISP stands for "LISt Processing".
+    </div>
+    <div class="quote">
+      Lisp was an innovator in the space, pioneering concepts like tree data structures, automatic storage management (garbage collection), dynamic typing, and the self-hosting compiler.
+    </div>
+  </div>
+</div>
+
+<style>
+.status-alert {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+.status-alert h4 {
+  color: #856404;
+}
+.status-alert p {
+  color: #856404;
+  margin-bottom: 0;
+}
+.timeline {
+  margin: 1rem 0;
+}
+.timeline-item {
+  border-left: 3px solid #EEA727;
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.timeline-item.inactive {
+  border-left: 3px solid #ddd;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  background: #EEA727;
+  border-radius: 50%;
+}
+.timeline-item.inactive::before {
+  background: #ddd;
+}
+.timeline-item h4 {
+  color: var(--theme-accent);
+}
+.timeline-item.inactive h4 {
+  color: #777;
+}
+.timeline-item small {
+  color: #777;
+}
+.status-active {
+  color: #6A0DAD;
+  font-weight: bold;
+}
+</style>
+
+<h3 style="margin-top: 8rem;">Roadmap & Milestones</h3>
+<div class="timeline">
+  <div class="timeline-item">
+      <h4>Phase 0: Nova Initium.</h4>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+    <small>Status: <span class="status-active">In Progress</span></small>
+  </div>
+  
+  <div class="timeline-item inactive">
+      <h4>Phase 1: Consectetur Adipiscing Elit.</h4>
+      <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam at risus et justo dignissim congue.</p>
+    <small>Status: <span>Planned</span></small>
+  </div>
+  
+  <div class="timeline-item inactive">
+      <h4>Phase 2: Etiam At Risus.</h4>
+      <p>Morbi eu nulla lobortis, lobortis est in, fringilla felis. Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</p>
+    <small>Status: <span>Planned</span></small>
+  </div>
+  
+  <div class="timeline-item inactive">
+      <h4>Phase 3: Morbi Eu Nulla.</h4>
+      <p>Curabitur ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi.</p>
+    <small>Status: <span>Future</span></small>
+  </div>
+</div>
+
+<div class="recent-updates">
+  <h2>Updates / News</h2>
+
+  
+  
+  
+  
+
+  
+  
+  <div class="updates-section featured-section">
+    <h3>Featured</h3>
+    
+    <article class="featured-article">
+      <header>
+        <h4><a href='/index/clark-lang/news/2026-03-01-eiusmod-tempor/'>Eiusmod Tempor Incididunt Ut Labore</a></h4>
+        <p class='date-and-tags'>
+        <time datetime="2026-03-01" pubdate="true">2026-03-01</time>
+        
+         :: <span class="tags">
+          
+          
+            <a href="/tags/release">release</a>
+          
+            , <a href="/tags/feature">feature</a>
+          
+        </span>
+        
+        </p>
+      </header>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <a href="/index/clark-lang/news/2026-03-01-eiusmod-tempor/" class="read-more">Read More</a>
+    </article>
+    
+  </div>
+  
+
+  
+  
+  <div class="updates-section community-section">
+    <h3>Spotlight</h3>
+    <div class="community-articles">
+      
+      <article class="community-article">
+        <header>
+          <h4><a href='/index/clark-lang/news/2026-03-01-consectetur-adipiscing/'>Consectetur Adipiscing Elit Sed Do</a></h4>
+          <p class='date-and-tags'>
+          <time datetime="2026-03-01" pubdate="true">2026-03-01</time>
+          
+           :: <span class="tags">
+            
+            
+              <a href="/tags/community">community</a>
+            
+          </span>
+          
+          </p>
+        </header>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+        <a href="/index/clark-lang/news/2026-03-01-consectetur-adipiscing/" class="read-more">Read More</a>
+      </article>
+      
+    </div>
+  </div>
+  
+
+  
+  
+  <div class="updates-section recent-section">
+    <h3>Most Recent</h3>
+    <div class="recent-articles">
+      
+      <article class="recent-article">
+        <header>
+          <h4><a href='/index/clark-lang/news/2026-03-01-consectetur-adipiscing/'>Consectetur Adipiscing Elit Sed Do</a></h4>
+          <p class='date-and-tags'>
+          <time datetime="2026-03-01" pubdate="true">2026-03-01</time>
+          
+           :: <span class="tags">
+            
+            
+              <a href="/tags/community">community</a>
+            
+          </span>
+          
+          </p>
+        </header>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+        <a href="/index/clark-lang/news/2026-03-01-consectetur-adipiscing/" class="read-more">Read More</a>
+      </article>
+      
+      <article class="recent-article">
+        <header>
+          <h4><a href='/index/clark-lang/news/2026-03-01-eiusmod-tempor/'>Eiusmod Tempor Incididunt Ut Labore</a></h4>
+          <p class='date-and-tags'>
+          <time datetime="2026-03-01" pubdate="true">2026-03-01</time>
+          
+           :: <span class="tags">
+            
+            
+              <a href="/tags/release">release</a>
+            
+              , <a href="/tags/feature">feature</a>
+            
+          </span>
+          
+          </p>
+        </header>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <a href="/index/clark-lang/news/2026-03-01-eiusmod-tempor/" class="read-more">Read More</a>
+      </article>
+      
+      <article class="recent-article">
+        <header>
+          <h4><a href='/index/clark-lang/news/2026-03-01-lorem-ipsum-dolor/'>Lorem Ipsum Dolor Sit Amet</a></h4>
+          <p class='date-and-tags'>
+          <time datetime="2026-03-01" pubdate="true">2026-03-01</time>
+          
+           :: <span class="tags">
+            
+            
+              <a href="/tags/development">development</a>
+            
+          </span>
+          
+          </p>
+        </header>
+        <p>Dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <a href="/index/clark-lang/news/2026-03-01-lorem-ipsum-dolor/" class="read-more">Read More</a>
+      </article>
+      
+    </div>
+  </div>
+  
+
+  <div class="read-all-link">
+    <a href="/news/" class="two-tone-btn">
+      <span class="prefix">Extra Extra!</span>
+      <span class="suffix">Read All!</span>
+    </a>
+    <a href="/docs/introduction" class="about-it">
+      <span class="parens parens-left">((((((((((((((((((((</span>
+      <span class="parens-content">About It !</span>
+      <span class="parens parens-right">))))))))))))))))))))</span>
+    </a>
+  </div>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <style type="text/css">
+footer {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: var(--theme-primary) !important;
+  color: white;
+  border-top: 10px solid var(--theme-secondary);
+  padding: 2em;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: var(--theme-secondary);
+  text-decoration: underline dotted;
+}
+
+.post-footer {
+  background-color: #f0e6ff;
+  border-top: 2px dashed #d1b3ff;
+  padding: 1em;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6A0DAD;
+  margin-top: 2em;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(75, 0, 130, 0.05);
+}
+
+.post-footer a {
+  color: #6A0DAD;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.post-footer a:hover {
+  color: #EEA727;
+  text-decoration: underline dotted;
+}
+</style>
+
+<footer>
+  <hr />
+  <p><a href="https://metropolisp.com">Λ METROPOLISP Project.</a></p>
+  <p><em>Dual-Licensed Under The <a href="https://opensource.org/licenses/MIT">MIT</a> & <a href="https://opensource.org/licenses/BSD-2-Clause">BSD-2</a>,</em></p>
+  <p><em>Where Possible; Please See <a href="https://github.com/metropolisp/clark-lang/LEGAL.txt">For Exceptions.</a></em></p>
+</footer>
+    
+    
+<script type="text/javascript" src="/index/clark-lang/js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" src="/index/clark-lang/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+<script src="/index/clark-lang/js/pentogonal-prism-logo.js"></script>
+
+<script>
+  
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl, { html: true });
+  });
+
+  
+  tooltipList.forEach(function(tooltip, index) {
+    var trigger = tooltipTriggerList[index];
+    var locked = false;
+
+    trigger.addEventListener('mouseenter', function() {
+      tooltip.show();
+    });
+
+    trigger.addEventListener('mouseleave', function() {
+      if (!locked) {
+        tooltip.hide();
+      }
+    });
+
+    trigger.addEventListener('click', function() {
+      locked = !locked;
+      if (locked) {
+        tooltip.show();
+        trigger.style.color = 'orange';
+      } else {
+        tooltip.hide();
+        trigger.style.color = '#6f42c1';
+      }
+    });
+  });
+
+  
+  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+  var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl);
+  });
+
+  
+  popoverTriggerList.forEach(function(trigger) {
+    var popover = bootstrap.Popover.getInstance(trigger);
+    var hideTimeout;
+
+    function showPopover() {
+      clearTimeout(hideTimeout);
+      popover.show();
+    }
+
+    function hidePopover() {
+      hideTimeout = setTimeout(function() {
+        popover.hide();
+      }, 150);
+    }
+
+    trigger.addEventListener('mouseenter', showPopover);
+    trigger.addEventListener('mouseleave', hidePopover);
+
+    trigger.addEventListener('shown.bs.popover', function() {
+      var popoverElement = document.querySelector('.popover');
+      if (popoverElement) {
+        popoverElement.addEventListener('mouseenter', function() {
+          clearTimeout(hideTimeout);
+        });
+        popoverElement.addEventListener('mouseleave', hidePopover);
+      }
+    });
+  });
+</script>
+
+<script>
+(function(){
+  function updateParens() {
+    var span = document.querySelector('.fill-parens');
+    var title = document.querySelector('.no-border .title');
+    if (!span || !title) return;
+    if (window.innerWidth < 768) { span.textContent = ''; return; }
+
+    
+    var container = document.getElementById('content') || document.querySelector('.container') || document.body;
+    var titleRect = title.getBoundingClientRect();
+    var containerRect = container.getBoundingClientRect();
+    var available = Math.max(0, containerRect.right - titleRect.right - 8); 
+    if (available <= 0) { span.textContent = ''; return; }
+
+    
+    var meas = document.createElement('span');
+    meas.style.visibility = 'hidden';
+    meas.style.position = 'absolute';
+    meas.style.whiteSpace = 'nowrap';
+    var computed = window.getComputedStyle(title);
+    meas.style.font = computed.font || (computed.fontSize + ' ' + computed.fontFamily);
+    meas.textContent = ')';
+    document.body.appendChild(meas);
+    var charWidth = meas.getBoundingClientRect().width || 8;
+    document.body.removeChild(meas);
+
+    
+    var zoomTest = document.createElement('div');
+    zoomTest.style.fontSize = '16px';
+    zoomTest.style.visibility = 'hidden';
+    zoomTest.style.position = 'absolute';
+    document.body.appendChild(zoomTest);
+    var zoomComputed = window.getComputedStyle(zoomTest).fontSize;
+    document.body.removeChild(zoomTest);
+    var zoom = parseFloat(zoomComputed) / 16;
+
+    var count = Math.floor(available / charWidth);
+    if (zoom === 1) count -= 4;
+    count = Math.max(0, count);
+
+    
+    var style = window.getComputedStyle(document.documentElement);
+    var startColor = style.getPropertyValue('--theme-primary') || style.getPropertyValue('--theme-secondary') || '#4B0082';
+    
+    var containerBg = window.getComputedStyle(container).backgroundColor || window.getComputedStyle(document.body).backgroundColor || '#ffffff';
+
+    
+    function parseColor(col) {
+      col = col.trim();
+      if (col.indexOf('rgb') === 0) {
+        var m = col.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (m) return {r: +m[1], g: +m[2], b: +m[3]};
+      }
+      
+      if (col.indexOf('#') === 0) {
+        var hex = col.substring(1);
+        if (hex.length === 3) hex = hex.split('').map(function(c){ return c + c; }).join('');
+        return {r: parseInt(hex.substring(0,2),16), g: parseInt(hex.substring(2,4),16), b: parseInt(hex.substring(4,6),16)};
+      }
+      return {r:0,g:0,b:0};
+    }
+
+    
+    function mixWithWhite(rgb, amount){
+      return { r: Math.round(rgb.r * (1 - amount) + 255 * amount),
+               g: Math.round(rgb.g * (1 - amount) + 255 * amount),
+               b: Math.round(rgb.b * (1 - amount) + 255 * amount) };
+    }
+
+    var c1 = parseColor(startColor);
+    var c2 = mixWithWhite(parseColor(containerBg), 0.9);
+
+    if (count === 0) { span.textContent = ''; return; }
+    var html = '';
+    for (var i = 0; i < count; i++) {
+      var t = count === 1 ? 1 : i / (count - 1); 
+      var r = Math.round(c1.r * (1 - t) + c2.r * t);
+      var g = Math.round(c1.g * (1 - t) + c2.g * t);
+      var b = Math.round(c1.b * (1 - t) + c2.b * t);
+      html += '<span style="color: rgb(' + r + ',' + g + ',' + b + ')">)</span>';
+    }
+    span.innerHTML = html;
+  }
+
+  
+  function updateHeroParens() {
+    var host = document.querySelector('.hero-parens');
+    var hero = document.querySelector('.hero-wrapper');
+    if (!host || !hero) return;
+
+    var rect = hero.getBoundingClientRect();
+    
+    if (rect.width < 420 || window.innerWidth < 420) { host.textContent = ''; return; }
+
+    var computed = window.getComputedStyle(host);
+    var meas = document.createElement('span');
+    meas.style.visibility = 'hidden';
+    meas.style.position = 'absolute';
+    meas.style.whiteSpace = 'nowrap';
+    meas.style.font = computed.font || (computed.fontSize + ' ' + computed.fontFamily);
+    
+    meas.style.letterSpacing = computed.letterSpacing || 'normal';
+    meas.textContent = ')';
+    document.body.appendChild(meas);
+    var charWidth = meas.getBoundingClientRect().width || 8;
+    
+    var lineH = parseFloat(computed.lineHeight) || Math.max(12, parseFloat(computed.fontSize) * 1.05);
+    document.body.removeChild(meas);
+
+    
+    
+    var padLeft = parseFloat(computed.paddingLeft) || 0;
+    var padRight = parseFloat(computed.paddingRight) || 0;
+    var padTop = parseFloat(computed.paddingTop) || 0;
+    var padBottom = parseFloat(computed.paddingBottom) || 0;
+    var availableWidth = Math.max(0, rect.width - padLeft - padRight - 2);
+    var availableHeight = Math.max(0, rect.height - padTop - padBottom - 2);
+
+    
+    var cols = Math.max(1, Math.ceil((availableWidth * 1.05) / charWidth) + 4);
+    var rows = Math.max(1, Math.ceil((availableHeight * 1.02) / lineH) + 2);
+
+    
+    host._charWidth = charWidth;
+    host._lineH = lineH;
+    host._padLeft = padLeft;
+    host._padTop = padTop;
+    host._cols = cols;
+    host._rows = rows;
+
+    
+    var startColor = '#673589';
+
+    function parseColor(col) {
+      col = (col || '').trim();
+      if (col.indexOf('rgb') === 0) {
+        var m = col.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (m) return {r:+m[1], g:+m[2], b:+m[3]};
+      }
+      if (col.indexOf('#') === 0) {
+        var hex = col.substring(1);
+        if (hex.length === 3) hex = hex.split('').map(function(c){ return c + c; }).join('');
+        return { r: parseInt(hex.substring(0,2),16), g: parseInt(hex.substring(2,4),16), b: parseInt(hex.substring(4,6),16) };
+      }
+      return {r:0,g:0,b:0};
+    }
+
+    var useColor = parseColor(startColor);
+
+    var html = '';
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        var R = useColor.r;
+        var G = useColor.g;
+        var B = useColor.b;
+        html += '<span style="color: rgb(' + R + ',' + G + ',' + B + ')">)</span>';
+      }
+      if (r < rows - 1) html += '\n';
+    }
+
+    host.innerHTML = html;
+
+    
+    
+    
+    if (!host._heroHoverInit) {
+      host._heroHoverInit = true;
+      var prevIdx = null;
+      host.addEventListener('mousemove', function(e){
+        var rect = host.getBoundingClientRect();
+        var x = e.clientX - rect.left - padLeft;
+        var y = e.clientY - rect.top - padTop;
+        if (x < 0 || y < 0) return;
+        var col = Math.floor(x / charWidth);
+        var row = Math.floor(y / lineH);
+        if (col >= cols) col = cols - 1;
+        if (row >= rows) row = rows - 1;
+        var idx = row * cols + col;
+        if (idx === prevIdx) return;
+        if (prevIdx !== null && host.children[prevIdx]) host.children[prevIdx].classList.remove('hover');
+        if (host.children[idx]) host.children[idx].classList.add('hover');
+        prevIdx = idx;
+      });
+      host.addEventListener('mouseleave', function(){
+        if (prevIdx !== null && host.children[prevIdx]) host.children[prevIdx].classList.remove('hover');
+        prevIdx = null;
+      });
+    }
+  }
+
+  var ro;
+  if (window.ResizeObserver) {
+    ro = new ResizeObserver(function(){ updateParens(); });
+  }
+
+  
+  window.__prismSuppressParens = false;
+
+  document.addEventListener('DOMContentLoaded', function(){
+    updateParens();
+    updateHeroParens();
+
+    var container = document.getElementById('content') || document.querySelector('.container') || document.body;
+    if (container && ro) ro.observe(container);
+
+    var heroEl = document.querySelector('.hero-wrapper');
+    if (heroEl && window.ResizeObserver) {
+      var heroRo = new ResizeObserver(function(){ updateHeroParens(); });
+      heroRo.observe(heroEl);
+    }
+
+    
+    
+    if (heroEl) {
+      heroEl.addEventListener('mousemove', function(e){
+        if (window.__prismSuppressParens) return;
+        var host = document.querySelector('.hero-parens');
+        if (!host || !host._charWidth) return;
+        var rect = host.getBoundingClientRect();
+        var x = e.clientX - rect.left - host._padLeft;
+        var y = e.clientY - rect.top - host._padTop;
+
+        
+        
+        
+        if (x < 0 || y < 0 || x > rect.width - host._padRight || y > rect.height - host._padBottom) {
+          if (host._prevHover !== undefined && host.children[host._prevHover]) {
+            host.children[host._prevHover].classList.remove('hover');
+          }
+          host._prevHover = undefined;
+          return;
+        }
+
+        var col = Math.floor(x / host._charWidth);
+        var row = Math.floor(y / host._lineH);
+        if (col >= host._cols) col = host._cols - 1;
+        if (row >= host._rows) row = host._rows - 1;
+        var idx = row * host._cols + col;
+        if (host._prevHover === idx) return;
+        if (host._prevHover !== undefined && host.children[host._prevHover]) {
+          var prevEl = host.children[host._prevHover];
+          prevEl.classList.remove('hover');
+          
+          prevEl.classList.add('hover-out');
+          setTimeout(function(){ prevEl.classList.remove('hover-out'); }, 1300);
+        }
+        if (host.children[idx]) host.children[idx].classList.add('hover');
+        host._prevHover = idx;
+      });
+      heroEl.addEventListener('mouseleave', function(){
+        if (window.__prismSuppressParens) return;
+        var host = document.querySelector('.hero-parens');
+        if (host && host._prevHover !== undefined && host.children[host._prevHover]) {
+          host.children[host._prevHover].classList.remove('hover');
+        }
+        if (host) host._prevHover = undefined;
+      });
+    }
+
+    window.addEventListener('resize', function(){ updateParens(); updateHeroParens(); });
+
+    
+    const leftSidebarToggle = document.getElementById('left-sidebar-toggle');
+    const rightSidebarToggle = document.getElementById('right-sidebar-toggle');
+    const leftSidebar = document.querySelector('.sidebar-left');
+    const rightSidebar = document.querySelector('.sidebar-right');
+    
+    const mainContent = document.querySelector('main.col-md-6, main');
+
+    
+    function isMobile() {
+      return window.innerWidth < 768;
+    }
+
+    
+    function initializeSidebarStates() {
+      
+      const nav = document.querySelector('.navbar');
+      if (nav) {
+        const navHeight = nav.offsetHeight;
+        document.body.style.setProperty('padding-top', navHeight + 'px', 'important');
+      }
+      
+      
+      const toggleBar = document.querySelector('.doc-action-bar');
+      if (nav && toggleBar) {
+        const navHeight = nav.offsetHeight;
+        toggleBar.style.setProperty('top', navHeight + 'px', 'important');
+        
+        
+        const mainContent = document.querySelector('.main-content');
+        if (mainContent) {
+          mainContent.style.setProperty('padding-top', '33px', 'important');
+        }
+      }
+      
+      if (isMobile()) {
+        
+        if (leftSidebar) leftSidebar.classList.add('sidebar-mobile-hidden');
+        if (rightSidebar) rightSidebar.classList.add('sidebar-mobile-hidden');
+      } else {
+        
+        if (leftSidebar) leftSidebar.classList.remove('sidebar-mobile-hidden');
+        if (rightSidebar) rightSidebar.classList.remove('sidebar-mobile-hidden');
+      }
+      updateMainContentColumns();
+    }
+
+    
+    initializeSidebarStates();
+
+    
+    window.addEventListener('resize', function() {
+      initializeSidebarStates();
+    });
+
+    
+    function updateMainContentColumns() {
+      if (!mainContent) return;
+      
+      if (isMobile()) {
+        
+        const leftVisible = leftSidebar && !leftSidebar.classList.contains('sidebar-mobile-hidden');
+        const rightVisible = rightSidebar && !rightSidebar.classList.contains('sidebar-mobile-hidden');
+        
+        mainContent.classList.remove('col-12', 'col-9', 'col-6');
+        
+        if (leftVisible || rightVisible) {
+          mainContent.classList.add('col-9'); 
+        } else {
+          mainContent.classList.add('col-12'); 
+        }
+      } else {
+        
+        const leftVisible = leftSidebar ? window.getComputedStyle(leftSidebar).display !== 'none' : false;
+        const rightVisible = rightSidebar ? window.getComputedStyle(rightSidebar).display !== 'none' : false;
+
+        
+        mainContent.classList.remove('col-md-6', 'col-md-9', 'col-md-12', 'centered-content');
+
+        if (!leftVisible && !rightVisible) {
+          
+          mainContent.classList.add('col-md-12', 'centered-content');
+        } else if (!leftVisible || !rightVisible) {
+          
+          mainContent.classList.add('col-md-9');
+        } else {
+          
+          mainContent.classList.add('col-md-6');
+        }
+      }
+    }
+
+    
+    function toggleMobileSidebar(showLeft) {
+      if (!isMobile()) return;
+      
+      
+      if (leftSidebar) leftSidebar.classList.add('sidebar-mobile-hidden');
+      if (rightSidebar) rightSidebar.classList.add('sidebar-mobile-hidden');
+      
+      
+      if (showLeft && leftSidebar) {
+        leftSidebar.classList.remove('sidebar-mobile-hidden');
+      } else if (!showLeft && rightSidebar) {
+        rightSidebar.classList.remove('sidebar-mobile-hidden');
+      }
+      
+      
+      const toggleBar = document.querySelector('.doc-action-bar');
+      if (toggleBar) {
+        const top = (toggleBar.offsetTop + toggleBar.offsetHeight) + 'px';
+        if (showLeft && leftSidebar) {
+          leftSidebar.style.setProperty('top', top, 'important');
+        } else if (!showLeft && rightSidebar) {
+          rightSidebar.style.setProperty('top', top, 'important');
+        }
+      }
+      
+      updateMainContentColumns();
+    }
+
+    if (leftSidebarToggle && leftSidebar) {
+      leftSidebarToggle.addEventListener('click', function() {
+        if (isMobile()) {
+          
+          const isCurrentlyVisible = !leftSidebar.classList.contains('sidebar-mobile-hidden');
+          if (isCurrentlyVisible) {
+            
+            leftSidebar.classList.add('sidebar-mobile-hidden');
+          } else {
+            
+            toggleMobileSidebar(true);
+          }
+        } else {
+          
+          leftSidebar.classList.toggle('collapsed');
+        }
+        updateMainContentColumns();
+        
+        
+        const icon = this.querySelector('i');
+        if (icon) {
+          if (isMobile()) {
+            const isVisible = !leftSidebar.classList.contains('sidebar-mobile-hidden');
+            icon.className = isVisible ? 'fas fa-chevron-left' : 'fas fa-chevron-right';
+          } else {
+            const isCollapsed = leftSidebar.classList.contains('collapsed');
+            icon.className = isCollapsed ? 'fas fa-chevron-right' : 'fas fa-chevron-left';
+          }
+        }
+      });
+    }
+
+    if (rightSidebarToggle && rightSidebar) {
+      rightSidebarToggle.addEventListener('click', function() {
+        if (isMobile()) {
+          
+          const isCurrentlyVisible = !rightSidebar.classList.contains('sidebar-mobile-hidden');
+          if (isCurrentlyVisible) {
+            
+            rightSidebar.classList.add('sidebar-mobile-hidden');
+          } else {
+            
+            toggleMobileSidebar(false);
+          }
+        } else {
+          
+          rightSidebar.classList.toggle('collapsed');
+        }
+        updateMainContentColumns();
+        
+        
+        const icon = this.querySelector('i');
+        if (icon) {
+          if (isMobile()) {
+            const isVisible = !rightSidebar.classList.contains('sidebar-mobile-hidden');
+            icon.className = isVisible ? 'fas fa-chevron-right' : 'fas fa-chevron-left';
+          } else {
+            const isCollapsed = rightSidebar.classList.contains('collapsed');
+            icon.className = isCollapsed ? 'fas fa-chevron-left' : 'fas fa-chevron-right';
+          }
+        }
+      });
+    }
+
+    
+    const docsSearch = document.getElementById('docs-search');
+    const navItems = document.querySelectorAll('.sidebar-left .nav-item');
+
+    if (docsSearch && navItems.length > 0) {
+      
+      const searchButton = docsSearch.parentElement.querySelector('.input-group-text');
+      if (searchButton) {
+        searchButton.style.cursor = 'pointer';
+        searchButton.addEventListener('click', function() {
+          const query = docsSearch.value.trim();
+          if (query) {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+          }
+        });
+      }
+
+      
+      docsSearch.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const query = this.value.trim();
+          if (query) {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+          }
+        }
+      });
+
+      
+      const docsOverviewSearch = document.getElementById('docs-search-overview');
+      if (docsOverviewSearch) {
+        const overviewBtn = docsOverviewSearch.parentElement.querySelector('.input-group-text');
+        if (overviewBtn) {
+          overviewBtn.style.cursor = 'pointer';
+          overviewBtn.addEventListener('click', function() {
+            const query = docsOverviewSearch.value.trim();
+            if (query) {
+              window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+            }
+          });
+        }
+        docsOverviewSearch.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            const query = this.value.trim();
+            if (query) {
+              window.location.href = `/search/?q=${encodeURIComponent(query)}`;
+            }
+          }
+        });
+      }
+    }
+
+    
+    const specSearch = document.getElementById('spec-search');
+    if (specSearch) {
+      const specButton = specSearch.parentElement.querySelector('.input-group-text');
+      if (specButton) {
+        specButton.style.cursor = 'pointer';
+        specButton.addEventListener('click', function() {
+          const query = specSearch.value.trim();
+          if (query) {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=spec`;
+          }
+        });
+      }
+      specSearch.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const query = this.value.trim();
+          if (query) {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=spec`;
+          }
+        }
+      });
+    }
+
+    
+    const refcSearch = document.getElementById('refc-search');
+    if (refcSearch) {
+      const refcButton = refcSearch.parentElement.querySelector('.input-group-text');
+      if (refcButton) {
+        refcButton.style.cursor = 'pointer';
+        refcButton.addEventListener('click', function() {
+          const query = refcSearch.value.trim();
+          if (query) {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=refc`;
+          }
+        });
+      }
+      refcSearch.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const query = this.value.trim();
+          if (query) {
+            window.location.href = `/search/?q=${encodeURIComponent(query)}&scope=refc`;
+          }
+        }
+      });
+    }
+  });
+})();
+
+
+(function() {
+  var carousel = document.querySelector('.quote-carousel');
+  var quotes = document.querySelectorAll('.quote-carousel .quote');
+  var current = 0;
+  
+  function showQuote(index) {
+    quotes.forEach(function(quote, i) {
+      quote.classList.toggle('active', i === index);
+    });
+  }
+  
+  function nextQuote() {
+    current = (current + 1) % quotes.length;
+    showQuote(current);
+  }
+  
+  if (quotes.length > 1) {
+    
+    setInterval(nextQuote, 5000);
+    
+    
+    carousel.addEventListener('click', nextQuote);
+  }
+})();
+</script>
+
+
+<script>
+(function() {
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    const dropdownToggles = document.querySelectorAll('.breadcrumb-dropdown-toggle, .breadcrumb-add-toggle');
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    dropdownToggles.forEach(function(toggle) {
+      const dropdown = toggle.nextElementSibling;
+      const listItem = toggle.closest('.breadcrumb-item');
+      let hideTimeout;
+      let isToggledOpen = false;
+      
+      
+      function showDropdown() {
+        clearTimeout(hideTimeout);
+        
+        document.querySelectorAll('.breadcrumb-dropdown').forEach(function(d) {
+          if (d !== dropdown) d.style.display = 'none';
+        });
+        document.querySelectorAll('.breadcrumb-item').forEach(function(item) {
+          item.classList.remove('sibling-toggled', 'children-toggled');
+        });
+        dropdown.style.display = 'block';
+        if (toggle.classList.contains('breadcrumb-dropdown-toggle')) {
+          listItem.classList.add('sibling-toggled');
+        } else if (toggle.classList.contains('breadcrumb-add-toggle')) {
+          listItem.classList.add('children-toggled');
+          
+          const rect = toggle.getBoundingClientRect();
+          const parentRect = listItem.getBoundingClientRect();
+          
+          const leftOffset = rect.left - parentRect.left;
+          dropdown.style.left = leftOffset + 'px';
+        }
+      }
+      
+      
+      function hideDropdown() {
+        if (!isToggledOpen) {
+          hideTimeout = setTimeout(function() {
+            dropdown.style.display = 'none';
+            listItem.classList.remove('sibling-toggled', 'children-toggled');
+          }, 150);
+        }
+      }
+      
+      
+      if (!isTouchDevice) {
+        function handleMouseEnter() {
+          if (!isToggledOpen) {
+            showDropdown();
+          }
+        }
+        
+        function handleMouseLeave() {
+          if (!isToggledOpen) {
+            hideDropdown();
+          }
+        }
+        
+        toggle.addEventListener('mouseenter', handleMouseEnter);
+        toggle.addEventListener('mouseleave', handleMouseLeave);
+        dropdown.addEventListener('mouseenter', function() {
+          if (!isToggledOpen) {
+            clearTimeout(hideTimeout);
+          }
+        });
+        dropdown.addEventListener('mouseleave', handleMouseLeave);
+      }
+      
+      
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (isToggledOpen) {
+          
+          dropdown.style.display = 'none';
+          listItem.classList.remove('sibling-toggled', 'children-toggled');
+          isToggledOpen = false;
+        } else {
+          
+          isToggledOpen = true;
+          showDropdown();
+        }
+      });
+      
+      
+      document.addEventListener('click', function(e) {
+        if (!listItem.contains(e.target) && isToggledOpen) {
+          dropdown.style.display = 'none';
+          listItem.classList.remove('sibling-toggled', 'children-toggled');
+          isToggledOpen = false;
+        }
+      });
+    });
+  });
+})();
+</script>
+
+<script type="text/javascript" src="/index/clark-lang/js/custom.js"></script>
+  </body>
+</html>
