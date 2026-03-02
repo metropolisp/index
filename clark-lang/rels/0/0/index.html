@@ -558,36 +558,30 @@
   }
 
   .popout-hierarchy {
-    margin-top: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
    
   .popout-hierarchy > details {
-    border: none !important;
     margin-bottom: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
+    overflow: visible !important;
   }
 
+   
   .popout-hierarchy > details > summary {
+    pointer-events: none;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .popout-hierarchy > details > summary::before {
     display: none !important;
   }
 
   .popout-hierarchy > details > .rel-children,
   .popout-hierarchy > details > .rel-body {
-    padding: 0 !important;
+    padding: 0.75rem 1rem 1rem !important;
     border-top: none !important;
-  }
-
-   
-  .popout-hierarchy details details {
-    margin-bottom: 0.5rem;
-  }
-
-  .popout-hierarchy .rel-major,
-  .popout-hierarchy .rel-minor,
-  .popout-hierarchy .rel-mini {
-    margin-bottom: 1rem;
   }
 
   .releases-list .rel-section-desc {
@@ -874,7 +868,7 @@
 <div id="popout-modal" class="popout-modal">
   <div class="popout-content">
     <button class="popout-close" id="popout-close-btn">&times;</button>
-    <div id="popout-hierarchy" class="popout-hierarchy"></div>
+    <div id="popout-hierarchy" class="popout-hierarchy releases-list"></div>
   </div>
 </div>
 
@@ -890,10 +884,14 @@
     buttons[i].addEventListener('click', function() {
       var details = this.closest('details');
       if (!details) return;
+
       var clone = details.cloneNode(true);
       
       var btns = clone.querySelectorAll('.popout-button');
       for (var j = 0; j < btns.length; j++) btns[j].remove();
+      
+      var topActionBar = clone.querySelector(':scope > .rel-children > div[style], :scope > .rel-body > div[style]');
+      if (topActionBar && topActionBar.querySelector('.download-button')) topActionBar.remove();
       
       var allDetails = clone.querySelectorAll('details');
       for (var k = 0; k < allDetails.length; k++) allDetails[k].setAttribute('open', '');
