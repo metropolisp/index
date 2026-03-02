@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>0.0.1 on CLARK</title>
-    <link>http://localhost:1313/index/clark-lang/rels/0/0/1/</link>
+    <link>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/</link>
     <description>Recent content in 0.0.1 on CLARK</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 25 Feb 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index/clark-lang/feeds/rels/0/0/1/all.rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://metropolisp.github.io/index/clark-lang/feeds/rels/0/0/1/all.rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>0.0.1-rc.1</title>
-      <link>http://localhost:1313/index/clark-lang/rels/0/0/1/rc-1/</link>
+      <link>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/rc-1/</link>
       <pubDate>Wed, 25 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/index/clark-lang/rels/0/0/1/rc-1/</guid>
+      <guid>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/rc-1/</guid>
       <description>Release candidate — final polish before 0.0.1.</description>
     </item>
     <item>
       <title>0.0.1-beta.1</title>
-      <link>http://localhost:1313/index/clark-lang/rels/0/0/1/beta-1/</link>
+      <link>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/beta-1/</link>
       <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/index/clark-lang/rels/0/0/1/beta-1/</guid>
+      <guid>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/beta-1/</guid>
       <description>First beta — prism logo integration, spec scaffold.</description>
     </item>
     <item>
       <title>0.0.1-alpha.2</title>
-      <link>http://localhost:1313/index/clark-lang/rels/0/0/1/alpha-2/</link>
+      <link>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-2/</link>
       <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/index/clark-lang/rels/0/0/1/alpha-2/</guid>
+      <guid>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-2/</guid>
       <description>Second alpha build — docs scaffolding and navigation.</description>
     </item>
     <item>
       <title>0.0.1-alpha.1</title>
-      <link>http://localhost:1313/index/clark-lang/rels/0/0/1/alpha-1/</link>
+      <link>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-1/</link>
       <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/index/clark-lang/rels/0/0/1/alpha-1/</guid>
+      <guid>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-1/</guid>
       <description>First alpha build — initial website skeleton and project scaffolding.</description>
     </item>
   </channel>

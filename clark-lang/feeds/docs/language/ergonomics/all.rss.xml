@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ergonomics on CLARK</title>
-    <link>http://localhost:1313/index/clark-lang/docs/language/ergonomics/</link>
+    <link>https://metropolisp.github.io/index/clark-lang/docs/language/ergonomics/</link>
     <description>Recent content in Ergonomics on CLARK</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/index/clark-lang/feeds/docs/language/ergonomics/all.rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://metropolisp.github.io/index/clark-lang/feeds/docs/language/ergonomics/all.rss.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
