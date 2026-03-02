@@ -470,17 +470,18 @@
     background: #6c757d;
     color: white;
     border: none;
-    padding: 0.5rem;
+    padding: 0;
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 4px;
     font-size: 0.85rem;
-    font-weight: 500;
     cursor: pointer;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    vertical-align: middle;
+    margin-right: 0.5rem;
   }
 
   .releases-list .download-button:hover {
@@ -491,7 +492,7 @@
     background: #6c757d;
     color: white;
     border: none;
-    padding: 0.5rem;
+    padding: 0;
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 4px;
@@ -500,7 +501,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-right: 0.5rem;
+    vertical-align: middle;
   }
 
   .releases-list .popout-button:hover {
@@ -756,7 +757,7 @@
         </span>
       </summary>
       <div class="rel-children">
-        
+        <div style="text-align: right; margin-bottom: 0.75rem;"><button class="popout-button"><i class="fas fa-expand"></i></button></div>
         <p class="rel-section-desc">Major version 0.x — initial development.</p>
         <p class="release-author">By: Joshua Steven Grant (ie: Jost Grant)</p>
 
@@ -787,7 +788,7 @@
               </span>
             </summary>
             <div class="rel-children">
-              
+              <div style="text-align: right; margin-bottom: 0.75rem;"><button class="popout-button"><i class="fas fa-expand"></i></button></div>
               <p class="rel-section-desc">Minor version 0.0.x — pre-alpha and alpha builds.</p>
 
               
@@ -819,7 +820,7 @@
                   
                   
                   <div class="rel-children">
-                    <div style="text-align: right; margin-bottom: 0.75rem;"><button class="popout-button" data-release-id="releases"><i class="fas fa-expand"></i></button><a href="https://example.com/download/clark-0.0.1.zip" class="download-button"><i class="fas fa-download"></i></a></div>
+                    <div style="text-align: right; margin-bottom: 0.75rem;"><a href="https://example.com/download/clark-0.0.1.zip" class="download-button"><i class="fas fa-download"></i></a><button class="popout-button"><i class="fas fa-expand"></i></button></div>
                     <p class="release-author">By: Joshua Steven Grant (ie: Jost Grant)</p>
                     <p class="release-summary">Initial public preview release — website rewrite, docs scaffolding, prism logo demo.</p>
                     <h2 id="notable">Notable</h2>
@@ -898,6 +899,7 @@ Fixed broken internal links within documentation pages that were pointing to inc
         </span>
       </summary>
       <div class="rel-body">
+        <div style="text-align: right; margin-bottom: 0.75rem;"><button class="popout-button"><i class="fas fa-expand"></i></button></div>
         <p class="release-summary">Release candidate — final polish before 0.0.1.</p>
         <p>Bug fixes, layout polish, and final review before the 0.0.1 public preview.</p>
 
@@ -920,6 +922,7 @@ Fixed broken internal links within documentation pages that were pointing to inc
         </span>
       </summary>
       <div class="rel-body">
+        <div style="text-align: right; margin-bottom: 0.75rem;"><button class="popout-button"><i class="fas fa-expand"></i></button></div>
         <p class="release-summary">First beta — prism logo integration, spec scaffold.</p>
         <p>Interactive prism logo (Three.js) integrated. Spec documentation scaffold added.</p>
 
@@ -942,6 +945,7 @@ Fixed broken internal links within documentation pages that were pointing to inc
         </span>
       </summary>
       <div class="rel-body">
+        <div style="text-align: right; margin-bottom: 0.75rem;"><button class="popout-button"><i class="fas fa-expand"></i></button></div>
         <p class="release-summary">First alpha build — initial website skeleton and project scaffolding.</p>
         <p>Early exploratory build. Website skeleton, Hugo config, and basic layout only.</p>
 
@@ -960,6 +964,7 @@ Fixed broken internal links within documentation pages that were pointing to inc
         </span>
       </summary>
       <div class="rel-body">
+        <div style="text-align: right; margin-bottom: 0.75rem;"><button class="popout-button"><i class="fas fa-expand"></i></button></div>
         <p class="release-summary">Second alpha build — docs scaffolding and navigation.</p>
         <p>Added documentation section scaffolding, sidebar navigation, and search placeholder.</p>
 
@@ -1001,28 +1006,48 @@ Fixed broken internal links within documentation pages that were pointing to inc
   var hierarchy = document.getElementById('popout-hierarchy');
   var closeBtn = document.getElementById('popout-close-btn');
 
+  function openPopout(details) {
+    var clone = details.cloneNode(true);
+    
+    var topActionBar = clone.querySelector(':scope > .rel-children > div[style], :scope > .rel-body > div[style]');
+    if (topActionBar) {
+      var topPopout = topActionBar.querySelector('.popout-button');
+      if (topPopout) topPopout.remove();
+      
+      if (!topActionBar.querySelector('.download-button')) topActionBar.remove();
+    }
+    
+    var allDetails = clone.querySelectorAll('details');
+    for (var k = 0; k < allDetails.length; k++) allDetails[k].setAttribute('open', '');
+    clone.setAttribute('open', '');
+    hierarchy.innerHTML = '';
+    hierarchy.appendChild(clone);
+    
+    var innerBtns = hierarchy.querySelectorAll('.popout-button');
+    for (var m = 0; m < innerBtns.length; m++) {
+      innerBtns[m].addEventListener('click', function(e) {
+        e.stopPropagation();
+        var innerDetails = this.closest('details');
+        if (innerDetails) {
+          
+          modal.scrollTop = 0;
+          var popContent = modal.querySelector('.popout-content');
+          if (popContent) popContent.scrollTop = 0;
+          openPopout(innerDetails);
+        }
+      });
+    }
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
   
-  var buttons = document.querySelectorAll('.popout-button');
+  var buttons = document.querySelectorAll('.releases-list:not(.popout-hierarchy) .popout-button');
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', function() {
       var details = this.closest('details');
       if (!details) return;
-
-      var clone = details.cloneNode(true);
-      
-      var btns = clone.querySelectorAll('.popout-button');
-      for (var j = 0; j < btns.length; j++) btns[j].remove();
-      
-      var topActionBar = clone.querySelector(':scope > .rel-children > div[style], :scope > .rel-body > div[style]');
-      if (topActionBar && topActionBar.querySelector('.download-button')) topActionBar.remove();
-      
-      var allDetails = clone.querySelectorAll('details');
-      for (var k = 0; k < allDetails.length; k++) allDetails[k].setAttribute('open', '');
-      clone.setAttribute('open', '');
-      hierarchy.innerHTML = '';
-      hierarchy.appendChild(clone);
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      openPopout(details);
     });
   }
 

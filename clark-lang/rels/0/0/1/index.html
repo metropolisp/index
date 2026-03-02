@@ -470,17 +470,18 @@
     background: #6c757d;
     color: white;
     border: none;
-    padding: 0.5rem;
+    padding: 0;
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 4px;
     font-size: 0.85rem;
-    font-weight: 500;
     cursor: pointer;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    vertical-align: middle;
+    margin-right: 0.5rem;
   }
 
   .releases-list .download-button:hover {
@@ -491,7 +492,7 @@
     background: #6c757d;
     color: white;
     border: none;
-    padding: 0.5rem;
+    padding: 0;
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 4px;
@@ -500,7 +501,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-right: 0.5rem;
+    vertical-align: middle;
   }
 
   .releases-list .popout-button:hover {
@@ -792,28 +793,48 @@ Fixed broken internal links within documentation pages that were pointing to inc
   var hierarchy = document.getElementById('popout-hierarchy');
   var closeBtn = document.getElementById('popout-close-btn');
 
+  function openPopout(details) {
+    var clone = details.cloneNode(true);
+    
+    var topActionBar = clone.querySelector(':scope > .rel-children > div[style], :scope > .rel-body > div[style]');
+    if (topActionBar) {
+      var topPopout = topActionBar.querySelector('.popout-button');
+      if (topPopout) topPopout.remove();
+      
+      if (!topActionBar.querySelector('.download-button')) topActionBar.remove();
+    }
+    
+    var allDetails = clone.querySelectorAll('details');
+    for (var k = 0; k < allDetails.length; k++) allDetails[k].setAttribute('open', '');
+    clone.setAttribute('open', '');
+    hierarchy.innerHTML = '';
+    hierarchy.appendChild(clone);
+    
+    var innerBtns = hierarchy.querySelectorAll('.popout-button');
+    for (var m = 0; m < innerBtns.length; m++) {
+      innerBtns[m].addEventListener('click', function(e) {
+        e.stopPropagation();
+        var innerDetails = this.closest('details');
+        if (innerDetails) {
+          
+          modal.scrollTop = 0;
+          var popContent = modal.querySelector('.popout-content');
+          if (popContent) popContent.scrollTop = 0;
+          openPopout(innerDetails);
+        }
+      });
+    }
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
   
-  var buttons = document.querySelectorAll('.popout-button');
+  var buttons = document.querySelectorAll('.releases-list:not(.popout-hierarchy) .popout-button');
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', function() {
       var details = this.closest('details');
       if (!details) return;
-
-      var clone = details.cloneNode(true);
-      
-      var btns = clone.querySelectorAll('.popout-button');
-      for (var j = 0; j < btns.length; j++) btns[j].remove();
-      
-      var topActionBar = clone.querySelector(':scope > .rel-children > div[style], :scope > .rel-body > div[style]');
-      if (topActionBar && topActionBar.querySelector('.download-button')) topActionBar.remove();
-      
-      var allDetails = clone.querySelectorAll('details');
-      for (var k = 0; k < allDetails.length; k++) allDetails[k].setAttribute('open', '');
-      clone.setAttribute('open', '');
-      hierarchy.innerHTML = '';
-      hierarchy.appendChild(clone);
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      openPopout(details);
     });
   }
 
