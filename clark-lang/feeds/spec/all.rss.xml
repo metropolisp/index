@@ -8,18 +8,11 @@
     <language>en-us</language>
     <atom:link href="https://metropolisp.github.io/index/clark-lang/feeds/spec/all.rss.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Directory</title>
-      <link>https://metropolisp.github.io/index/clark-lang/spec/directory/</link>
+      <title>Table of Contents</title>
+      <link>https://metropolisp.github.io/index/clark-lang/spec/toc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://metropolisp.github.io/index/clark-lang/spec/directory/</guid>
-      <description>&lt;!-- automatically-generated list of spec pages --&gt;&#xA;&lt;ul class=&#34;spec-directory&#34;&gt;&#xA;&#xA;  &#xA;&#xA;  &#xA;  &lt;li&gt;&#xA;    &lt;a href=&#34;https://metropolisp.github.io/index/clark-lang/spec/primitives/&#34;&gt;Primitives&lt;/a&gt;&#xA;    &#xA;    &lt;div class=&#34;spec-description&#34;&gt;Core primitive types and literals&lt;/div&gt;&#xA;    &#xA;  &lt;/li&gt;&#xA;  &#xA;&#xA;&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Primitives</title>
-      <link>https://metropolisp.github.io/index/clark-lang/spec/primitives/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://metropolisp.github.io/index/clark-lang/spec/primitives/</guid>
-      <description>&lt;h1 id=&#34;primitives&#34;&gt;Primitives&lt;/h1&gt;&#xA;&lt;p&gt;This document describes Clark&amp;rsquo;s primitive values (numbers, strings, symbols, booleans) and their literal syntax.&lt;/p&gt;&#xA;&lt;h2 id=&#34;numbers&#34;&gt;Numbers&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Integer and floating-point literals follow standard formats.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;strings&#34;&gt;Strings&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Strings are UTF-8 encoded and delimited by double quotes.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;(Example content — add your spec text here.)&lt;/p&gt;</description>
+      <guid>https://metropolisp.github.io/index/clark-lang/spec/toc/</guid>
+      <description>&lt;h1 id=&#34;table-of-contents&#34;&gt;Table Of Contents&lt;/h1&gt;&#xA;&lt;ul class=&#34;spec-directory&#34;&gt;&#xA;&#xA;  &#xA;  &lt;li&gt;&#xA;    &lt;a href=&#34;https://metropolisp.github.io/index/clark-lang/spec/placeholder/&#34;&gt;Specification Placeholder&lt;/a&gt;&#xA;    &#xA;    &lt;div class=&#34;spec-description&#34;&gt;Placeholder content for the Clark language specification&lt;/div&gt;&#xA;    &#xA;  &lt;/li&gt;&#xA;  &#xA;&#xA;  &#xA;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>
