@@ -460,6 +460,285 @@
     margin-bottom: 0.75rem;
   }
 
+  .releases-list .release-section {
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .releases-list .release-section:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .releases-list .section-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    user-select: none;
+  }
+
+  .releases-list .section-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .releases-list .section-header::before {
+    content: "▶";
+    display: inline-block;
+    font-size: 0.7rem;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .releases-list .release-section.expanded .section-header::before {
+    transform: rotate(90deg);
+  }
+
+  .releases-list .section-content {
+    display: none;
+    padding: 0 1rem 1rem 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .releases-list .release-section.expanded .section-content {
+    display: block;
+  }
+
+  .releases-list .release-category {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #dee2e6;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  .releases-list .release-category h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #495057;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #6c757d;
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .releases-list .release-category.notable h2::before {
+    content: "\f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+  }
+
+  .releases-list .release-category.features h2::before {
+    content: "\f055";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+  }
+
+  .releases-list .release-category.bug-fixes h2::before {
+    content: "\f188";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+  }
+
+  .releases-list .release-category.contributors h2::before {
+    content: "\f0c0";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+  }
+
+   
+  .releases-list .release-category details {
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .releases-list .release-category details:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .releases-list .release-category summary {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    list-style: none;
+    user-select: none;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    font-size: 1.5rem;
+    color: #495057;
+    border-bottom: 2px solid #6c757d;
+    position: relative;
+  }
+
+  .releases-list .release-category.notable summary::before {
+    content: "\f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+    font-size: 1.2rem;
+  }
+
+  .releases-list .release-category.features summary::before {
+    content: "\f055";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+    font-size: 1.2rem;
+  }
+
+  .releases-list .release-category.bug-fixes summary::before {
+    content: "\f188";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+    font-size: 1.2rem;
+  }
+
+  .releases-list .release-category.contributors summary::before {
+    content: "\f0c0";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+    font-size: 1.2rem;
+  }
+
+  .releases-list .release-category summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .releases-list .release-category summary::after {
+    content: "▶";
+    position: absolute;
+    right: 1.25rem;
+    font-size: 0.8rem;
+    color: #6c757d;
+    transition: transform 0.2s ease;
+  }
+
+  .releases-list .release-category details[open] > summary::after {
+    transform: translateX(5px);
+  }
+
+  .releases-list .release-category summary:hover {
+    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  }
+
+  .contributor-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .contributor-group {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(108, 117, 125, 0.1), rgba(73, 80, 87, 0.1));
+    border: 1px solid rgba(127, 135, 142, 0.2);
+  }
+
+  .contributor-group h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  .group-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 180px);
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .contributor-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+  }
+
+  .contributor-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .contributor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #6B46C1;
+  }
+
+  .contributor-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6B46C1, #A4D23B);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .contributor-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+  }
+
+  .contributor-role {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+  }
+
+
+  .badge-new {
+    background: linear-gradient(135deg, #A4D23B, #7aab1e);
+    color: white;
+  }
+
+  .badge-top {
+    background: linear-gradient(135deg, #6B46C1, #4C1D95);
+    color: white;
+  }
+
+  .badge-contributor {
+    background: linear-gradient(135deg, #6c757d, #495057);
+    color: white;
+  }
+
   .releases-list .download-button {
     background: #6c757d;
     color: white;
@@ -723,52 +1002,141 @@
 <h1>0.0.1</h1>
 
 <div class="release-explainer" style="text-align: center; margin: 1rem 0; padding: 1rem; background: rgba(255, 255, 255, 0.8); border-radius: 8px;">
+  <p><strong>What is Clark 0.0.1?</strong></p>
   <p>This marks the initial public availability of the Clark programming language. It includes a complete website redesign using Hugo, comprehensive documentation scaffolding, and an interactive Three.js-powered prism logo demonstration. Expect rough edges as this is an early, exploratory release.</p>
 </div>
-<h2 id="notable">Notable</h2>
-<details>
-<summary>First public release of Clark programming language</summary>
-This marks the initial public availability of the Clark programming language, making it accessible to developers worldwide for the first time.
+<details class="release-category notable" open>
+<summary>Notable</summary>
+<div class="release-section">
+  <div class="section-header">
+    <h4 class="section-title">First public release of Clark programming language</h4>
+  </div>
+  <div class="section-content">
+    <p>This marks the initial public availability of the Clark programming language, making it accessible to developers worldwide for the first time.</p>
+  </div>
+</div>
+<div class="release-section">
+  <div class="section-header">
+    <h4 class="section-title">Complete website redesign with modern Hugo framework</h4>
+  </div>
+  <div class="section-content">
+    <p>The entire website has been rebuilt using Hugo static site generator, providing better performance, maintainability, and a more modern user experience.</p>
+  </div>
+</div>
+<div class="release-section">
+  <div class="section-header">
+    <h4 class="section-title">Interactive 3D logo demonstration</h4>
+  </div>
+  <div class="section-content">
+    <p>A new interactive Three.js-powered logo showcases Clark's capabilities and provides an engaging visual element for the homepage.</p>
+  </div>
+</div>
 </details>
-<details>
-<summary>Complete website redesign with modern Hugo framework</summary>
-The entire website has been rebuilt using Hugo static site generator, providing better performance, maintainability, and a more modern user experience.
+<details class="release-category features">
+<summary>Features</summary>
+<div class="release-section">
+  <div class="section-header">
+    <h4 class="section-title">New documentation system with search functionality</h4>
+  </div>
+  <div class="section-content">
+    <p>Comprehensive documentation with full-text search capabilities, making it easy for developers to find the information they need quickly.</p>
+  </div>
+</div>
+<div class="release-section">
+  <div class="section-header">
+    <h4 class="section-title">Prism logo integration in navigation and hero sections</h4>
+  </div>
+  <div class="section-content">
+    <p>The signature prism logo is now integrated throughout the site, appearing in both the navigation bar and hero section for brand consistency.</p>
+  </div>
+</div>
+<div class="release-section">
+  <div class="section-header">
+    <h4 class="section-title">Responsive design for mobile and desktop</h4>
+  </div>
+  <div class="section-content">
+    <p>The website now works seamlessly across all device sizes, from mobile phones to desktop computers, ensuring accessibility for all users.</p>
+  </div>
+</div>
 </details>
-<details>
-<summary>Interactive 3D logo demonstration</summary>
-A new interactive Three.js-powered logo showcases Clark's capabilities and provides an engaging visual element for the homepage.
+<details class="release-category bug-fixes">
+<summary>Bug Fixes</summary>
+<div class="release-section">
+  <div class="section-header">
+    <h4 class="section-title">Fixed navigation menu display issues</h4>
+  </div>
+  <div class="section-content">
+    <p>Resolved problems with navigation menu rendering that were causing layout issues on certain browsers and screen sizes.</p>
+  </div>
+</div>
+<div class="release-section">
+  <div class="section-header">
+    <h4 class="section-title">Resolved CSS loading problems in development builds</h4>
+  </div>
+  <div class="section-content">
+    <p>Fixed issues with CSS not loading properly during development, ensuring consistent styling across all build environments.</p>
+  </div>
+</div>
+<div class="release-section">
+  <div class="section-header">
+    <h4 class="section-title">Corrected link paths in documentation sections</h4>
+  </div>
+  <div class="section-content">
+    <p>Fixed broken internal links within documentation pages that were pointing to incorrect paths or non-existent pages.</p>
+  </div>
+</div>
 </details>
-<h2 id="features">Features</h2>
-<details>
-<summary>New documentation system with search functionality</summary>
-Comprehensive documentation with full-text search capabilities, making it easy for developers to find the information they need quickly.
+<details class="release-category contributors">
+<summary>Contributors</summary>
+<!-- New Contributors Group -->
+<div class="contributor-group new-contributors">
+  <h3>New Contributors</h3>
+  <div class="group-cards">
+    <div class="contributor-card">
+      <div class="contributor-avatar">N</div>
+      <div class="contributor-name">@newdev1</div>
+      <div class="contributor-role">First-time contributor</div>
+    </div> 
+    <div class="contributor-card">
+      <div class="contributor-avatar">F</div>
+      <div class="contributor-name">@freshcoder</div>
+      <div class="contributor-role">Documentation helper</div>
+    </div>
+  </div>
+</div>
+<!-- Top Contributors Group -->
+<div class="contributor-group">
+  <h3>Top Contributors</h3>
+  <div class="group-cards">
+    <div class="contributor-card">
+      <div class="contributor-avatar">M</div>
+      <div class="contributor-name">@metropolisp</div>
+      <div class="contributor-role">Core development & architecture</div>
+    </div>
+    <div class="contributor-card">
+      <div class="contributor-avatar">W</div>
+      <div class="contributor-name">@websitedev</div>
+      <div class="contributor-role">Website redesign & Hugo</div>
+    </div>
+  </div>
+</div>
+<!-- Everyone Else Group -->
+<div class="contributor-group">
+  <h3>Everyone Else</h3>
+  <div class="group-cards">
+    <div class="contributor-card">
+      <div class="contributor-avatar">D</div>
+      <div class="contributor-name">@docteam</div>
+      <div class="contributor-role">Documentation specialist</div>
+    </div>
+    <div class="contributor-card">
+      <div class="contributor-avatar">T</div>
+      <div class="contributor-name">@tester</div>
+      <div class="contributor-role">Quality assurance</div>
+    </div>
+  </div>
+</div>
 </details>
-<details>
-<summary>Prism logo integration in navigation and hero sections</summary>
-The signature prism logo is now integrated throughout the site, appearing in both the navigation bar and hero section for brand consistency.
-</details>
-<details>
-<summary>Responsive design for mobile and desktop</summary>
-The website now works seamlessly across all device sizes, from mobile phones to desktop computers, ensuring accessibility for all users.
-</details>
-<h2 id="bug-fixes">Bug Fixes</h2>
-<details>
-<summary>Fixed navigation menu display issues</summary>
-Resolved problems with navigation menu rendering that were causing layout issues on certain browsers and screen sizes.
-</details>
-<details>
-<summary>Resolved CSS loading problems in development builds</summary>
-Fixed issues with CSS not loading properly during development, ensuring consistent styling across all build environments.
-</details>
-<details>
-<summary>Corrected link paths in documentation sections</summary>
-Fixed broken internal links within documentation pages that were pointing to incorrect paths or non-existent pages.
-</details>
-<h2 id="contributors">Contributors</h2>
-<ul>
-<li>@metropolisp</li>
-<li>website team</li>
-</ul>
 
 
 <div class="releases-list">
@@ -836,6 +1204,16 @@ Fixed broken internal links within documentation pages that were pointing to inc
   }
 
   
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.section-header')) {
+      var section = e.target.closest('.release-section');
+      if (section) {
+        section.classList.toggle('expanded');
+      }
+    }
+  });
+
+  
   function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = '';
@@ -844,9 +1222,26 @@ Fixed broken internal links within documentation pages that were pointing to inc
   modal.addEventListener('click', function(e) {
     if (e.target === modal) closeModal();
   });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-  });
+  
+  var categories = document.querySelectorAll('.release-category');
+  for (var i = 0; i < categories.length; i++) {
+    var category = categories[i];
+    var title = category.querySelector('summary');
+    if (!title) continue;
+    
+    var count = 0;
+    if (category.classList.contains('contributors')) {
+      
+      count = category.querySelectorAll('.contributor-card').length;
+    } else {
+      
+      count = category.querySelectorAll('.release-section').length;
+    }
+    
+    if (count > 0) {
+      title.textContent = title.textContent + ' (' + count + ')';
+    }
+  }
 })();
 </script>
 

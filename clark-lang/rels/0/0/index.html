@@ -460,6 +460,285 @@
     margin-bottom: 0.75rem;
   }
 
+  .releases-list .release-section {
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .releases-list .release-section:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .releases-list .section-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    user-select: none;
+  }
+
+  .releases-list .section-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .releases-list .section-header::before {
+    content: "▶";
+    display: inline-block;
+    font-size: 0.7rem;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .releases-list .release-section.expanded .section-header::before {
+    transform: rotate(90deg);
+  }
+
+  .releases-list .section-content {
+    display: none;
+    padding: 0 1rem 1rem 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .releases-list .release-section.expanded .section-content {
+    display: block;
+  }
+
+  .releases-list .release-category {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #dee2e6;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  .releases-list .release-category h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #495057;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #6c757d;
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .releases-list .release-category.notable h2::before {
+    content: "\f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+  }
+
+  .releases-list .release-category.features h2::before {
+    content: "\f055";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+  }
+
+  .releases-list .release-category.bug-fixes h2::before {
+    content: "\f188";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+  }
+
+  .releases-list .release-category.contributors h2::before {
+    content: "\f0c0";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+  }
+
+   
+  .releases-list .release-category details {
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .releases-list .release-category details:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .releases-list .release-category summary {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    list-style: none;
+    user-select: none;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    font-size: 1.5rem;
+    color: #495057;
+    border-bottom: 2px solid #6c757d;
+    position: relative;
+  }
+
+  .releases-list .release-category.notable summary::before {
+    content: "\f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+    font-size: 1.2rem;
+  }
+
+  .releases-list .release-category.features summary::before {
+    content: "\f055";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+    font-size: 1.2rem;
+  }
+
+  .releases-list .release-category.bug-fixes summary::before {
+    content: "\f188";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+    font-size: 1.2rem;
+  }
+
+  .releases-list .release-category.contributors summary::before {
+    content: "\f0c0";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #6B46C1;
+    font-size: 1.2rem;
+  }
+
+  .releases-list .release-category summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .releases-list .release-category summary::after {
+    content: "▶";
+    position: absolute;
+    right: 1.25rem;
+    font-size: 0.8rem;
+    color: #6c757d;
+    transition: transform 0.2s ease;
+  }
+
+  .releases-list .release-category details[open] > summary::after {
+    transform: translateX(5px);
+  }
+
+  .releases-list .release-category summary:hover {
+    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  }
+
+  .contributor-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .contributor-group {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(108, 117, 125, 0.1), rgba(73, 80, 87, 0.1));
+    border: 1px solid rgba(127, 135, 142, 0.2);
+  }
+
+  .contributor-group h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  .group-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 180px);
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .contributor-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+  }
+
+  .contributor-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .contributor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #6B46C1;
+  }
+
+  .contributor-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6B46C1, #A4D23B);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .contributor-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+  }
+
+  .contributor-role {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+  }
+
+
+  .badge-new {
+    background: linear-gradient(135deg, #A4D23B, #7aab1e);
+    color: white;
+  }
+
+  .badge-top {
+    background: linear-gradient(135deg, #6B46C1, #4C1D95);
+    color: white;
+  }
+
+  .badge-contributor {
+    background: linear-gradient(135deg, #6c757d, #495057);
+    color: white;
+  }
+
   .releases-list .download-button {
     background: #6c757d;
     color: white;
@@ -917,6 +1196,16 @@
   }
 
   
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.section-header')) {
+      var section = e.target.closest('.release-section');
+      if (section) {
+        section.classList.toggle('expanded');
+      }
+    }
+  });
+
+  
   function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = '';
@@ -925,9 +1214,26 @@
   modal.addEventListener('click', function(e) {
     if (e.target === modal) closeModal();
   });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-  });
+  
+  var categories = document.querySelectorAll('.release-category');
+  for (var i = 0; i < categories.length; i++) {
+    var category = categories[i];
+    var title = category.querySelector('summary');
+    if (!title) continue;
+    
+    var count = 0;
+    if (category.classList.contains('contributors')) {
+      
+      count = category.querySelectorAll('.contributor-card').length;
+    } else {
+      
+      count = category.querySelectorAll('.release-section').length;
+    }
+    
+    if (count > 0) {
+      title.textContent = title.textContent + ' (' + count + ')';
+    }
+  }
 })();
 </script>
 
