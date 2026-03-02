@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Releases on CLARK</title>
-    <link>https://metropolisp.github.io/index/clark-lang/rels/</link>
+    <link>http://localhost:37597/index/clark-lang/rels/</link>
     <description>Recent content in Releases on CLARK</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 01 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://metropolisp.github.io/index/clark-lang/feeds/rels/all.rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:37597/index/clark-lang/feeds/rels/all.rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>0.0.1</title>
-      <link>https://metropolisp.github.io/index/clark-lang/rels/0.0.1/</link>
+      <link>http://localhost:37597/index/clark-lang/rels/0.0.1/</link>
       <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://metropolisp.github.io/index/clark-lang/rels/0.0.1/</guid>
+      <guid>http://localhost:37597/index/clark-lang/rels/0.0.1/</guid>
       <description>Initial public preview release — website rewrite, docs scaffolding, prism logo demo.</description>
     </item>
   </channel>

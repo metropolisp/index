@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Parting on CLARK</title>
-    <link>https://metropolisp.github.io/index/clark-lang/docs/misc/parting/</link>
+    <link>http://localhost:37597/index/clark-lang/docs/misc/parting/</link>
     <description>Recent content in Parting on CLARK</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://metropolisp.github.io/index/clark-lang/feeds/docs/misc/parting/all.rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:37597/index/clark-lang/feeds/docs/misc/parting/all.rss.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

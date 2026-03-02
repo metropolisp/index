@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Announcement on CLARK</title>
-    <link>https://metropolisp.github.io/index/clark-lang/tags/announcement/</link>
+    <link>http://localhost:37597/index/clark-lang/tags/announcement/</link>
     <description>Recent content in Announcement on CLARK</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://metropolisp.github.io/index/clark-lang/feeds/tags/announcement/all.rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:37597/index/clark-lang/feeds/tags/announcement/all.rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Foundation</title>
-      <link>https://metropolisp.github.io/index/clark-lang/posts/2025-12-31-love-love/</link>
+      <link>http://localhost:37597/index/clark-lang/posts/2025-12-31-love-love/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://metropolisp.github.io/index/clark-lang/posts/2025-12-31-love-love/</guid>
+      <guid>http://localhost:37597/index/clark-lang/posts/2025-12-31-love-love/</guid>
       <description>&lt;h1 id=&#34;foundation-building-the-future&#34;&gt;Foundation: Building the Future&lt;/h1&gt;&#xA;&lt;p&gt;Just like laying a strong foundation for a great structure, we&amp;rsquo;re excited to announce the initial release of &lt;strong&gt;Clark&lt;/strong&gt; - a Common Lisp-based language for distributed and spatial computing.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-clark&#34;&gt;What is Clark?&lt;/h2&gt;&#xA;&lt;p&gt;Clark brings the power of Common Lisp&amp;rsquo;s robust ecosystem, functional programming, and expressive syntax to modern distributed and spatial computing challenges. Whether you&amp;rsquo;re a seasoned Lisp developer or new to functional programming, Clark opens up new ways to build scalable, location-aware applications.&lt;/p&gt;</description>
     </item>
   </channel>

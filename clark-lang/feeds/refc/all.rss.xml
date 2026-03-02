@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reference on CLARK</title>
-    <link>https://metropolisp.github.io/index/clark-lang/refc/</link>
+    <link>http://localhost:37597/index/clark-lang/refc/</link>
     <description>Recent content in Reference on CLARK</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://metropolisp.github.io/index/clark-lang/feeds/refc/all.rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:37597/index/clark-lang/feeds/refc/all.rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Table of Contents</title>
-      <link>https://metropolisp.github.io/index/clark-lang/refc/toc/</link>
+      <link>http://localhost:37597/index/clark-lang/refc/toc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://metropolisp.github.io/index/clark-lang/refc/toc/</guid>
-      <description>&lt;h1 id=&#34;table-of-contents&#34;&gt;Table Of Contents&lt;/h1&gt;&#xA;&lt;ul class=&#34;refc-directory&#34;&gt;&#xA;&#xA;  &#xA;  &lt;li&gt;&#xA;    &lt;a href=&#34;https://metropolisp.github.io/index/clark-lang/refc/placeholder/&#34;&gt;Placeholder&lt;/a&gt;&#xA;    &#xA;    &lt;div class=&#34;refc-description&#34;&gt;Placeholder Content&lt;/div&gt;&#xA;    &#xA;  &lt;/li&gt;&#xA;  &#xA;&#xA;  &#xA;&#xA;&lt;/ul&gt;</description>
+      <guid>http://localhost:37597/index/clark-lang/refc/toc/</guid>
+      <description>&lt;h1 id=&#34;table-of-contents&#34;&gt;Table Of Contents&lt;/h1&gt;&#xA;&lt;ul class=&#34;refc-directory&#34;&gt;&#xA;&#xA;  &#xA;  &lt;li&gt;&#xA;    &lt;a href=&#34;http://localhost:37597/index/clark-lang/refc/placeholder/&#34;&gt;Placeholder&lt;/a&gt;&#xA;    &#xA;    &lt;div class=&#34;refc-description&#34;&gt;Placeholder Content&lt;/div&gt;&#xA;    &#xA;  &lt;/li&gt;&#xA;  &#xA;&#xA;  &#xA;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>
