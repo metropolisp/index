@@ -184,67 +184,6 @@
 }
 
  
-.wip-banner {
-  position: fixed;
-  top: 200px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-12deg);
-  background: black;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  z-index: 10000;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  display: inline-flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.wip-banner .desktop-text {
-  display: inline;
-}
-
-.wip-banner .mobile-text {
-  display: none;
-}
-
-.wip-banner button {
-  background: white;
-  color: black;
-  border: 2px solid black;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.wip-stripe {
-  position: fixed;
-  top: 275px;
-  left: -80px;
-  right: -80px;
-  width: calc(100vw + 160px);
-  background: repeating-linear-gradient(45deg, orange, orange 10px, white 10px, white 20px);
-  height: 60px;
-  z-index: 9999;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transform: rotate(-12deg);
-  border-bottom: 5px solid #ff8c00;
-}
-
-.banner-spacer {
-  height: 100px;
-}
-
- 
 .releases-page {
   background: linear-gradient(135deg, #faf8ff 0%, #f0e6ff 100%) !important;
 }
@@ -255,16 +194,6 @@
 .releases-page .post-title,
 .releases-page .entry-title {
   display: none !important;
-}
-
- 
-@media (max-width: 768px) {
-  .wip-banner .desktop-text { display: none; }
-  .wip-banner .mobile-text { display: inline; }
-}
-@media (min-width: 769px) {
-  .wip-banner .desktop-text { display: inline; }
-  .wip-banner .mobile-text { display: none; }
 }
 
  
@@ -466,19 +395,6 @@
 </style>
 
 <div class="releases-page">
-
-  
-  <div class="wip-banner">
-    <span class="desktop-text">🚧 Work-In-Progress</span>
-    <span class="mobile-text">🚧 W.I.P.</span>
-    <button onclick="this.closest('.wip-banner').nextElementSibling.style.display = 'none'; this.closest('.wip-banner').style.display = 'none';">×</button>
-  </div>
-
-  
-  <div class="wip-stripe"></div>
-
-  
-  <div class="banner-spacer"></div>
 
   
   

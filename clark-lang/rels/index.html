@@ -116,6 +116,448 @@
           
           <div id="content" class="col-md-12">
             
+<style>
+  .releases-list {
+    margin: 2rem 0;
+  }
+
+   
+  .releases-list details {
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .releases-list details:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .releases-list summary {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    list-style: none;
+    user-select: none;
+  }
+
+  .releases-list .spacer {
+    flex: 1;
+  }
+
+  .releases-list .right-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .releases-list .title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .releases-list summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .releases-list summary::before {
+    content: "▶";
+    display: inline-block;
+    font-size: 0.7rem;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .releases-list details[open] > summary::before {
+    transform: rotate(90deg);
+  }
+
+   
+  .releases-list details.rel-major {
+    border: 2px solid #6B46C1;
+  }
+
+  .releases-list details.rel-major[open] {
+    border-color: #4C1D95;
+  }
+
+  .releases-list details.rel-major > summary {
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, #ede6ff 0%, #d8ccff 100%);
+    font-size: 1.1rem;
+  }
+
+  .releases-list details.rel-major > summary::before {
+    color: #6B46C1;
+    font-size: 0.8rem;
+  }
+
+  .releases-list details.rel-major > summary:hover {
+    background: linear-gradient(135deg, #d8ccff 0%, #c9b8ff 100%);
+  }
+
+  .releases-list .rel-major > .rel-children {
+    padding: 0.75rem 1rem 1rem 1.75rem;
+    border-top: 1px solid #d8ccff;
+  }
+
+   
+  .releases-list details.rel-minor {
+    border: 1.5px solid #A4D23B;
+  }
+
+  .releases-list details.rel-minor[open] {
+    border-color: #7aab1e;
+  }
+
+  .releases-list details.rel-minor > summary {
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #f4fbe4 0%, #e6f5c0 100%);
+    font-size: 1rem;
+  }
+
+  .releases-list details.rel-minor > summary::before {
+    color: #7aab1e;
+  }
+
+  .releases-list details.rel-minor > summary:hover {
+    background: linear-gradient(135deg, #e6f5c0 0%, #d9efa0 100%);
+  }
+
+  .releases-list .rel-minor > .rel-children {
+    padding: 0.5rem 0.75rem 0.75rem 1.5rem;
+    border-top: 1px solid #d4e8a0;
+  }
+
+   
+  .releases-list details.rel-mini {
+    border: 1px solid #e67e22;
+  }
+
+  .releases-list details.rel-mini[open] {
+    border-color: #c96a12;
+  }
+
+  .releases-list details.rel-mini > summary {
+    padding: 0.5rem 0.75rem;
+    background: linear-gradient(135deg, #fff8f0 0%, #ffecd2 100%);
+    font-size: 0.95rem;
+  }
+
+  .releases-list details.rel-mini > summary::before {
+    color: #c96a12;
+    font-size: 0.6rem;
+  }
+
+  .releases-list details.rel-mini > summary:hover {
+    background: linear-gradient(135deg, #ffecd2 0%, #ffd9b3 100%);
+  }
+
+  .releases-list .rel-mini > .rel-children {
+    padding: 0.5rem 0.75rem 0.75rem 1.25rem;
+    border-top: 1px solid #ffd9b3;
+  }
+
+  .releases-list .rel-mini > .rel-body {
+    padding: 0.75rem 1rem 1rem;
+    border-top: 1px solid #ffd9b3;
+  }
+
+   
+  .releases-list .rel-stage {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .releases-list .rel-stage > summary {
+    padding: 0.4rem 0.6rem;
+    background: #fafafa;
+    font-size: 0.88rem;
+  }
+
+  .releases-list .rel-stage > summary::before {
+    color: #888;
+    font-size: 0.55rem;
+  }
+
+  .releases-list .rel-stage > summary:hover {
+    background: #f0f0f0;
+  }
+
+  .releases-list .rel-stage[open] {
+    border-color: #999;
+  }
+
+  .releases-list .rel-stage > .rel-body {
+    padding: 0.5rem 0.75rem 0.75rem;
+    border-top: 1px solid #e0e0e0;
+  }
+
+   
+  .releases-list .rel-stage.stage-alpha {
+    border-left: 3px solid #00008B;
+  }
+  .releases-list .rel-stage.stage-alpha > summary {
+    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+  }
+  .releases-list .rel-stage.stage-alpha > summary:hover {
+    background: linear-gradient(135deg, #f5f5f5 0%, #f0f0f0 100%);
+  }
+
+  .releases-list .rel-stage.stage-beta {
+    border-left: 3px solid #4169E1;
+  }
+  .releases-list .rel-stage.stage-beta > summary {
+    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+  }
+  .releases-list .rel-stage.stage-beta > summary:hover {
+    background: linear-gradient(135deg, #f5f5f5 0%, #f0f0f0 100%);
+  }
+
+  .releases-list .rel-stage.stage-rc {
+    border-left: 3px solid #179FFA;
+  }
+  .releases-list .rel-stage.stage-rc > summary {
+    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+  }
+  .releases-list .rel-stage.stage-rc > summary:hover {
+    background: linear-gradient(135deg, #f5f5f5 0%, #f0f0f0 100%);
+  }
+
+  .release-type-badge.badge-alpha {
+    background: #00008B;
+    color: white;
+  }
+
+  .release-type-badge.badge-beta {
+    background: #4169E1;
+    color: white;
+  }
+
+  .release-type-badge.badge-rc {
+    background: #179FFA;
+    color: white;
+  }
+
+   
+  .releases-list details.rel-dev {
+    border: 1.5px dashed #999;
+    border-radius: 6px;
+    margin-top: 0.75rem;
+    background: rgba(245, 245, 245, 0.6);
+  }
+
+  .releases-list details.rel-dev > summary {
+    padding: 0.5rem 0.75rem;
+    background: linear-gradient(135deg, #f8f8f8 0%, #efefef 100%);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #555;
+    letter-spacing: 0.04em;
+  }
+
+  .releases-list details.rel-dev > summary::before {
+    color: #999;
+    font-size: 0.55rem;
+  }
+
+  .releases-list details.rel-dev > summary:hover {
+    background: linear-gradient(135deg, #efefef 0%, #e4e4e4 100%);
+  }
+
+  .releases-list details.rel-dev[open] {
+    border-color: #777;
+  }
+
+  .releases-list details.rel-dev > .rel-children {
+    padding: 0.5rem 0.75rem 0.75rem 1rem;
+    border-top: 1px dashed #ccc;
+  }
+
+  .releases-list .dev-label {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+  }
+
+  .releases-list .dev-count {
+    font-size: 0.75rem;
+    color: #888;
+    font-weight: 400;
+  }
+
+   
+  .releases-list .release-version {
+    font-weight: bold;
+    color: #00008B;
+  }
+
+  .releases-list .release-version a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .releases-list .release-version a:hover {
+    text-decoration: underline;
+  }
+
+  .releases-list .release-type-badge {
+    padding: 0.15rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .release-type-badge.badge-major {
+    background: #6B46C1;
+    color: white;
+  }
+
+  .release-type-badge.badge-minor {
+    background: #7aab1e;
+    color: white;
+  }
+
+  .release-type-badge.badge-mini {
+    background: #e67e22;
+    color: white;
+  }
+
+  .releases-list .release-date-badge {
+    background: white;
+    color: #6B46C1;
+    padding: 0.15rem 0.6rem;
+    border-radius: 20px;
+    border: 1.5px solid #6B46C1;
+    font-weight: 600;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .releases-list .release-codename {
+    color: #3B9C3F;
+    font-style: italic;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .releases-list .release-summary-text {
+    color: #555;
+    font-size: 0.85rem;
+    margin-left: auto;
+  }
+
+  .releases-list .release-author {
+    color: #4C1D95;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .releases-list .release-summary {
+    color: #2d5a2f;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .releases-list .release-more {
+    display: inline-block;
+    color: #6B46C1;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+
+  .releases-list .release-more:hover {
+    text-decoration: underline;
+  }
+
+  .releases-list .rel-section-desc {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+  }
+
+   
+  .wip-banner {
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-12deg);
+    background: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .wip-banner .desktop-text { display: inline; }
+  .wip-banner .mobile-text { display: none; }
+
+  .wip-banner button {
+    background: white;
+    color: black;
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .wip-stripe {
+    position: fixed;
+    top: 275px;
+    left: -80px;
+    right: -80px;
+    width: calc(100vw + 160px);
+    background: repeating-linear-gradient(45deg, orange, orange 10px, white 10px, white 20px);
+    height: 60px;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transform: rotate(-12deg);
+    border-bottom: 5px solid #ff8c00;
+  }
+
+  .banner-spacer { height: 0px; }
+
+  @media (max-width: 768px) {
+    .wip-banner .desktop-text { display: none; }
+    .wip-banner .mobile-text { display: inline; }
+  }
+  @media (min-width: 769px) {
+    .wip-banner .desktop-text { display: inline; }
+    .wip-banner .mobile-text { display: none; }
+  }
+</style>
+
+
+<div class="wip-banner">
+  <span class="desktop-text">🚧 Work-In-Progress</span>
+  <span class="mobile-text">🚧 W.I.P.</span>
+  <button onclick="this.closest('.wip-banner').nextElementSibling.style.display = 'none'; this.closest('.wip-banner').style.display = 'none';">×</button>
+</div>
+<div class="wip-stripe"></div>
+<div class="banner-spacer"></div>
+
 <h1>Releases</h1>
 
 <blockquote>
@@ -130,34 +572,204 @@
 </span></span></code></pre></div><h1 id="versions">Versions</h1>
 
 
-
-<article>
-  <header>
-    <h2><a href='https://metropolisp.github.io/index/clark-lang/rels/0.0.1/'>0.0.1</a></h2>
-    <p class='date-and-tags'>
-    <time datetime="2026-03-01" pubdate="true">2026-03-01</time>
-    
-    </p>
-    <p class='authors'>By: <span class="authors">Joshua Steven Grant (ie: Jost Grant)</span></p>
-  </header>
-
-  <p>Initial public preview release — website rewrite, docs scaffolding, prism logo demo.</p>
+<div class="releases-list">
   
-</article>
-
-<article>
-  <header>
-    <h2><a href='https://metropolisp.github.io/index/clark-lang/rels/0/'>0.x</a></h2>
-    <p class='date-and-tags'>
-    <time datetime="2026-03-01" pubdate="true">2026-03-01</time>
-    
-    </p>
-    <p class='authors'>By: <span class="authors">Joshua Steven Grant (ie: Jost Grant)</span></p>
-  </header>
-
-  <p>Major version 0.x — initial development.</p>
   
-</article>
+    
+    <details class="rel-major" open>
+      <summary>
+        <span class="title-group">
+          <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/">0.x</a></span>
+        </span>
+        <div class="spacer"></div>
+        <span class="right-group">
+          <span class="release-summary-text">Major version 0.x — initial development.</span>
+          <span class="release-date-badge">2026-01-01</span>
+          <span class="release-type-badge badge-major">major</span>
+        </span>
+      </summary>
+      <div class="rel-children">
+        <p class="rel-section-desc">Major version 0.x — initial development.</p>
+        <p class="release-author">By: Joshua Steven Grant (ie: Jost Grant)</p>
+
+        
+        
+
+
+
+
+
+
+
+
+
+        
+        
+          
+          <details class="rel-minor" open>
+            <summary>
+              <span class="title-group">
+                <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/0/">0.0.x</a></span>
+              </span>
+              <div class="spacer"></div>
+              <span class="right-group">
+                <span class="release-summary-text">Minor version 0.0.x — pre-alpha and alpha builds.</span>
+                <span class="release-date-badge">2026-02-01</span>
+                <span class="release-type-badge badge-minor">minor</span>
+              </span>
+            </summary>
+            <div class="rel-children">
+              <p class="rel-section-desc">Minor version 0.0.x — pre-alpha and alpha builds.</p>
+
+              
+              
+
+
+
+
+
+
+
+
+
+              
+              
+                <details class="rel-mini" open>
+                  <summary>
+                    <span class="title-group">
+                      <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/">0.0.1</a></span>
+                      <span class="release-codename">"first public demo"</span>
+                    </span>
+                    <div class="spacer"></div>
+                    <span class="right-group">
+                      <span class="release-date-badge">2026-03-01</span>
+                      <span class="release-type-badge badge-mini">mini</span>
+                    </span>
+                  </summary>
+
+                  
+                  
+                  <div class="rel-children">
+                    <p class="release-author">By: Joshua Steven Grant (ie: Jost Grant)</p>
+                    <p class="release-summary">Initial public preview release — website rewrite, docs scaffolding, prism logo demo.</p>
+                    
+                      <a class="release-more" href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/">Full release notes &rarr;</a>
+                    
+
+                    
+                    
+
+
+
+
+
+
+
+<details class="rel-dev" open>
+  <summary>
+    <span class="dev-label">Dev</span>
+    <span class="dev-count">(4)</span>
+  </summary>
+  <div class="rel-children">
+
+    
+    
+    <details class="rel-stage stage-rc" open>
+      <summary>
+        <span class="title-group">
+          <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/rc-1/">0.0.1-rc.1</a></span>
+        </span>
+        <div class="spacer"></div>
+        <span class="right-group">
+          <span class="release-date-badge">2026-02-25</span>
+          <span class="release-type-badge badge-rc">rc</span>
+        </span>
+      </summary>
+      <div class="rel-body">
+        <p class="release-summary">Release candidate — final polish before 0.0.1.</p>
+        <a class="release-more" href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/rc-1/">Details &rarr;</a>
+      </div>
+    </details>
+    
+    
+
+    
+    
+    <details class="rel-stage stage-beta" >
+      <summary>
+        <span class="title-group">
+          <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/beta-1/">0.0.1-beta.1</a></span>
+        </span>
+        <div class="spacer"></div>
+        <span class="right-group">
+          <span class="release-date-badge">2026-02-15</span>
+          <span class="release-type-badge badge-beta">beta</span>
+        </span>
+      </summary>
+      <div class="rel-body">
+        <p class="release-summary">First beta — prism logo integration, spec scaffold.</p>
+        <a class="release-more" href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/beta-1/">Details &rarr;</a>
+      </div>
+    </details>
+    
+    
+
+    
+    
+    <details class="rel-stage stage-alpha" >
+      <summary>
+        <span class="title-group">
+          <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-1/">0.0.1-alpha.1</a></span>
+        </span>
+        <div class="spacer"></div>
+        <span class="right-group">
+          <span class="release-date-badge">2026-02-01</span>
+          <span class="release-type-badge badge-alpha">alpha</span>
+        </span>
+      </summary>
+      <div class="rel-body">
+        <p class="release-summary">First alpha build — initial website skeleton and project scaffolding.</p>
+        <a class="release-more" href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-1/">Details &rarr;</a>
+      </div>
+    </details>
+    
+    <details class="rel-stage stage-alpha" >
+      <summary>
+        <span class="title-group">
+          <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-2/">0.0.1-alpha.2</a></span>
+        </span>
+        <div class="spacer"></div>
+        <span class="right-group">
+          <span class="release-date-badge">2026-02-10</span>
+          <span class="release-type-badge badge-alpha">alpha</span>
+        </span>
+      </summary>
+      <div class="rel-body">
+        <p class="release-summary">Second alpha build — docs scaffolding and navigation.</p>
+        <a class="release-more" href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-2/">Details &rarr;</a>
+      </div>
+    </details>
+    
+    
+
+  </div>
+</details>
+
+
+
+                  </div>
+                  
+                </details>
+              
+
+            </div>
+          </details>
+        
+
+      </div>
+    </details>
+  
+</div>
 
 
           </div>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1.0.x on CLARK</title>
+    <link>https://metropolisp.github.io/index/clark-lang/rels/1/0/</link>
+    <description>Recent content in 1.0.x on CLARK</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://metropolisp.github.io/index/clark-lang/feeds/rels/1/0/all.rss.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
