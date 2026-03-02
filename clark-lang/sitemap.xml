@@ -2,143 +2,143 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/index/clark-lang/docs/getting-started/tutorials/basic-syntax/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/getting-started/tutorials/basic-syntax/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/language/design/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/language/design/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/introduction/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/introduction/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/refc/placeholder/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/refc/placeholder/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/spec/placeholder/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/spec/placeholder/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/api/reference/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/api/reference/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/language/style-guide/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/language/style-guide/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/language/reference/data-types/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/language/reference/data-types/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/language/ergonomics/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/language/ergonomics/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/getting-started/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/getting-started/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/misc/parting/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/misc/parting/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/misc/parting/collection/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/misc/parting/collection/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/language/reference/functions/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/language/reference/functions/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/language/reference/macros/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/language/reference/macros/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/getting-started/tutorials/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/getting-started/tutorials/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/getting-started/examples/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/getting-started/examples/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/refc/toc/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/refc/toc/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/spec/toc/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/spec/toc/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/api/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/api/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/introduction/motivations/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/introduction/motivations/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/language/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/language/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/introduction/considerations/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/introduction/considerations/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/introduction/goals-x-non/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/introduction/goals-x-non/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/troubleshooting/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/troubleshooting/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/community/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/community/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/introduction/faqs/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/introduction/faqs/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/rels/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/rels/</loc>
     <lastmod>2026-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/configuration/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/configuration/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/spec/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/spec/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/contributing/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/contributing/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/refc/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/refc/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/glossary/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/glossary/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/misc/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/misc/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/language/reference/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/language/reference/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/rels/0/0/1/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/</loc>
     <lastmod>2026-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/</loc>
     <lastmod>2026-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/tags/community/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/tags/community/</loc>
     <lastmod>2026-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/news/2026-03-01-consectetur-adipiscing/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/news/2026-03-01-consectetur-adipiscing/</loc>
     <lastmod>2026-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/tags/development/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/tags/development/</loc>
     <lastmod>2026-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/news/2026-03-01-eiusmod-tempor/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/news/2026-03-01-eiusmod-tempor/</loc>
     <lastmod>2026-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/tags/feature/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/tags/feature/</loc>
     <lastmod>2026-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/news/2026-03-01-lorem-ipsum-dolor/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/news/2026-03-01-lorem-ipsum-dolor/</loc>
     <lastmod>2026-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/tags/release/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/tags/release/</loc>
     <lastmod>2026-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/tags/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/tags/</loc>
     <lastmod>2026-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/news/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/news/</loc>
     <lastmod>2026-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/rels/0/0/1/rc-1/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/rc-1/</loc>
     <lastmod>2026-02-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/rels/0/0/1/beta-1/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/beta-1/</loc>
     <lastmod>2026-02-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/rels/0/0/1/alpha-2/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-2/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/rels/0/0/1/alpha-1/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-1/</loc>
     <lastmod>2026-02-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/rels/0/0/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/rels/0/0/</loc>
     <lastmod>2026-02-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/rels/0/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/rels/0/</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/docs/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/docs/</loc>
     <lastmod>2025-12-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/todo/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/todo/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/tags/announcement/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/tags/announcement/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/chat/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/chat/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/posts/2025-12-31-love-love/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/posts/2025-12-31-love-love/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/tags/meta/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/tags/meta/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/posts/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/posts/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/search/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/search/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/clark-lang/try/</loc>
+    <loc>https://metropolisp.github.io/index/clark-lang/try/</loc>
   </url>
 </urlset>
