@@ -2,52 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on CLARK</title>
-    <link>https://metropolisp.github.io/index/clark-lang/tags/</link>
+    <link>http://localhost:1313/index/clark-lang/tags/</link>
     <description>Recent content in Tags on CLARK</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 01 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://metropolisp.github.io/index/clark-lang/feeds/tags/all.rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index/clark-lang/feeds/tags/all.rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Community</title>
-      <link>https://metropolisp.github.io/index/clark-lang/tags/community/</link>
+      <link>http://localhost:1313/index/clark-lang/tags/community/</link>
       <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://metropolisp.github.io/index/clark-lang/tags/community/</guid>
+      <guid>http://localhost:1313/index/clark-lang/tags/community/</guid>
       <description></description>
     </item>
     <item>
       <title>Development</title>
-      <link>https://metropolisp.github.io/index/clark-lang/tags/development/</link>
+      <link>http://localhost:1313/index/clark-lang/tags/development/</link>
       <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://metropolisp.github.io/index/clark-lang/tags/development/</guid>
+      <guid>http://localhost:1313/index/clark-lang/tags/development/</guid>
       <description></description>
     </item>
     <item>
       <title>Feature</title>
-      <link>https://metropolisp.github.io/index/clark-lang/tags/feature/</link>
+      <link>http://localhost:1313/index/clark-lang/tags/feature/</link>
       <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://metropolisp.github.io/index/clark-lang/tags/feature/</guid>
+      <guid>http://localhost:1313/index/clark-lang/tags/feature/</guid>
       <description></description>
     </item>
     <item>
       <title>Release</title>
-      <link>https://metropolisp.github.io/index/clark-lang/tags/release/</link>
+      <link>http://localhost:1313/index/clark-lang/tags/release/</link>
       <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://metropolisp.github.io/index/clark-lang/tags/release/</guid>
+      <guid>http://localhost:1313/index/clark-lang/tags/release/</guid>
       <description></description>
     </item>
     <item>
       <title>Announcement</title>
-      <link>https://metropolisp.github.io/index/clark-lang/tags/announcement/</link>
+      <link>http://localhost:1313/index/clark-lang/tags/announcement/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://metropolisp.github.io/index/clark-lang/tags/announcement/</guid>
+      <guid>http://localhost:1313/index/clark-lang/tags/announcement/</guid>
       <description></description>
     </item>
     <item>
       <title>Meta</title>
-      <link>https://metropolisp.github.io/index/clark-lang/tags/meta/</link>
+      <link>http://localhost:1313/index/clark-lang/tags/meta/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://metropolisp.github.io/index/clark-lang/tags/meta/</guid>
+      <guid>http://localhost:1313/index/clark-lang/tags/meta/</guid>
       <description></description>
     </item>
   </channel>
