@@ -2,13 +2,13 @@
 <html lang="en-us">
   <head>
   <meta charset="utf-8">
-  <title>Functions - CLARK</title>
-  <meta name="description" content="Guide to defining and using functions in Clark Lisp">
+  <title>Installation Guide - CLARK</title>
+  <meta name="description" content="Step-by-step guide to installing Clark">
   <meta name="author" content="Joshua Steven Grant (ie: Jost Grant)">
   <meta name="keywords" content="common lisp, distributed computing, spatial computing, programming">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="/index/clark-lang/logo.svg">
-  <link rel="canonical" href="https://metropolisp.github.io/index/clark-lang/docs/language/reference/functions/">
+  <link rel="canonical" href="https://metropolisp.github.io/index/clark-lang/docs/installation/">
 
   
   <link rel="stylesheet" type="text/css" href="/index/clark-lang/css/bootstrap.min.css">
@@ -140,11 +140,11 @@
             
             
             
+            <li class="breadcrumb-item active has-siblings" aria-current="page">
+              
+              Installation Guide
+              
             
-            <li class="breadcrumb-item has-siblings">
-              
-              <a href="/index/clark-lang/docs/language/">The Language</a>
-              
               
               <button class="breadcrumb-dropdown-toggle" aria-label="Show siblings">
                 <i class="fas fa-chevron-down"></i>
@@ -155,7 +155,7 @@
                 
                 <a href="/index/clark-lang/docs/getting-started/" class="breadcrumb-dropdown-item">Getting Started</a>
                 
-                <a href="/index/clark-lang/docs/installation/" class="breadcrumb-dropdown-item">Installation Guide</a>
+                <a href="/index/clark-lang/docs/installation/" class="breadcrumb-dropdown-item current-page">Installation Guide</a>
                 
                 <a href="/index/clark-lang/docs/api/" class="breadcrumb-dropdown-item">The API</a>
                 
@@ -172,39 +172,6 @@
                 <a href="/index/clark-lang/docs/glossary/" class="breadcrumb-dropdown-item">Glossary</a>
                 
                 <a href="/index/clark-lang/docs/misc/" class="breadcrumb-dropdown-item">Misc</a>
-                
-              </div>
-              
-            </li>
-            
-            
-            
-            
-            <li class="breadcrumb-item has-siblings">
-              
-              <a href="/index/clark-lang/docs/language/reference/" title="Reference"><i class="fas fa-book-open"></i></a>
-              
-              
-            </li>
-            
-            
-            
-            <li class="breadcrumb-item active has-siblings" aria-current="page">
-              
-              Functions
-              
-            
-              
-              <button class="breadcrumb-dropdown-toggle" aria-label="Show siblings">
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="breadcrumb-dropdown">
-                
-                <a href="/index/clark-lang/docs/language/reference/data-types/" class="breadcrumb-dropdown-item">Data Types</a>
-                
-                <a href="/index/clark-lang/docs/language/reference/functions/" class="breadcrumb-dropdown-item current-page">Functions</a>
-                
-                <a href="/index/clark-lang/docs/language/reference/macros/" class="breadcrumb-dropdown-item">Macros</a>
                 
               </div>
               
@@ -536,7 +503,7 @@
 
 
 <li class="nav-item">
-  <a class="nav-link" href="/index/clark-lang/docs/installation/">
+  <a class="nav-link active" href="/index/clark-lang/docs/installation/">
     <i class="fas fa-download"></i> Installation Guide
   </a>
 
@@ -799,7 +766,7 @@
 
 
 <li class="nav-item">
-  <a class="nav-link active" href="/index/clark-lang/docs/language/reference/functions/">
+  <a class="nav-link" href="/index/clark-lang/docs/language/reference/functions/">
     <i class="fas fa-code"></i> Functions
   </a>
 
@@ -1050,48 +1017,58 @@
     
     
     <div class="docs-content">
-      <h1 class="visually-hidden">Functions</h1>
-      
-
-
-
-
-
-<div class="parting-placeholder">
-  <div class="placeholder-content">
-    <i class="fas fa-tools"></i>
-    <p>
-Coming Soon...ish. lol
-</p>
-  </div>
-</div>
-
-<style>
-.parting-placeholder {
-  border: 2px dashed #ccc;
-  border-radius: 8px;
-  padding: 2rem;
-  margin: 1rem 0;
-  background: #f9f9f9;
-  text-align: center;
-}
-
-.placeholder-content {
-  color: #666;
-}
-
-.placeholder-content i {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  display: block;
-  color: #999;
-}
-
-.placeholder-content p {
-  margin: 0;
-  font-style: italic;
-}
-</style>
+      <h1 class="visually-hidden">Installation Guide</h1>
+      <h1 id="installation-guide">Installation Guide</h1>
+<p>This guide will walk you through installing Clark on your system.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before installing Clark, ensure you have the following:</p>
+<ul>
+<li>A compatible operating system (Linux, macOS, Windows)</li>
+<li>Required dependencies (e.g., Chez Scheme, Common Lisp implementation)</li>
+</ul>
+<h2 id="installation-steps">Installation Steps</h2>
+<ol>
+<li>
+<p><strong>Download the source code</strong></p>
+<p>Clone the repository from GitHub:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/metropolisp/clark.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> clark
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Install dependencies</strong></p>
+<p>Install the required dependencies using your package manager:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Example for Ubuntu/Debian</span>
+</span></span><span class="line"><span class="cl">sudo apt-get install chezscheme sbcl
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Example for macOS</span>
+</span></span><span class="line"><span class="cl">brew install chezscheme sbcl
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Build Clark</strong></p>
+<p>Build the project:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">make build
+</span></span><span class="line"><span class="cl"><span class="c1"># or</span>
+</span></span><span class="line"><span class="cl">./build.sh
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Install</strong></p>
+<p>Install Clark system-wide:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">make install
+</span></span><span class="line"><span class="cl"><span class="c1"># or</span>
+</span></span><span class="line"><span class="cl">sudo ./install.sh
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="verification">Verification</h2>
+<p>After installation, verify that Clark is working:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">clark --version
+</span></span></code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
+<p>If you encounter issues during installation:</p>
+<ul>
+<li>Check that all prerequisites are installed</li>
+<li>Ensure you have the correct permissions</li>
+<li>Consult the <a href="/docs/troubleshooting/">troubleshooting guide</a> for common issues</li>
+</ul>
+<p>For more detailed information, see the <a href="/docs/getting-started/">Getting Started</a> guide.</p>
 
     </div>
     
@@ -1103,7 +1080,14 @@ Coming Soon...ish. lol
           <aside class="col-md-3 d-none d-md-block sidebar-right">
             <div class="sidebar-sticky">
               <h5 class="sidebar-heading">On This Page</h5>
-              <nav id="TableOfContents"></nav>
+              <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#installation-steps">Installation Steps</a></li>
+    <li><a href="#verification">Verification</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+  </ul>
+</nav>
             </div>
           </aside>
         </div>
@@ -1216,7 +1200,7 @@ Coming Soon...ish. lol
             </div>
             <div class="col-md-6 text-md-right">
               <small>
-                <a href="https://github.com//metropolisp/clark-lang/edit/main/www/contentdocs/language/reference/functions/_index.md" class="text-decoration-none" target="_blank" rel="noopener">
+                <a href="https://github.com//metropolisp/clark-lang/edit/main/www/contentdocs/installation/_index.md" class="text-decoration-none" target="_blank" rel="noopener">
                   <i class="fas fa-edit"></i>
                   Make changes
                 </a>
