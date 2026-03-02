@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Development on CLARK</title>
-    <link>http://localhost:37597/index/clark-lang/tags/development/</link>
+    <link>https://metropolisp.github.io/index/clark-lang/tags/development/</link>
     <description>Recent content in Development on CLARK</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 01 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:37597/index/clark-lang/feeds/tags/development/all.rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://metropolisp.github.io/index/clark-lang/feeds/tags/development/all.rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lorem Ipsum Dolor Sit Amet</title>
-      <link>http://localhost:37597/index/clark-lang/news/2026-03-01-lorem-ipsum-dolor/</link>
+      <link>https://metropolisp.github.io/index/clark-lang/news/2026-03-01-lorem-ipsum-dolor/</link>
       <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:37597/index/clark-lang/news/2026-03-01-lorem-ipsum-dolor/</guid>
+      <guid>https://metropolisp.github.io/index/clark-lang/news/2026-03-01-lorem-ipsum-dolor/</guid>
       <description>&lt;p&gt;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.&lt;/p&gt;</description>
     </item>
   </channel>

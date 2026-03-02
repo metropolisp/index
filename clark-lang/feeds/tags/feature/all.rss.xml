@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Feature on CLARK</title>
-    <link>http://localhost:37597/index/clark-lang/tags/feature/</link>
+    <link>https://metropolisp.github.io/index/clark-lang/tags/feature/</link>
     <description>Recent content in Feature on CLARK</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 01 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:37597/index/clark-lang/feeds/tags/feature/all.rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://metropolisp.github.io/index/clark-lang/feeds/tags/feature/all.rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Eiusmod Tempor Incididunt Ut Labore</title>
-      <link>http://localhost:37597/index/clark-lang/news/2026-03-01-eiusmod-tempor/</link>
+      <link>https://metropolisp.github.io/index/clark-lang/news/2026-03-01-eiusmod-tempor/</link>
       <pubDate>Sun, 01 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:37597/index/clark-lang/news/2026-03-01-eiusmod-tempor/</guid>
+      <guid>https://metropolisp.github.io/index/clark-lang/news/2026-03-01-eiusmod-tempor/</guid>
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;&#xA;&lt;p&gt;Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst.&lt;/p&gt;</description>
     </item>
   </channel>
