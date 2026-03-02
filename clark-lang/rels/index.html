@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+  <head><script src="/index/clark-lang/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=index/clark-lang/livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   <title>Releases - CLARK</title>
   <meta name="description" content="Releases For Clark">
@@ -8,7 +8,7 @@
   <meta name="keywords" content="common lisp, distributed computing, spatial computing, programming">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="/index/clark-lang/logo.svg">
-  <link rel="canonical" href="https://metropolisp.github.io/index/clark-lang/rels/">
+  <link rel="canonical" href="http://localhost:1313/index/clark-lang/rels/">
 
   
   <link rel="stylesheet" type="text/css" href="/index/clark-lang/css/bootstrap.min.css">
@@ -466,16 +466,105 @@
     margin-bottom: 0.75rem;
   }
 
-  .releases-list .release-more {
-    display: inline-block;
-    color: #6B46C1;
-    font-weight: 600;
-    text-decoration: none;
+  .releases-list .download-button {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 4px;
     font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .releases-list .release-more:hover {
-    text-decoration: underline;
+  .releases-list .download-button:hover {
+    background: #5a6268;
+  }
+
+  .releases-list .popout-button {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
+  }
+
+  .releases-list .popout-button:hover {
+    background: #5a6268;
+  }
+
+   
+  .popout-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    overflow-y: auto;
+  }
+
+  .popout-modal.active {
+    display: block;
+  }
+
+  .popout-content {
+    background: white;
+    margin: 2rem auto;
+    max-width: 1200px;
+    width: 95%;
+    border-radius: 8px;
+    padding: 2rem;
+    position: relative;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+
+  .popout-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #dc3545;
+    color: white;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .popout-close:hover {
+    background: #c82333;
+  }
+
+  .popout-hierarchy {
+    margin-top: 1rem;
+  }
+
+  .popout-hierarchy .rel-major,
+  .popout-hierarchy .rel-minor,
+  .popout-hierarchy .rel-mini {
+    margin-bottom: 1rem;
   }
 
   .releases-list .rel-section-desc {
@@ -547,6 +636,67 @@
     .wip-banner .desktop-text { display: inline; }
     .wip-banner .mobile-text { display: none; }
   }
+
+   
+  .releases-list .rel-body details {
+    margin: 1rem 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: rgba(248, 248, 248, 0.8);
+    overflow: hidden;
+  }
+
+  .releases-list .rel-body details summary {
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #4C1D95;
+    list-style: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .releases-list .rel-body details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .releases-list .rel-body details summary::before {
+    content: "▶";
+    display: inline-block;
+    font-size: 0.6rem;
+    transition: transform 0.2s ease;
+    color: #6B46C1;
+    flex-shrink: 0;
+  }
+
+  .releases-list .rel-body details[open] > summary::before {
+    transform: rotate(90deg);
+  }
+
+  .releases-list .rel-body details summary:hover {
+    background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+  }
+
+  .releases-list .rel-body details > div {
+    padding: 0.75rem 1rem 1rem;
+    border-top: 1px solid #e0e0e0;
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .releases-list .rel-body details ul {
+    margin: 0.5rem 0 0 0;
+    padding-left: 1.5rem;
+  }
+
+  .releases-list .rel-body details li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    color: #2d5a2f;
+  }
 </style>
 
 
@@ -579,7 +729,7 @@
     <details class="rel-major" open>
       <summary>
         <span class="title-group">
-          <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/">0.x</a></span>
+          <span class="release-version"><a href="http://localhost:1313/index/clark-lang/rels/0/">0.x</a></span>
         </span>
         <div class="spacer"></div>
         <span class="right-group">
@@ -589,6 +739,7 @@
         </span>
       </summary>
       <div class="rel-children">
+        
         <p class="rel-section-desc">Major version 0.x — initial development.</p>
         <p class="release-author">By: Joshua Steven Grant (ie: Jost Grant)</p>
 
@@ -609,7 +760,7 @@
           <details class="rel-minor" open>
             <summary>
               <span class="title-group">
-                <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/0/">0.0.x</a></span>
+                <span class="release-version"><a href="http://localhost:1313/index/clark-lang/rels/0/0/">0.0.x</a></span>
               </span>
               <div class="spacer"></div>
               <span class="right-group">
@@ -619,6 +770,7 @@
               </span>
             </summary>
             <div class="rel-children">
+              
               <p class="rel-section-desc">Minor version 0.0.x — pre-alpha and alpha builds.</p>
 
               
@@ -637,7 +789,7 @@
                 <details class="rel-mini" open>
                   <summary>
                     <span class="title-group">
-                      <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/">0.0.1</a></span>
+                      <span class="release-version"><a href="http://localhost:1313/index/clark-lang/rels/0/0/1/">0.0.1</a></span>
                       <span class="release-codename">"first public demo"</span>
                     </span>
                     <div class="spacer"></div>
@@ -650,11 +802,57 @@
                   
                   
                   <div class="rel-children">
+                    <div style="text-align: right; margin-bottom: 0.75rem;"><button class="popout-button" data-release-id="releases"><i class="fas fa-expand"></i></button><a href="https://example.com/download/clark-0.0.1.zip" class="download-button"><i class="fas fa-download"></i></a></div>
                     <p class="release-author">By: Joshua Steven Grant (ie: Jost Grant)</p>
                     <p class="release-summary">Initial public preview release — website rewrite, docs scaffolding, prism logo demo.</p>
-                    
-                      <a class="release-more" href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/">Full release notes &rarr;</a>
-                    
+                    <p>Initial public preview release — includes the website rewrite, documentation scaffolding, and the interactive prism logo demo. Expect rough edges; this is an early, exploratory release.</p>
+<h2 id="notable">Notable</h2>
+<details>
+<summary>First public release of Clark programming language</summary>
+This marks the initial public availability of the Clark programming language, making it accessible to developers worldwide for the first time.
+</details>
+<details>
+<summary>Complete website redesign with modern Hugo framework</summary>
+The entire website has been rebuilt using Hugo static site generator, providing better performance, maintainability, and a more modern user experience.
+</details>
+<details>
+<summary>Interactive 3D logo demonstration</summary>
+A new interactive Three.js-powered logo showcases Clark's capabilities and provides an engaging visual element for the homepage.
+</details>
+<h2 id="features">Features</h2>
+<details>
+<summary>New documentation system with search functionality</summary>
+Comprehensive documentation with full-text search capabilities, making it easy for developers to find the information they need quickly.
+</details>
+<details>
+<summary>Prism logo integration in navigation and hero sections</summary>
+The signature prism logo is now integrated throughout the site, appearing in both the navigation bar and hero section for brand consistency.
+</details>
+<details>
+<summary>Responsive design for mobile and desktop</summary>
+The website now works seamlessly across all device sizes, from mobile phones to desktop computers, ensuring accessibility for all users.
+</details>
+<h2 id="bug-fixes">Bug Fixes</h2>
+<details>
+<summary>Fixed navigation menu display issues</summary>
+Resolved problems with navigation menu rendering that were causing layout issues on certain browsers and screen sizes.
+</details>
+<details>
+<summary>Resolved CSS loading problems in development builds</summary>
+Fixed issues with CSS not loading properly during development, ensuring consistent styling across all build environments.
+</details>
+<details>
+<summary>Corrected link paths in documentation sections</summary>
+Fixed broken internal links within documentation pages that were pointing to incorrect paths or non-existent pages.
+</details>
+<h2 id="download">Download</h2>
+<p><a href="/rels/0/0/1/">Download artifacts (placeholder)</a></p>
+<h2 id="contributors">Contributors</h2>
+<ul>
+<li>@metropolisp</li>
+<li>website team</li>
+</ul>
+
 
                     
                     
@@ -677,7 +875,7 @@
     <details class="rel-stage stage-rc" open>
       <summary>
         <span class="title-group">
-          <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/rc-1/">0.0.1-rc.1</a></span>
+          <span class="release-version"><a href="http://localhost:1313/index/clark-lang/rels/0/0/1/rc-1/">0.0.1-rc.1</a></span>
         </span>
         <div class="spacer"></div>
         <span class="right-group">
@@ -687,7 +885,8 @@
       </summary>
       <div class="rel-body">
         <p class="release-summary">Release candidate — final polish before 0.0.1.</p>
-        <a class="release-more" href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/rc-1/">Details &rarr;</a>
+        <p>Bug fixes, layout polish, and final review before the 0.0.1 public preview.</p>
+
       </div>
     </details>
     
@@ -698,7 +897,7 @@
     <details class="rel-stage stage-beta" >
       <summary>
         <span class="title-group">
-          <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/beta-1/">0.0.1-beta.1</a></span>
+          <span class="release-version"><a href="http://localhost:1313/index/clark-lang/rels/0/0/1/beta-1/">0.0.1-beta.1</a></span>
         </span>
         <div class="spacer"></div>
         <span class="right-group">
@@ -708,7 +907,8 @@
       </summary>
       <div class="rel-body">
         <p class="release-summary">First beta — prism logo integration, spec scaffold.</p>
-        <a class="release-more" href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/beta-1/">Details &rarr;</a>
+        <p>Interactive prism logo (Three.js) integrated. Spec documentation scaffold added.</p>
+
       </div>
     </details>
     
@@ -719,7 +919,7 @@
     <details class="rel-stage stage-alpha" >
       <summary>
         <span class="title-group">
-          <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-1/">0.0.1-alpha.1</a></span>
+          <span class="release-version"><a href="http://localhost:1313/index/clark-lang/rels/0/0/1/alpha-1/">0.0.1-alpha.1</a></span>
         </span>
         <div class="spacer"></div>
         <span class="right-group">
@@ -729,14 +929,15 @@
       </summary>
       <div class="rel-body">
         <p class="release-summary">First alpha build — initial website skeleton and project scaffolding.</p>
-        <a class="release-more" href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-1/">Details &rarr;</a>
+        <p>Early exploratory build. Website skeleton, Hugo config, and basic layout only.</p>
+
       </div>
     </details>
     
     <details class="rel-stage stage-alpha" >
       <summary>
         <span class="title-group">
-          <span class="release-version"><a href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-2/">0.0.1-alpha.2</a></span>
+          <span class="release-version"><a href="http://localhost:1313/index/clark-lang/rels/0/0/1/alpha-2/">0.0.1-alpha.2</a></span>
         </span>
         <div class="spacer"></div>
         <span class="right-group">
@@ -746,7 +947,8 @@
       </summary>
       <div class="rel-body">
         <p class="release-summary">Second alpha build — docs scaffolding and navigation.</p>
-        <a class="release-more" href="https://metropolisp.github.io/index/clark-lang/rels/0/0/1/alpha-2/">Details &rarr;</a>
+        <p>Added documentation section scaffolding, sidebar navigation, and search placeholder.</p>
+
       </div>
     </details>
     
@@ -769,6 +971,16 @@
       </div>
     </details>
   
+</div>
+
+
+<div id="popout-modal" class="popout-modal">
+  <div class="popout-content">
+    <button class="popout-close" onclick="closePopoutModal()">&times;</button>
+    <div id="popout-hierarchy" class="popout-hierarchy">
+      
+    </div>
+  </div>
 </div>
 
 

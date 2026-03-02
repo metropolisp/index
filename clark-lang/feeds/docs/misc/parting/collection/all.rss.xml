@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Widget Collection on CLARK</title>
-    <link>https://metropolisp.github.io/index/clark-lang/docs/misc/parting/collection/</link>
+    <link>http://localhost:1313/index/clark-lang/docs/misc/parting/collection/</link>
     <description>Recent content in Widget Collection on CLARK</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://metropolisp.github.io/index/clark-lang/feeds/docs/misc/parting/collection/all.rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index/clark-lang/feeds/docs/misc/parting/collection/all.rss.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
