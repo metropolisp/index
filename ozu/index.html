@@ -36,6 +36,13 @@ html {
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* make standard links red instead of default blue */
+a, a:visited { color: var(--red); }
+a:hover, a:active { color: var(--yellow); }
+
+/* manual link should stay white so icon is visible */
+/* base color moved into more specific rule later to allow hover override */
+
 body {
     font-family: 'Inter', sans-serif;
     background: var(--bg);
@@ -229,20 +236,20 @@ body {
 
 .btn-primary:hover {
     background: white;
-    color: var(--red);
+    color: var(--red); /* red text on hover */
     transform: translateY(-2px);
     outline: 2px solid var(--red);
 }
 
 .btn-secondary {
     background: var(--yellow);
-    color: black;
+    color: black; /* black text normally */
     border: 2px dashed black;
 }
 
 .btn-secondary:hover {
     background: black;
-    color: var(--yellow);
+    color: white; /* stay white on hover */
 }
 
 /* SECTION */
@@ -445,6 +452,9 @@ footer a {
     color: white;
     text-decoration: underline;
 }
+footer a:visited {
+    color: white;
+}
 
 footer a:hover {
     color: var(--yellow);
@@ -498,7 +508,7 @@ footer a:hover {
 }
 .manual-link:hover {
   background: white;
-  color: var(--red);
+  color: var(--red); /* icon red on hover */
 }
 
 /* STOAT EMBED */
@@ -733,11 +743,11 @@ footer a:hover {
     <h2>Quickstart</h2>
     <div class="disclaimer-box">
       <p><strong>Disclaimer,</strong></p>
-      <p>This project is highly experimental. Even though we will try to take precautions to run things in a containerized environment abstracted by the rest of the system, you are granting access to something that can do arbitrary code execution on your machine. Be mindful of that and by using it, you are agreeing any and all copyright owners & contributors are not legally liable for any data loss, attackers getting access to your machine, etc. Be safe and stay smart, and make backups.</p>
+      <p>This project is highly experimental. Even though we will try to take precautions to run things in a containerized environment abstracted from the rest of the system, you are granting access to something that can do arbitrary code execution on your machine. Be mindful of that and by using it, you are agreeing any and all copyright owners & contributors are not legally liable for any data loss, attackers getting access to your machine, etc. </br></br> Do you accept that? <span id="accepted-msg" style="color:var(--red); font-weight:bold; display:none;">ACCEPTED!</span> <span id="post-accept-warning" style="display:none;"><br>(Be Safe, Stay Smart, And Make Backups!)</span></p>
       <button id="accept-btn" class="btn" style="background: var(--red); color:white;">I Accept That.</button>
     </div>
     <div id="quickstart-content" style="display:none;">
-        <textarea placeholder="Basic instructions go here..." style="width:100%;height:150px;"></textarea>
+        <textarea placeholder="Setup Instructions Coming-Soon..." style="width:100%;height:150px;"></textarea>
         <!-- additional quickstart info could go here -->
     </div>
 </section>
@@ -791,15 +801,15 @@ footer a:hover {
     <h2>FAQs</h2>
     <details>
         <summary><span class="badge q-badge">Q:</span> What is Ozu?</summary>
-        <p><span class="badge a-badge">A:</span> Ozu is a Lisp machine over the wire, projecting directly into your browser.</p>
+        <p><span class="badge a-badge">A:</span> Ozu Is A Fork Of The Great <a href="https://github.com/rabbibotton/clog" target="_blank">CLOG </a>Project. Instead Of Being A General-Purpose Graphical User-Interface Toolkit Like CLOG, Ozu Leans Into The Interactiveness Of The System Plus The Portability Of It Being Browser-Bound In An Attempt To Make A General Purpose Computing Environment You Can Control "From Anywhere".</p>
     </details>
     <details>
         <summary><span class="badge q-badge">Q:</span> How does it work?</summary>
-        <p><span class="badge a-badge">A:</span> It runs Common Lisp on the server and streams the interface to your browser.</p>
+        <p><span class="badge a-badge">A:</span> The Big Idea In Ozu is `Over-The-Wire` (In-fact Ozu is a forced acryonym meaning that); Notably We Run A Server And We Talk To It Via Our Client. So Any Browser / User With Access Has Access To A Real Lisp Image And Any Depends On The Host System. We Reduce the Amount Of Client Code Being Ran.</p>
     </details>
     <details>
-        <summary><span class="badge q-badge">Q:</span> Is it open source?</summary>
-        <p><span class="badge a-badge">A:</span> Yes, check the GitHub repository for more details.</p>
+        <summary><span class="badge q-badge">Q:</span> Outta Space?</summary>
+        <p><span class="badge a-badge">A:</span> ...</p>
     </details>
 </section>
 
@@ -817,8 +827,10 @@ footer a:hover {
 <section class="section" id="community">
     <h2>Community</h2>
     <p style="text-align:center; color:black; max-width:800px; margin: 0 auto 1rem;">
-        We plan to self-host on our own project <a href="https://github.com/metropolisp/cosnic" style="color:black; text-decoration:underline;">metropolisp/cosnic</a> eventually,
-        but for now we’re leaning into Stoat.
+        We plan to self-host <code>eventually™</code> on our own home(planet)-grown project <a href="https://github.com/metropolisp/consmic" style="color:black; text-decoration:underline;">metropolisp/cosnic</a> eventually,
+        but for now we’re leaning into Stoat as the mass Discord exodus spins into gear. 
+    </br>
+    </br>
     </p>
     
     <!-- Stoat Invite Embed -->
@@ -860,7 +872,7 @@ footer a:hover {
           </div>
 
           <div class="se-description">
-            Connect, collaborate, and stay aligned. Join the conversation and be part of our growing community on Stoat.
+            Metropolisp Is Community Trying To Make A Live'Able Lisp Environment; A Web-Bound LispMachine OS x Spatial Interface & Collaborative Computing-Platform.
           </div>
 
           <a href="YOUR_INVITE_LINK" target="_blank" class="se-button">
@@ -902,6 +914,11 @@ window.addEventListener('scroll', () => {
     document.getElementById('accept-btn').addEventListener('click', () => {
         document.getElementById('quickstart-content').style.display = 'block';
         document.getElementById('accept-btn').style.display = 'none';
+        // show accepted message and extra warning in disclaimer
+        const msg = document.getElementById('accepted-msg');
+        const warn = document.getElementById('post-accept-warning');
+        if(msg) { msg.style.display = 'inline'; }
+        if(warn) { warn.style.display = 'inline'; }
     });
 </script>
 
