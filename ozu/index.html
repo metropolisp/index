@@ -34,6 +34,9 @@ html {
     scroll-behavior: smooth;
 }
 
+/* prevent horizontal page scrolling caused by nav overflow */
+body { overflow-x: hidden; }
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* make standard links red instead of default blue */
@@ -133,7 +136,7 @@ body {
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000; /* ensure always on top of hero content */
 }
 
 .logo {
@@ -157,21 +160,35 @@ body {
 
 .nav-links {
     display: flex;
-    width: 90%;
+    flex-wrap: nowrap; /* keep items on single line */
+    width: 100%;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     justify-content: center;
+    padding: 0 1rem; /* give some breathing room */
+}
+.nav-links a {
+    flex: 0 0 auto; /* prevent shrinking/expanding */
+    white-space: nowrap;
 }
 
 .nav-links::-webkit-scrollbar {
-    height: 4px;
+    height: 6px; /* slightly bigger for visibility */
 }
 
 .nav-links::-webkit-scrollbar-track {
-    background: transparent;
+    background: var(--red); /* match nav background */
 }
 
 .nav-links::-webkit-scrollbar-thumb {
-    background: white;
+    background: var(--yellow); /* high contrast thumb */
+    border-radius: 3px;
+}
+
+/* Firefox scrollbar colors */
+.nav-links {
+    scrollbar-color: var(--yellow) var(--red);
+    scrollbar-width: thin;
 }
 
 .nav-links a {
@@ -202,6 +219,7 @@ body {
     cursor: pointer;
     position: absolute;
     right: 1rem;
+    z-index: 1100; /* sit above navbar */
 }
 
 .navbar.sticky .back-to-top {
@@ -686,8 +704,8 @@ footer a:hover {
     .hero h1 { font-size: 2.4rem; }
     .navbar { flex-direction: column; align-items: center; }
     .logo { position: static; margin-bottom: 0.5rem; }
-    .nav-links { margin-bottom: 0.5rem; width: auto; overflow-x: visible; }
-    .back-to-top { position: static; }
+    .nav-links { margin-bottom: 0.5rem; width: 100%; overflow-x: auto; justify-content: flex-start; }
+    .back-to-top { position: static; margin-top: 0.5rem; }
     .se-body { 
         flex-direction: column; 
         align-items: center;
