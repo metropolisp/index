@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ozu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+:root {
+    --bg: #fdfdfd;
+    --panel: #ffffff;
+    --text: #1a1a1a;
+    --muted: #666;
+    --red: #b11226;
+    --yellow: #f4c430;
+    --border: #e0e0e0;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+    0%, 83.33% { transform: scaleY(1); }
+    83.34%, 91.67% { transform: scaleY(0.3); }
+    91.68%, 100% { transform: scaleY(1); }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* CHEVRON BAR */
+
+.chevron-bar {
+    height: 30px;
+    background: repeating-linear-gradient(
+        45deg,
+        white 0px,
+        white 15px,
+        var(--yellow) 15px,
+        var(--yellow) 30px
+    );
+}
+
+/* HERO */
+
+.hero {
+    padding: 6rem 2rem 5rem 2rem;
+    text-align: center;
+    position: relative;
+    background: var(--yellow);
+    border-bottom: 4px solid var(--red);
+    overflow: hidden; /* clip manual button to avoid page scroll */
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--red);
+}
+
+.hero .golden-subtitle {
+    color: black;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.eye {
+    position: relative;
+}
+
+.eye::before {
+    content: '';
+    position: absolute;
+    top: 0.4em;
+    left: 0em;
+    width: 0.2em;
+    height: 0.2em;
+    background: currentColor;
+    border-radius: 50%;
+    animation: blink 3s infinite;
+    will-change: transform;
+}
+
+.hero p {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--text);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rotating-code {
+    animation: spin 10s linear infinite;
+    text-align: center;
+    margin: 2rem auto;
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    line-height: 3em;
+    will-change: transform;
+}
+
+.navbar {
+    background: var(--red);
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    color: white;
+    font-weight: 800;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+    position: absolute;
+    left: 1rem;
+}
+
+.navbar.sticky .logo {
+    opacity: 1;
+}
+
+.logo:hover {
+    color: var(--yellow);
+}
+
+.nav-links {
+    display: flex;
+    width: 90%;
+    overflow-x: auto;
+    justify-content: center;
+}
+
+.nav-links::-webkit-scrollbar {
+    height: 4px;
+}
+
+.nav-links::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.nav-links::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+.nav-links a {
+    color: white;
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: var(--yellow);
+    text-decoration: underline;
+}
+
+.back-to-top {
+    background: white;
+    color: var(--red);
+    border-radius: 50%;
+    width: 1.7rem;
+    height: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+}
+
+.navbar.sticky .back-to-top {
+    opacity: 1;
+}
+
+.back-to-top:hover {
+    background: var(--yellow);
+}
+
+.cta-group {
+    margin-top: 2.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    margin: 0.5rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    width: 220px;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--red);
+    color: white;
+    box-shadow: 0 6px 18px rgba(177,18,38,0.25);
+}
+
+.btn-primary:hover {
+    background: white;
+    color: var(--red);
+    transform: translateY(-2px);
+    outline: 2px solid var(--red);
+}
+
+.btn-secondary {
+    background: var(--yellow);
+    color: black;
+    border: 2px dashed black;
+}
+
+.btn-secondary:hover {
+    background: black;
+    color: var(--yellow);
+}
+
+/* SECTION */
+
+.section {
+    max-width: 1100px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+}
+
+/* reduce bottom spacing for community section */
+#community {
+    margin-bottom: 2rem;
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--red);
+    border-left: 6px solid var(--yellow);
+    padding-left: 1rem;
+}
+
+/* VIDEO CONTAINER */
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* FAQS */
+
+details {
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+summary {
+    cursor: pointer;
+    background: var(--panel);
+    padding: 1rem;
+    border: 1px solid var(--border);
+    font-weight: 600;
+    color: var(--text);
+    transition: all 0.2s ease;
+    list-style: none;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary:hover {
+    background: var(--yellow);
+    color: black;
+}
+
+details[open] summary {
+    background: var(--red);
+    color: white;
+    border-bottom: none;
+}
+
+/* swap badge colors when open */
+details[open] summary .q-badge,
+details[open] .q-badge {
+    background: var(--yellow) !important;
+    color: black !important;
+}
+details[open] summary .a-badge,
+details[open] .a-badge {
+    background: var(--red) !important;
+    color: white !important;
+}
+
+details p {
+    padding: 1rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-top: none;
+    margin: 0;
+    color: var(--text);
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-right: 0.5rem;
+}
+
+.q-badge {
+    background: var(--red);
+    color: white;
+}
+
+.a-badge {
+    background: var(--yellow);
+    color: black;
+}
+
+details[open] .q-badge {
+    background: white;
+    color: var(--red);
+}
+
+/* FEATURES GRID */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.feature {
+    background: var(--panel);
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.feature:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-color: var(--red);
+}
+
+.feature h3 {
+    margin-bottom: 1rem;
+    color: var(--red);
+}
+
+.feature code {
+    font-family: 'JetBrains Mono', monospace;
+    background: #fafafa;
+    padding: 3px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+}
+
+/* TERMINAL PANEL */
+
+.terminal {
+    background: #1e1e1e;
+    color: #eaeaea;
+    padding: 2rem;
+    border-radius: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.terminal::before {
+    content: "OZU SESSION";
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--yellow);
+    color: black;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.prompt {
+    color: var(--yellow);
+}
+
+.output {
+    color: #b5e853;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 0;
+    padding: 3rem 2rem;
+    text-align: center;
+    background: var(--red);
+    color: white;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: var(--yellow);
+    text-decoration: underline;
+}
+
+.socials {
+    text-align: center;
+    margin-bottom: 0;
+    background: var(--yellow);
+    padding: 1.5rem;
+    border-radius: 4px;
+}
+
+.socials a {
+    color: black;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+.socials a:hover {
+    text-decoration: underline;
+}
+
+.highlight-red { color: var(--red); font-weight: 600; }
+.highlight-yellow { color: var(--yellow); font-weight: 600; }
+
+/* manual page icon in hero corner */
+.manual-link {
+  position: absolute;
+  /* push most of the button off the top/right edges */
+  top: 0px;
+  right: 20px;
+  width: 90px;
+  height: 90px;
+  font-size: 1.2rem;
+  color: white;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* icon centered automatically, no extra padding */
+  padding: 3rem;
+  /* give bookmark-style point at bottom, extend rectangular area higher */
+  border-radius: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 200; /* ensure on top */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.manual-link:hover {
+  background: white;
+  color: var(--red);
+}
+
+/* STOAT EMBED */
+
+.stoat-bg {
+  width: 100%;
+  background: var(--yellow);
+  padding: 20px 0;
+  border-radius: 18px;
+}
+
+.stoat-embed {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  background: var(--yellow);
+  border-radius: 18px;
+  padding: 28px;
+  max-width: 720px;
+  color: #1a1a1a;
+  margin: 0 auto;
+}
+
+.se-eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+
+.se-stoat-wrapper {
+  position: relative;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+.se-stoat-mini {
+  width: 16px;
+  height: 16px;
+  fill: #1a1a1a;
+  opacity: 0.75;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.se-stoat-link:hover .se-stoat-mini {
+  animation: pulse 3.5s infinite;
+}
+.se-stoat-popup {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #1a1a1a;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.se-stoat-popup-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--yellow);
+}
+
+.se-stoat-wrapper:hover .se-stoat-popup {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.disclaimer-box {
+  background: rgba(255,0,0,0.1);
+  border: 1px dotted var(--red);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.disclaimer-box > .btn {
+  align-self: flex-end;
+  transition: all 0.2s ease;
+}
+
+#accept-btn:hover {
+  background: white !important;
+  color: var(--red) !important;
+  outline: 2px solid var(--red);
+  outline-offset: 0;
+}
+
+.se-body {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+}
+
+.se-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid rgba(0,0,0,0.2);
+  background: #fff;
+}
+
+.se-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.se-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.se-divider {
+  margin: 0 6px;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.se-channel {
+  white-space: nowrap;
+}
+
+.se-description {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  opacity: 0.85;
+}
+
+.se-button {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.se-button:hover {
+  transform: translateY(-2px);
+  background: #000;
+}
+
+@media(max-width:600px){
+    .hero h1 { font-size: 2.4rem; }
+    .navbar { flex-direction: column; align-items: center; }
+    .logo { position: static; margin-bottom: 0.5rem; }
+    .nav-links { margin-bottom: 0.5rem; width: auto; overflow-x: visible; }
+    .back-to-top { position: static; }
+    .se-body { 
+        flex-direction: column; 
+        align-items: center;
+        text-align: center;
+    }
+    .se-title { justify-content: center; }
+    /* keep bookmark flush against header even on narrow screens */
+    .manual-link { top: -10px; right: 10px; }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero" id="hero">
+    <a href="manual.html" class="manual-link" title="Manual">
+        <i class="fas fa-book"></i>
+    </a>
+    <h1>o<span class="eye">Z</span>U</h1>
+    <div class="golden-subtitle">Over-Ze-UUire</div>
+    <p>
+        Λ Spirited, Albeit Unruly First-Attempt At A "LispMachine Over-The-Wire".
+        Effectively, A Containerized Server OS x Co-Habitat Forming User Interface.
+        Not A Suite Of WebApps That Compilment Eachother, But REAL, ACTUAL Cloud Computing! 
+    </p>
+    <div class="cta-group">
+        <a href="#" class="btn btn-primary">Learn</a>
+        <a href="#" class="btn btn-secondary">Setup</a>
+    </div>
+</section>
+
+<nav class="navbar">
+    <a href="#hero" class="logo">o<span class="eye">Z</span>U</a>
+    <div class="nav-links">
+        <a href="#intro-video">Intro‑Video</a>
+        <a href="#quickstart">Quickstart</a>
+        <a href="#features">Philosophy</a>
+        <a href="#faqs">FAQs</a>
+        <a href="#example">Example</a>
+        <a href="#community">Community</a>
+    </div>
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"><i class="fas fa-angle-double-up"></i></div>
+</nav>
+
+<section class="section" id="intro-video">
+    <div class="video-container">
+        <iframe width="1257" height="707" src="https://www.youtube-nocookie.com/embed/vXGZyqynrZw" title="Red Screen in 4K - Relaxing Background" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</section>
+
+
+<section class="section" id="quickstart">
+    <h2>Quickstart</h2>
+    <div class="disclaimer-box">
+      <p><strong>Disclaimer,</strong></p>
+      <p>This project is highly experimental. Even though we will try to take precautions to run things in a containerized environment abstracted by the rest of the system, you are granting access to something that can do arbitrary code execution on your machine. Be mindful of that and by using it, you are agreeing any and all copyright owners & contributors are not legally liable for any data loss, attackers getting access to your machine, etc. Be safe and stay smart, and make backups.</p>
+      <button id="accept-btn" class="btn" style="background: var(--red); color:white;">I Accept That.</button>
+    </div>
+    <div id="quickstart-content" style="display:none;">
+        <textarea placeholder="Basic instructions go here..." style="width:100%;height:150px;"></textarea>
+        <!-- additional quickstart info could go here -->
+    </div>
+</section>
+
+<section class="section" id="features">
+    <h2>Philosophy</h2>
+    <div class="features">
+        <div class="feature">
+            <h3>Communal Computing</h3>
+            <p>
+                Born from CLOG, but stripped of polite ambition.
+                Ozu is not here to render dashboards.
+                It is here to <span class="highlight-red">be a machine</span>.
+            </p>
+        </div>
+        <div class="feature">
+            <h3>Spaced Out</h3>
+            <p>
+                Humans Operate In More That 1.5 Dimensions;
+                So Should The Ways We Interact With Interfaces.
+                The system state lives on the server —
+                your browser is merely <code>projection</code>.
+            </p>
+        </div>
+        <div class="feature">
+            <h3>Live & Reflective</h3>
+            <p>
+                Every session is mutable.
+                Every object inspectable.
+                Every function redefinable in motion.
+            </p>
+        </div>
+        <div class="feature">
+            <h3>Homoiconoclasm</h3>
+            <p>
+                Code‑Should‑Be‑Data &amp; Data‑Should‑Be‑Code
+                Whenever Possible.
+            </p>
+        </div>
+        <div class="feature">
+            <h3>Applications Not Appliances</h3>
+            <p>
+                Everything function should be able to be called / applied to whatever you want
+                -- not just what one explicitly makes available.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="faqs">
+    <h2>FAQs</h2>
+    <details>
+        <summary><span class="badge q-badge">Q:</span> What is Ozu?</summary>
+        <p><span class="badge a-badge">A:</span> Ozu is a Lisp machine over the wire, projecting directly into your browser.</p>
+    </details>
+    <details>
+        <summary><span class="badge q-badge">Q:</span> How does it work?</summary>
+        <p><span class="badge a-badge">A:</span> It runs Common Lisp on the server and streams the interface to your browser.</p>
+    </details>
+    <details>
+        <summary><span class="badge q-badge">Q:</span> Is it open source?</summary>
+        <p><span class="badge a-badge">A:</span> Yes, check the GitHub repository for more details.</p>
+    </details>
+</section>
+
+<section class="section" id="example">
+    <h2>Example</h2>
+    <div class="terminal">
+        <div><span class="prompt">OZU&gt;</span> (defun hello () "Machine Online")</div>
+        <div class="output">HELLO</div>
+        <br>
+        <div><span class="prompt">OZU&gt;</span> (hello)</div>
+        <div class="output">"Machine Online"</div>
+    </div>
+</section>
+
+<section class="section" id="community">
+    <h2>Community</h2>
+    <p style="text-align:center; color:black; max-width:800px; margin: 0 auto 1rem;">
+        We plan to self-host on our own project <a href="https://github.com/metropolisp/cosnic" style="color:black; text-decoration:underline;">metropolisp/cosnic</a> eventually,
+        but for now we’re leaning into Stoat.
+    </p>
+    
+    <!-- Stoat Invite Embed -->
+    <div class="stoat-bg">
+      <div class="stoat-embed">
+      <div class="se-top">
+        <div class="se-eyebrow">
+          <div class="se-stoat-wrapper">
+            <!-- Small Clickable Icon -->
+            <a href="https://stoat.chat" target="_blank" class="se-stoat-link" aria-label="Visit Stoat.Chat">
+              <svg viewBox="0 0 307 307" class="se-stoat-mini">
+                <path d="M49.249 265.73C19.266 237.782.504 197.948.504 153.767.504 69.295 69.084.716 153.555.716c84.472 0 153.051 68.58 153.051 153.05 0 70.3-47.498 129.592-112.124 147.508-14.343-21.075-27.344-40.273-17.624-71.87-11.859 6.052-19.313 17.957-21.569 30.9-4.413-6.935-9.312-13.624-14.987-19.583-14.447-15.17-34.143-25.778-43.258-45.478-4.164-9.305-7.017-22.607-3.719-32.235 2.38 18.687 11.471 35.88 27.754 45.836 12.412 7.588 26.32 8.838 40.241 11.774 14.512 3.058 37.561 9.954 51.701 7.463 11.755-2.067 36.42-15.05 35.761-29.13-.23-4.845-6.144-13.009-8.331-17.684-2.91-6.224-1.183-7.568-.85-13.811.935-17.672-3.731-26.402-12.315-40.954-10.41-17.651-21.835-28.317-41.622-35.482-18.083-6.55-45.913-2.842-46.125-2.541 3.656 4.007 7.02 8.697 7.491 14.247-7.412-6.856-14.582-14.143-22.882-19.955-18.359-12.852-29.858-11.64-37.156 10.714-3.804 11.647-6.68 27.475-3.154 39.388 2.138 7.216 6.577 13.088 11.632 18.503-9.891-1.348-15.887-9.94-18.068-19.252-24.517 53.03-29.976 78.674-28.153 133.606m181.873-50.782-.003-.003c-3.807.117-7.319-1.906-10.19-4.223-1.619-1.373-3.993-3.149-4.325-5.205-.658-4.094 2.602-7.02 4.544-8.235 1.666-1.038 3.691-1.617 5.603-2.059 4.359-1.007 8.884-1.94 13.274-1.087 1.314.256 2.619.68 3.7 1.47 1.08.785 1.92 1.974 2.065 3.304.107.987-.163 1.972-.489 2.908a25.2 25.2 0 0 1-3.117 6.061c-1.297 1.864-2.847 3.575-4.717 4.862-1.87 1.288-4.076 2.14-6.345 2.207m-65.042-60.126c15.053-2.04 16.888 21.271 2.366 22.25s-16.16-20.38-2.366-22.25m-50.717-46.278c1.39 3.313 4.254 5.52 6.728 7.951-5.616 1.704-11.284.077-16.214-2.748.292 5.207 4.148 9.8 7.035 13.458-4.76 1.092-8.967-.539-12.234-3.976-.048 4.84 1.6 9.06 3.974 13.153-9.284 4.618-13.292-5.095-13.766-12.696-.519-8.354 2.862-29.432 8.856-35.505 6.705-6.796 17.121 1.12 22.8 5.684 5.012 4.026 9.834 8.89 14.376 13.425-5.963 3.94-14.844 3.776-21.555 1.254m116.675 60.858c-3.282-5.707-4.286-7.367-6.195-11.5-1.3-2.814-1.957-6.152 2.751-6.251 8.541-.181 11.5 13.346 4.848 18.066a.976.976 0 0 1-1.404-.315m-5.611-54.458c2.423-33.31 2.14-54.868-28.753-24.63 11.66 5.423 21.466 14.075 28.753 24.63"/>
+              </svg>
+            </a>
+
+            <!-- Hover Popup -->
+            <a href="https://stoat.chat" target="_blank" class="se-stoat-popup">
+              <svg viewBox="0 0 307 307" class="se-stoat-popup-icon">
+                <path d="M49.249 265.73C19.266 237.782.504 197.948.504 153.767.504 69.295 69.084.716 153.555.716c84.472 0 153.051 68.58 153.051 153.05 0 70.3-47.498 129.592-112.124 147.508-14.343-21.075-27.344-40.273-17.624-71.87-11.859 6.052-19.313 17.957-21.569 30.9-4.413-6.935-9.312-13.624-14.987-19.583-14.447-15.17-34.143-25.778-43.258-45.478-4.164-9.305-7.017-22.607-3.719-32.235 2.38 18.687 11.471 35.88 27.754 45.836 12.412 7.588 26.32 8.838 40.241 11.774 14.512 3.058 37.561 9.954 51.701 7.463 11.755-2.067 36.42-15.05 35.761-29.13-.23-4.845-6.144-13.009-8.331-17.684-2.91-6.224-1.183-7.568-.85-13.811.935-17.672-3.731-26.402-12.315-40.954-10.41-17.651-21.835-28.317-41.622-35.482-18.083-6.55-45.913-2.842-46.125-2.541 3.656 4.007 7.02 8.697 7.491 14.247-7.412-6.856-14.582-14.143-22.882-19.955-18.359-12.852-29.858-11.64-37.156 10.714-3.804 11.647-6.68 27.475-3.154 39.388 2.138 7.216 6.577 13.088 11.632 18.503-9.891-1.348-15.887-9.94-18.068-19.252-24.517 53.03-29.976 78.674-28.153 133.606m181.873-50.782-.003-.003c-3.807.117-7.319-1.906-10.19-4.223-1.619-1.373-3.993-3.149-4.325-5.205-.658-4.094 2.602-7.02 4.544-8.235 1.666-1.038 3.691-1.617 5.603-2.059 4.359-1.007 8.884-1.94 13.274-1.087 1.314.256 2.619.68 3.7 1.47 1.08.785 1.92 1.974 2.065 3.304.107.987-.163 1.972-.489 2.908a25.2 25.2 0 0 1-3.117 6.061c-1.297 1.864-2.847 3.575-4.717 4.862-1.87 1.288-4.076 2.14-6.345 2.207m-65.042-60.126c15.053-2.04 16.888 21.271 2.366 22.25s-16.16-20.38-2.366-22.25m-50.717-46.278c1.39 3.313 4.254 5.52 6.728 7.951-5.616 1.704-11.284.077-16.214-2.748.292 5.207 4.148 9.8 7.035 13.458-4.76 1.092-8.967-.539-12.234-3.976-.048 4.84 1.6 9.06 3.974 13.153-9.284 4.618-13.292-5.095-13.766-12.696-.519-8.354 2.862-29.432 8.856-35.505 6.705-6.796 17.121 1.12 22.8 5.684 5.012 4.026 9.834 8.89 14.376 13.425-5.963 3.94-14.844 3.776-21.555 1.254m116.675 60.858c-3.282-5.707-4.286-7.367-6.195-11.5-1.3-2.814-1.957-6.152 2.751-6.251 8.541-.181 11.5 13.346 4.848 18.066a.976.976 0 0 1-1.404-.315m-5.611-54.458c2.423-33.31 2.14-54.868-28.753-24.63 11.66 5.423 21.466 14.075 28.753 24.63"/>
+              </svg>
+              <span>Stoat.Chat</span>
+            </a>
+          </div>
+
+          THE COMMUNITY
+        </div>
+      </div>
+
+      <div class="se-body">
+        <div class="se-avatar">
+          <img src="metropolisp.webp" alt="Community Avatar">
+        </div>
+
+        <div class="se-content">
+          <div class="se-title">
+            <span class="se-community">METROP( )LISP</span>
+            <span class="se-divider">/</span>
+            <span class="se-channel">OZU</span>
+          </div>
+
+          <div class="se-description">
+            Connect, collaborate, and stay aligned. Join the conversation and be part of our growing community on Stoat.
+          </div>
+
+          <a href="YOUR_INVITE_LINK" target="_blank" class="se-button">
+            Join Our Server
+          </a>
+        </div>
+      </div>
+    </div>
+</section>
+
+<div style="text-align: center;">
+    <h2 class="rotating-code">&lt;/&gt;</h2>
+</div>
+
+<div class="chevron-bar"></div>
+
+<div class="socials">
+    <a href="https://github.com/sponsors/metropolisp"><i class="fas fa-heart"></i> Sponsor</a>
+    <a href="https://github.com/metropolisp/ozu"><i class="fab fa-github"></i> Contribute</a>
+</div>
+
+<footer>
+    <p><a href="https://metropolisp.com">Λ METROPOLISP Project.</a></p>
+    <p><em>Licensed Under The <a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3</a>,</em></p>
+    <p><em>Where Possible; Please See <a href="https://github.com/metropolisp/clark-lang/LEGAL.txt">For Exceptions.</a></em></p>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    const hero = document.querySelector('.hero');
+    if (window.scrollY > hero.offsetHeight) {
+        navbar.classList.add('sticky');
+    } else {
+        navbar.classList.remove('sticky');
+    }
+});
+
+    document.getElementById('accept-btn').addEventListener('click', () => {
+        document.getElementById('quickstart-content').style.display = 'block';
+        document.getElementById('accept-btn').style.display = 'none';
+    });
+</script>
+
+</body>
+</html>
