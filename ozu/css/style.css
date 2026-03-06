@@ -24,6 +24,16 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ensure anchors don't get hidden under the sticky navbar */
+section {
+    scroll-margin-top: 80px; /* default offset for desktop */
+}
+@media(max-width:600px) {
+    section {
+        scroll-margin-top: 120px; /* a bit taller on mobile when navbar stacks */
+    }
+} 
+
 /* prevent horizontal page scrolling caused by nav overflow */
 body { overflow-x: hidden; }
 
