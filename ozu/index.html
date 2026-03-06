@@ -55,6 +55,11 @@ body {
 
 /* CHEVRON BAR */
 
+@keyframes chevron-scroll {
+    from { background-position: 0 0; }
+    to   { background-position: -42.43px 0; }
+}
+
 .chevron-bar {
     height: 30px;
     background: repeating-linear-gradient(
@@ -64,6 +69,8 @@ body {
         var(--yellow) 15px,
         var(--yellow) 30px
     );
+    background-size: 42.43px 42.43px;
+    animation: chevron-scroll 2.5s linear infinite;
 }
 
 /* HERO */
