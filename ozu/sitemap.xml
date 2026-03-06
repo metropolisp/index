@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/index/ozu/categories/</loc>
+    <loc>/categories/</loc>
   </url><url>
-    <loc>/index/ozu/</loc>
+    <loc>/</loc>
   </url><url>
-    <loc>/index/ozu/manual/</loc>
+    <loc>/manual/</loc>
   </url><url>
-    <loc>/index/ozu/tags/</loc>
+    <loc>/tags/</loc>
   </url>
 </urlset>
