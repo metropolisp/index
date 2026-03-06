@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.155.3">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home - Ozu</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/index/ozu/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+
+
+
+<style>
+ 
+.hero {
+    padding: 6rem 2rem 5rem 2rem;
+    text-align: center;
+    position: relative;
+    background: var(--yellow);
+    border-bottom: 4px solid var(--red);
+    overflow: hidden;  
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--red);
+}
+
+.hero .golden-subtitle {
+    color: black;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.eye {
+    position: relative;
+}
+
+.eye::before {
+    content: '';
+    position: absolute;
+    top: 0.4em;
+    left: 0em;
+    width: 0.2em;
+    height: 0.2em;
+    background: currentColor;
+    border-radius: 50%;
+    animation: blink 3s infinite;
+    will-change: transform;
+}
+
+.hero p {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--text);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-group {
+    margin-top: 2.5rem;
+}
+
+.manual-link {
+  position: absolute;
+   
+  top: 0px;
+  right: 20px;
+  width: 90px;
+  height: 90px;
+  font-size: 1.2rem;
+  color: white;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   
+  padding: 3rem;
+   
+  border-radius: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 200;  
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.manual-link:hover {
+  background: white;
+  color: var(--red);  
+}
+
+@media(max-width:600px){
+    .hero h1 { font-size: 2.4rem; }
+     
+    .manual-link { top: -10px; right: 10px; }
+}
+</style>
+
+<section class="hero" id="hero">
+    <a href="/index/ozu/manual/" class="manual-link" title="Manual">
+        <i class="fas fa-book"></i>
+    </a>
+    <h1>o<span class="eye">Z</span>U</h1>
+    <div class="golden-subtitle">Over-Ze-UUire</div>
+    <p>
+        Λ Spirited, Albeit Unruly First-Attempt At A "LispMachine Over-The-Wire".
+        Effectively, A Containerized Server OS x Co-Habitat Forming User Interface.
+        Not A Suite Of WebApps That Compilment Eachother, But REAL, ACTUAL Cloud Computing! 
+    </p>
+    <div class="cta-group">
+        <a href="#" class="btn btn-primary">Learn</a>
+        <a href="#" class="btn btn-secondary">Setup</a>
+    </div>
+</section>
+
+<style>
+ 
+.navbar {
+    background: var(--red);
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;  
+}
+
+.logo {
+    color: white;
+    font-weight: 800;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+    position: absolute;
+    left: 1rem;
+}
+
+.navbar.sticky .logo {
+    opacity: 1;
+}
+
+.logo:hover {
+    color: var(--yellow);
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: nowrap;  
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: center;
+    padding: 0 1rem;  
+}
+.nav-links a {
+    flex: 0 0 auto;  
+    white-space: nowrap;
+    color: white;
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: var(--yellow);
+    text-decoration: underline;
+}
+
+.nav-links a.active {
+    color: var(--yellow);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+ 
+.nav-links::-webkit-scrollbar {
+    height: 6px;  
+}
+
+.nav-links::-webkit-scrollbar-track {
+    background: var(--red);  
+}
+
+.nav-links::-webkit-scrollbar-thumb {
+    background: var(--yellow);  
+    border-radius: 3px;
+}
+
+ 
+.nav-links {
+    scrollbar-color: var(--yellow) var(--red);
+    scrollbar-width: thin;
+}
+
+.back-to-top {
+    background: white;
+    color: var(--red);
+    border-radius: 50%;
+    width: 1.7rem;
+    height: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    z-index: 1100;  
+}
+
+.navbar.sticky .back-to-top {
+    opacity: 1;
+}
+
+.back-to-top:hover {
+    background: var(--yellow);
+}
+
+@media(max-width:600px){
+    .navbar { flex-direction: column; align-items: center; }
+    .logo { position: static; margin-bottom: 0.5rem; }
+    .nav-links { margin-bottom: 0.5rem; width: 100%; overflow-x: auto; justify-content: flex-start; }
+    .back-to-top { position: static; margin-top: 0.5rem; }
+}
+</style>
+
+<nav class="navbar">
+    <a href="https://metropolisp.github.io/index/ozu/" class="logo">o<span class="eye">Z</span>U</a>
+    <div class="nav-links">
+        <a href="https://metropolisp.github.io/index/ozu/#intro-video">Intro‑Video</a>
+        <a href="https://metropolisp.github.io/index/ozu/#quickstart">Quickstart</a>
+        <a href="https://metropolisp.github.io/index/ozu/#features">Philosophy</a>
+        <a href="https://metropolisp.github.io/index/ozu/#faqs">FAQs</a>
+        <a href="https://metropolisp.github.io/index/ozu/#example">Example</a>
+        <a href="https://metropolisp.github.io/index/ozu/#community">Community</a>
+    </div>
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"><i class="fas fa-angle-double-up"></i></div>
+</nav>
+
+<style>
+ 
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;  
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+<section class="section" id="intro-video">
+    <div class="video-container">
+        <iframe width="1257" height="707" src="https://www.youtube-nocookie.com/embed/vXGZyqynrZw" title="Red Screen in 4K - Relaxing Background" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</section>
+<style>
+ 
+.disclaimer-box {
+  background: rgba(255,0,0,0.1);
+  border: 1px dotted var(--red);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+}
+.disclaimer-box > .btn {
+  align-self: flex-end;
+  transition: all 0.2s ease;
+}
+
+#accepted-msg {
+  color: var(--red);
+  font-weight: bold;
+  display: none;
+}
+#post-accept-warning {
+  display: none;
+}
+#quickstart-content { display: none; }
+#quickstart-content textarea { width:100%; height:150px; }
+</style>
+
+<section class="section" id="quickstart">
+    <h2>Quickstart</h2>
+    <div class="disclaimer-box">
+      <p><strong>Disclaimer,</strong></p>
+      <p>This project is highly experimental. Even though we will try to take precautions to run things in a containerized environment abstracted from the rest of the system, you are granting access to something that can do arbitrary code execution on your machine. Be mindful of that and by using it, you are agreeing any and all copyright owners & contributors are not legally liable for any data loss, attackers getting access to your machine, etc. </br></br> Do you accept that? <span id="accepted-msg">ACCEPTED!</span> <span id="post-accept-warning"><br>(Be Safe, Stay Smart, And Make Backups!)</span></p>
+      <button id="accept-btn" class="btn btn-primary">I Accept That.</button>
+    </div>
+    <div id="quickstart-content">
+        <textarea placeholder="Setup Instructions Coming-Soon..."></textarea>
+        
+    </div>
+</section>
+<style>
+ 
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.feature {
+    background: var(--panel);
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.feature:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-color: var(--red);
+}
+
+.feature h3 {
+    margin-bottom: 1rem;
+    color: var(--red);
+}
+
+.feature code {
+    font-family: 'JetBrains Mono', monospace;
+    background: #fafafa;
+    padding: 3px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+}
+</style>
+
+<section class="section" id="features">
+    <h2>Philosophy</h2>
+    <div class="features">
+        <div class="feature">
+            <h3>Communal Computing</h3>
+            <p>
+                Computing Shouldn't Be Single-Player.
+                Vouch For Your Friends, Lets Them Join Your 
+                Machine And Get With The Program(ming)</span>.
+            </p>
+        </div>
+        <div class="feature">
+            <h3>Spaced Out</h3>
+            <p>
+                Humans Operate In More That 1.5 Dimensions;
+                So Should The Ways We Interact With Interfaces.
+                The system state lives on the server —
+                your browser is merely <code>projection</code>.
+            </p>
+        </div>
+        <div class="feature">
+            <h3>Live & Reflective</h3>
+            <p>
+                Every session is mutable.
+                Every object inspectable.
+                Every function redefinable in motion.
+            </p>
+        </div>
+        <div class="feature">
+            <h3>Homoiconoclasm</h3>
+            <p>
+                Code‑Should‑Be‑Data &amp; Data‑Should‑Be‑Code
+                Whenever Possible.
+            </p>
+        </div>
+        <div class="feature">
+            <h3>Applications Not Appliances</h3>
+            <p>
+                Everything function should be able to be called / applied to whatever you want
+                -- not just what one explicitly makes available.
+            </p>
+        </div>
+    </div>
+</section>
+<style>
+ 
+ 
+details {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+ 
+details summary {
+    background: var(--panel);
+    padding: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;  
+    transition: background 0.2s ease;
+}
+
+details summary:hover {
+    background: var(--yellow);
+}
+
+ 
+details summary::marker {
+    font-size: 1.2em;
+    color: var(--muted);
+}
+
+ 
+details[open] summary {
+    background: var(--red);
+    color: white;
+}
+
+ 
+details[open] .q-badge {
+    background: var(--yellow) !important;
+    color: black !important;
+}
+
+ 
+details[open] .a-badge {
+    background: var(--red) !important;
+    color: white !important;
+}
+
+ 
+details p {
+    padding: 1rem;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    margin: 0;
+    color: var(--text);
+}
+
+ 
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-right: 0.5rem;
+}
+
+.q-badge {
+    background: var(--red);
+    color: white;
+}
+
+.a-badge {
+    background: var(--yellow);
+    color: black;
+}
+
+ 
+details[open] .q-badge {
+    background: white;
+    color: var(--red);
+}
+</style>
+
+<section class="section" id="faqs">
+    <h2>FAQs</h2>
+    <details>
+        <summary><span class="badge q-badge">Q:</span> What is Ozu?</summary>
+        <p><span class="badge a-badge">A:</span> Ozu Is A Fork Of The Great <a href="https://github.com/rabbibotton/clog" target="_blank">CLOG </a>Project. Instead Of Being A General-Purpose Graphical User-Interface Toolkit Like CLOG, Ozu Leans Into The Interactiveness Of The System Plus The Portability Of It Being Browser-Bound In An Attempt To Make A General Purpose Computing Environment You Can Control "From Anywhere".</p>
+    </details>
+    <details>
+        <summary><span class="badge q-badge">Q:</span> How does it work?</summary>
+        <p><span class="badge a-badge">A:</span> The Big Idea In Ozu is `Over-The-Wire` (In-fact Ozu is a forced acryonym meaning that); Notably We Run A Server And We Talk To It Via Our Client. So Any Browser / User With Access Has Access To A Real Lisp Image And Any Depends On The Host System. We Reduce the Amount Of Client Code Being Ran.</p>
+    </details>
+    <details>
+        <summary><span class="badge q-badge">Q:</span> Outta Space?</summary>
+        <p><span class="badge a-badge">A:</span> ...</p>
+    </details>
+</section>
+<style>
+ 
+.terminal {
+    background: #1e1e1e;
+    color: #eaeaea;
+    padding: 2rem;
+    border-radius: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.terminal::before {
+    content: "OZU SESSION";
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--yellow);
+    color: black;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.prompt {
+    color: var(--yellow);
+}
+
+.output {
+    color: #b5e853;
+}
+</style>
+
+<section class="section" id="example">
+    <h2>Example</h2>
+    <div class="terminal">
+        <div><span class="prompt">OZU&gt;</span> (defun hello () "Machine Online")</div>
+        <div class="output">HELLO</div>
+        <br>
+        <div><span class="prompt">OZU&gt;</span> (hello)</div>
+        <div class="output">"Machine Online"</div>
+    </div>
+</section>
+<style>
+ 
+.stoat-bg {
+  width: 100%;
+  background: var(--yellow);
+  padding: 20px 0;
+  border-radius: 18px;
+}
+
+.stoat-embed {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  background: var(--yellow);
+  border-radius: 18px;
+  padding: 28px;
+  max-width: 720px;
+  color: #1a1a1a;
+  margin: 0 auto;
+}
+
+.se-eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.se-stoat-wrapper {
+  position: relative;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+.se-stoat-mini {
+  width: 16px;
+  height: 16px;
+  fill: #1a1a1a;
+  opacity: 0.75;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.se-stoat-link:hover .se-stoat-mini {
+  animation: pulse 3.5s infinite;
+}
+
+.se-stoat-popup {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #1a1a1a;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.se-stoat-popup-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--yellow);
+}
+
+.se-stoat-wrapper:hover .se-stoat-popup {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+ 
+.se-body {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+}
+
+.se-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid rgba(0,0,0,0.2);
+  background: #fff;
+}
+
+.se-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.se-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.se-divider {
+  margin: 0 6px;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.se-channel {
+  white-space: nowrap;
+}
+
+.se-description {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  opacity: 0.85;
+}
+
+.se-button {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.se-button:hover {
+  transform: translateY(-2px);
+  background: #000;
+}
+
+@media(max-width:600px){
+    .se-body { 
+        flex-direction: column; 
+        align-items: center;
+        text-align: center;
+    }
+    .se-title { justify-content: center; }
+}
+</style>
+
+<section class="section" id="community">
+    <h2>Community</h2>
+    <p style="text-align:center; color:black; max-width:800px; margin: 0 auto 1rem;">
+        We plan to self-host <code>eventually™</code> on our own home(planet)-grown project <a href="https://github.com/metropolisp/consmic" style="text-decoration:underline;">metropolisp/consmic</a> eventually,
+        but for now we’re leaning into Stoat as the mass Discord exodus spins into gear. 
+    </br>
+    </br>
+    </p>
+    
+    
+    <div class="stoat-bg">
+      <div class="stoat-embed">
+      <div class="se-top">
+        <div class="se-eyebrow">
+          <div class="se-stoat-wrapper">
+            
+            <a href="https://stoat.chat" target="_blank" class="se-stoat-link" aria-label="Visit Stoat.Chat">
+              <svg viewBox="0 0 307 307" class="se-stoat-mini">
+                <path d="M49.249 265.73C19.266 237.782.504 197.948.504 153.767.504 69.295 69.084.716 153.555.716c84.472 0 153.051 68.58 153.051 153.05 0 70.3-47.498 129.592-112.124 147.508-14.343-21.075-27.344-40.273-17.624-71.87-11.859 6.052-19.313 17.957-21.569 30.9-4.413-6.935-9.312-13.624-14.987-19.583-14.447-15.17-34.143-25.778-43.258-45.478-4.164-9.305-7.017-22.607-3.719-32.235 2.38 18.687 11.471 35.88 27.754 45.836 12.412 7.588 26.32 8.838 40.241 11.774 14.512 3.058 37.561 9.954 51.701 7.463 11.755-2.067 36.42-15.05 35.761-29.13-.23-4.845-6.144-13.009-8.331-17.684-2.91-6.224-1.183-7.568-.85-13.811.935-17.672-3.731-26.402-12.315-40.954-10.41-17.651-21.835-28.317-41.622-35.482-18.083-6.55-45.913-2.842-46.125-2.541 3.656 4.007 7.02 8.697 7.491 14.247-7.412-6.856-14.582-14.143-22.882-19.955-18.359-12.852-29.858-11.64-37.156 10.714-3.804 11.647-6.68 27.475-3.154 39.388 2.138 7.216 6.577 13.088 11.632 18.503-9.891-1.348-15.887-9.94-18.068-19.252-24.517 53.03-29.976 78.674-28.153 133.606m181.873-50.782-.003-.003c-3.807.117-7.319-1.906-10.19-4.223-1.619-1.373-3.993-3.149-4.325-5.205-.658-4.094 2.602-7.02 4.544-8.235 1.666-1.038 3.691-1.617 5.603-2.059 4.359-1.007 8.884-1.94 13.274-1.087 1.314.256 2.619.68 3.7 1.47 1.08.785 1.92 1.974 2.065 3.304.107.987-.163 1.972-.489 2.908a25.2 25.2 0 0 1-3.117 6.061c-1.297 1.864-2.847 3.575-4.717 4.862-1.87 1.288-4.076 2.14-6.345 2.207m-65.042-60.126c15.053-2.04 16.888 21.271 2.366 22.25s-16.16-20.38-2.366-22.25m-50.717-46.278c1.39 3.313 4.254 5.52 6.728 7.951-5.616 1.704-11.284.077-16.214-2.748.292 5.207 4.148 9.8 7.035 13.458-4.76 1.092-8.967-.539-12.234-3.976-.048 4.84 1.6 9.06 3.974 13.153-9.284 4.618-13.292-5.095-13.766-12.696-.519-8.354 2.862-29.432 8.856-35.505 6.705-6.796 17.121 1.12 22.8 5.684 5.012 4.026 9.834 8.89 14.376 13.425-5.963 3.94-14.844 3.776-21.555 1.254m116.675 60.858c-3.282-5.707-4.286-7.367-6.195-11.5-1.3-2.814-1.957-6.152 2.751-6.251 8.541-.181 11.5 13.346 4.848 18.066a.976.976 0 0 1-1.404-.315m-5.611-54.458c2.423-33.31 2.14-54.868-28.753-24.63 11.66 5.423 21.466 14.075 28.753 24.63"/>
+              </svg>
+            </a>
+
+            
+            <a href="https://stoat.chat" target="_blank" class="se-stoat-popup">
+              <svg viewBox="0 0 307 307" class="se-stoat-popup-icon">
+                <path d="M49.249 265.73C19.266 237.782.504 197.948.504 153.767.504 69.295 69.084.716 153.555.716c84.472 0 153.051 68.58 153.051 153.05 0 70.3-47.498 129.592-112.124 147.508-14.343-21.075-27.344-40.273-17.624-71.87-11.859 6.052-19.313 17.957-21.569 30.9-4.413-6.935-9.312-13.624-14.987-19.583-14.447-15.17-34.143-25.778-43.258-45.478-4.164-9.305-7.017-22.607-3.719-32.235 2.38 18.687 11.471 35.88 27.754 45.836 12.412 7.588 26.32 8.838 40.241 11.774 14.512 3.058 37.561 9.954 51.701 7.463 11.755-2.067 36.42-15.05 35.761-29.13-.23-4.845-6.144-13.009-8.331-17.684-2.91-6.224-1.183-7.568-.850-13.811.935-17.672-3.731-26.402-12.315-40.954-10.41-17.651-21.835-28.317-41.622-35.482-18.083-6.55-45.913-2.842-46.125-2.541 3.656 4.007 7.020 8.697 7.491 14.247-7.412-6.856-14.582-14.143-22.882-19.955-18.359-12.852-29.858-11.640-37.156 10.714-3.804 11.647-6.680 27.475-3.154 39.388 2.138 7.216 6.577 13.088 11.632 18.503-9.891-1.348-15.887-9.940-18.068-19.252-24.517 53.03-29.976 78.674-28.153 133.606m181.873-50.782-.003-.003c-3.807.117-7.319-1.906-10.19-4.223-1.619-1.373-3.993-3.149-4.325-5.205-.658-4.094 2.602-7.020 4.544-8.235 1.666-1.038 3.691-1.617 5.603-2.059 4.359-1.007 8.884-1.940 13.274-1.087 1.314.256 2.619.680 3.700 1.470 1.080.785 1.920 1.974 2.065 3.304.107.987-.163 1.972-.489 2.908a25.2 25.2 0 0 1-3.117 6.061c-1.297 1.864-2.847 3.575-4.717 4.862-1.870 1.288-4.076 2.140-6.345 2.207m-65.042-60.126c15.053-2.040 16.888 21.271 2.366 22.250s-16.160-20.380-2.366-22.250m-50.717-46.278c1.390 3.313 4.254 5.520 6.728 7.951-5.616 1.704-11.284.077-16.214-2.748.292 5.207 4.148 9.800 7.035 13.458-4.760 1.092-8.967-.539-12.234-3.976-.048 4.840 1.600 9.060 3.974 13.153-9.284 4.618-13.292-5.095-13.766-12.696-.519-8.354 2.862-29.432 8.856-35.505 6.705-6.796 17.121 1.120 22.800 5.684 5.012 4.026 9.834 8.890 14.376 13.425-5.963 3.940-14.844 3.776-21.555 1.254m116.675 60.858c-3.282-5.707-4.286-7.367-6.195-11.500-1.300-2.814-1.957-6.152 2.751-6.251 8.541-.181 11.500 13.346 4.848 18.066a.976.976 0 0 1-1.404-.315m-5.611-54.458c2.423-33.310 2.140-54.868-28.753-24.630 11.660 5.423 21.466 14.075 28.753 24.630"/>
+              </svg>
+              <span>Stoat.Chat</span>
+            </a>
+          </div>
+
+          THE COMMUNITY
+        </div>
+      </div>
+
+      <div class="se-body">
+        <div class="se-avatar">
+          <img src="metropolisp.webp" alt="Community Avatar">
+        </div>
+
+        <div class="se-content">
+          <div class="se-title">
+            <span class="se-community">METROP( )LISP</span>
+            <span class="se-divider">/</span>
+            <span class="se-channel">OZU</span>
+          </div>
+
+          <div class="se-description">
+            Metropolisp Is Community Trying To Make A Live'Able Lisp Environment; A Web-Bound LispMachine OS x Spatial Interface & Collaborative Connecting Platform.
+          </div>
+
+          <a href="YOUR_INVITE_LINK" target="_blank" class="se-button">
+            Join Our Server
+          </a>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<style>
+ 
+footer {
+    margin-top: 0;
+    padding: 3rem 2rem;
+    text-align: center;
+    background: var(--red);
+    color: white;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+}
+footer a:visited {
+    color: white;
+}
+
+footer a:hover {
+    color: var(--yellow);
+    text-decoration: underline;
+}
+
+.socials {
+    text-align: center;
+    margin-bottom: 0;
+    background: var(--yellow);
+    padding: 1.5rem;
+    border-radius: 4px;
+}
+
+.socials a {
+    color: black;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+.socials a:hover {
+    text-decoration: underline;
+}
+
+ 
+.rotating-code {
+    animation: spin 10s linear infinite;
+    text-align: center;
+    margin: 2rem auto;
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    line-height: 3em;
+    will-change: transform;
+}
+
+ 
+@keyframes chevron-scroll {
+    from { background-position: 0 0; }
+    to   { background-position: -42.43px 0; }
+}
+
+.chevron-bar {
+    height: 30px;
+    background: repeating-linear-gradient(
+        45deg,
+        white 0px,
+        white 15px,
+        var(--yellow) 15px,
+        var(--yellow) 30px
+    );
+    background-size: 42.43px 42.43px;
+    animation: chevron-scroll 2.5s linear infinite;
+}
+</style>
+
+<div style="text-align: center;">
+    <h2 class="rotating-code">&lt;/&gt;</h2>
+</div>
+
+<div class="chevron-bar"></div>
+
+<div class="socials">
+    <a href="https://github.com/sponsors/metropolisp"><i class="fas fa-heart"></i> Sponsor</a>
+    <a href="https://github.com/metropolisp/ozu"><i class="fab fa-github"></i> Contribute</a>
+</div>
+
+<footer>
+    <p><a href="https://metropolisp.com">Λ METROPOLISP Project.</a></p>
+    <p><em>Licensed Under The <a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3</a>,</em></p>
+    <p><em>Where Possible; Please See <a href="https://github.com/metropolisp/clark-lang/LEGAL.txt">For Exceptions.</a></em></p>
+</footer>
+
+
+<script src="/index/ozu/js/main.js"></script>
+</body>
+</html>

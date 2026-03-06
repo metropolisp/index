@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual - Ozu</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/index/ozu/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+
+  <style>
+ 
+.navbar {
+    background: var(--red);
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;  
+}
+
+.logo {
+    color: white;
+    font-weight: 800;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+    position: absolute;
+    left: 1rem;
+}
+
+.navbar.sticky .logo {
+    opacity: 1;
+}
+
+.logo:hover {
+    color: var(--yellow);
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: nowrap;  
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: center;
+    padding: 0 1rem;  
+}
+.nav-links a {
+    flex: 0 0 auto;  
+    white-space: nowrap;
+    color: white;
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: var(--yellow);
+    text-decoration: underline;
+}
+
+.nav-links a.active {
+    color: var(--yellow);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+ 
+.nav-links::-webkit-scrollbar {
+    height: 6px;  
+}
+
+.nav-links::-webkit-scrollbar-track {
+    background: var(--red);  
+}
+
+.nav-links::-webkit-scrollbar-thumb {
+    background: var(--yellow);  
+    border-radius: 3px;
+}
+
+ 
+.nav-links {
+    scrollbar-color: var(--yellow) var(--red);
+    scrollbar-width: thin;
+}
+
+.back-to-top {
+    background: white;
+    color: var(--red);
+    border-radius: 50%;
+    width: 1.7rem;
+    height: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    z-index: 1100;  
+}
+
+.navbar.sticky .back-to-top {
+    opacity: 1;
+}
+
+.back-to-top:hover {
+    background: var(--yellow);
+}
+
+@media(max-width:600px){
+    .navbar { flex-direction: column; align-items: center; }
+    .logo { position: static; margin-bottom: 0.5rem; }
+    .nav-links { margin-bottom: 0.5rem; width: 100%; overflow-x: auto; justify-content: flex-start; }
+    .back-to-top { position: static; margin-top: 0.5rem; }
+}
+</style>
+
+<nav class="navbar">
+    <a href="https://metropolisp.github.io/index/ozu/" class="logo">o<span class="eye">Z</span>U</a>
+    <div class="nav-links">
+        <a href="https://metropolisp.github.io/index/ozu/#intro-video">Intro‑Video</a>
+        <a href="https://metropolisp.github.io/index/ozu/#quickstart">Quickstart</a>
+        <a href="https://metropolisp.github.io/index/ozu/#features">Philosophy</a>
+        <a href="https://metropolisp.github.io/index/ozu/#faqs">FAQs</a>
+        <a href="https://metropolisp.github.io/index/ozu/#example">Example</a>
+        <a href="https://metropolisp.github.io/index/ozu/#community">Community</a>
+    </div>
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"><i class="fas fa-angle-double-up"></i></div>
+</nav>
+
+
+
+<main class="section">
+    <!-- raw HTML omitted -->
+
+</main>
+
+
+<script src="/index/ozu/js/main.js"></script>
+</body>
+</html>
