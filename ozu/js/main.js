@@ -10,11 +10,19 @@ window.addEventListener('scroll', () => {
     // scrollspy: highlight nav link for current section
     const sections = document.querySelectorAll('section[id]');
     const scrollPos = window.scrollY + 80; // offset a bit for header height
+    // determine base path (if <base> tag is present or from window.location)
+    const baseTag = document.querySelector('base');
+    const basePath = baseTag ? baseTag.getAttribute('href') : window.location.pathname.replace(/\/index\.html$/, '');
+
     sections.forEach(section => {
         const top = section.offsetTop;
         const height = section.offsetHeight;
         const id = section.getAttribute('id');
-        const link = document.querySelector('.nav-links a[href*="#' + id + '"]');
+        // look for nav link with either just the hash or prefixing basePath
+        let link = document.querySelector('.nav-links a[href="#' + id + '"]');
+        if (!link && basePath) {
+            link = document.querySelector('.nav-links a[href="' + basePath + '#' + id + '"]');
+        }
         if (scrollPos >= top && scrollPos < top + height) {
             if (link) link.classList.add('active');
         } else {
