@@ -42,6 +42,12 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ensure page content starts below the fixed navbar so that nothing is
+   hidden behind it (spacing roughly matches nav height + a little buffer) */
+body {
+    padding-top: 4rem;
+}
+
 /* ensure anchors don't get hidden under the sticky navbar */
 section {
     scroll-margin-top: 80px; /* default offset for desktop */
