@@ -23,14 +23,20 @@
     background: var(--red);
     padding: 1rem;
      
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2000;  
+}
+
+ 
+.navbar.sticky,
+.navbar.manual {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 .logo {
@@ -156,6 +162,10 @@
     </div>
     <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"><i class="fas fa-angle-double-up"></i></div>
 </nav>
+  
+  <div class="page-search">
+      <input id="page-search" type="search" placeholder="Filter page…" aria-label="Filter page content">
+  </div>
 
 
 

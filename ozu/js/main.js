@@ -38,9 +38,16 @@ function handleScroll() {
     }
 }
 
-window.addEventListener('scroll', handleScroll);
+window.addEventListener('scroll', () => {
+    handleScroll();
+    // recalc padding after sticky state may have changed
+    updateNavHeightVar();
+});
 // run once on load in case the page is already scrolled or a hash is present
-window.addEventListener('load', handleScroll);
+window.addEventListener('load', () => {
+    handleScroll();
+    updateNavHeightVar();
+});
 
     // the "accept" button only exists on the quickstart page; guard
     // against its absence so the script can run everywhere (otherwise a
@@ -176,15 +183,74 @@ function adjustToc() {
     });
 }
 
-// perform initial scroll if page loads with a hash
+// keep a CSS variable updated with the navbar's height so that the
+// page-search element (and body padding) can position itself below the
+// fixed header. this runs on load and resize.
+function updateNavHeightVar() {
+    const nav = document.querySelector('.navbar');
+    const search = document.querySelector('.page-search');
+    if (!nav) return;
+    const navH = nav.offsetHeight;
+    document.documentElement.style.setProperty('--nav-height', navH + 'px');
+    let total = 0;
+    // only add padding when the navbar is fixed (sticky or manual); on the
+    // homepage before scrolling we want the hero to start at the top of the
+    // page, so no extra offset is needed until the bar pins to the viewport.
+    if (nav.classList.contains('sticky') || nav.classList.contains('manual')) {
+        total += navH;
+    }
+    if (search) {
+        const searchH = search.offsetHeight;
+        document.documentElement.style.setProperty('--search-height', searchH + 'px');
+        total += searchH;
+    }
+    // set body padding so content starts below navbar + search bar when
+    // the header is fixed; otherwise remove any padding that might have
+    // been applied earlier.
+    document.body.style.paddingTop = total + 'px';
+}
+
+// filter page content based on query; hides sections that don't match
+function filterPage(query) {
+    const lower = query.toLowerCase();
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => {
+        const text = sec.textContent.toLowerCase();
+        if (text.includes(lower) || query === '') {
+            sec.style.display = '';
+        } else {
+            sec.style.display = 'none';
+        }
+    });
+    // also hide/truncate TOC entries so sidebar stays in sync
+    const tocItems = document.querySelectorAll('#toc li');
+    tocItems.forEach(li => {
+        const text = li.textContent.toLowerCase();
+        if (text.includes(lower) || query === '') {
+            li.style.display = '';
+        } else {
+            li.style.display = 'none';
+        }
+    });
+}
+
+// wire up search input if present
+function initPageSearch() {
+    const input = document.getElementById('page-search');
+    if (!input) return;
+    input.addEventListener('input', () => {
+        filterPage(input.value);
+    });
+}
+
+// perform initial setup when page loads
 window.addEventListener('load', () => {
     splitHeadingNumber();
     adjustToc();
+    initPageSearch();
+    updateNavHeightVar();
     scrollToHash(location.hash);
 });
 
-// perform initial scroll if page loads with a hash
-window.addEventListener('load', () => {
-    splitHeadingNumber();
-    scrollToHash(location.hash);
-});
+// keep nav height variable up to date on resize
+window.addEventListener('resize', updateNavHeightVar);

@@ -43,8 +43,10 @@ html {
 }
 
 /* ensure page content starts below the fixed navbar so that nothing is
-   hidden behind it (spacing roughly matches nav height + a little buffer) */
-body {
+   hidden behind it (spacing roughly matches nav height + a little buffer).
+   don't apply padding on the homepage initially; the script will add it
+   only once the nav becomes fixed. */
+body:not(.home) {
     padding-top: 4rem;
 }
 
@@ -193,4 +195,33 @@ h1 { color:#b11226; }
 
 
 /* media queries */
+
+/* page-level search input; fixed directly below the navbar */
+.page-search {
+    position: fixed;
+    top: var(--nav-height, 4rem);
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1500; /* below navbar but above content */
+    background: var(--bg); /* ensure legible when scrolling over content */
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+/* no additional margin required since fixed element doesn’t affect flow */
+
+/* on narrow screens we don’t change anything special; height adjustment
+   handled in JS when computing padding for body. */
+
+.page-search input {
+    width: 80%;
+    max-width: 400px;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--yellow);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
 
