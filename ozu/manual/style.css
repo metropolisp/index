@@ -356,9 +356,12 @@ a.symbol:hover { color: #229955; background-color: transparent; text-decoration:
 }
 
 #content {
-  max-width: 85ex;
-  padding-left: 4ch;
-  padding-right: 4ch;
+  /* bump width further; 120ch now gives about 120 characters per line
+     on wide monitors, or remove the max-width entirely if you prefer.
+     Leave padding so text doesn't touch the edges. */
+  max-width: 120ch;
+  padding-left: 0ch;
+  padding-right: 0ch;
 }
 
 #toc {
