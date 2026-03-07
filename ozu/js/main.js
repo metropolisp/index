@@ -92,10 +92,14 @@ function markActive(href) {
 // page itself because Firefox has exhibited bugs where subsequent
 // history.pushState or nav-link scrolling cancels the movement. calculating
 // the top coordinate and using window.scrollTo is more predictable. subtract
-// navbar height so headers are not hidden behind it.
+// navbar height so headers are not hidden behind it. also center the
+// element vertically and apply a temporary highlight animation.
 function scrollToHash(hash) {
     if (!hash) return;
-    const target = document.querySelector(hash);
+    // use getElementById since selector syntax can't handle characters like
+    // ':' or '@' that appear in the manual's generated IDs
+    const id = hash.startsWith('#') ? hash.slice(1) : hash;
+    const target = document.getElementById(id);
     if (target) {
         const rect = target.getBoundingClientRect();
         const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
@@ -103,7 +107,12 @@ function scrollToHash(hash) {
         const extra = 10;
         const top = window.scrollY + rect.top - navHeight - extra;
         window.scrollTo({ top, behavior: 'smooth' });
-        markActive(hash);
+        markActive('#' + id);
+        // flash effect
+        target.classList.add('highlighted');
+        setTimeout(() => {
+            target.classList.remove('highlighted');
+        }, 3000); // animation defined to last ~3s total
     }
 }
 
@@ -210,36 +219,117 @@ function updateNavHeightVar() {
     document.body.style.paddingTop = total + 'px';
 }
 
-// filter page content based on query; hides sections that don't match
-function filterPage(query) {
-    const lower = query.toLowerCase();
-    const sections = document.querySelectorAll('section');
-    sections.forEach(sec => {
-        const text = sec.textContent.toLowerCase();
-        if (text.includes(lower) || query === '') {
-            sec.style.display = '';
-        } else {
-            sec.style.display = 'none';
+// compute an absolute base path for the manual. Hugo attempts to
+// populate window.MANUAL_BASE via a script tag, but that value may be
+// relative to the current page and can be lost on the filter page. we
+// also expose `window.ozuRoot` from the layout which reflects the site
+// root (including any baseURL prefix such as `/index/ozu`). prefer that
+// value if present; otherwise fall back to reconstructing from the
+// current pathname just like before.
+function getManualBase() {
+    if (window.MANUAL_BASE) return window.MANUAL_BASE;
+    // use the site root if Hugo provided it
+    if (window.ozuRoot) {
+        // the value may be an absolute URL or just a path; coerce to a
+        // pathname so any host/port are discarded. the trailing slash is
+        // removed so we can append `/manual/` consistently.
+        let root = window.ozuRoot;
+        try {
+            const u = new URL(root, window.location.origin);
+            root = u.pathname;
+        } catch (err) {
+            // if URL parsing fails, just treat the string as a path
         }
-    });
-    // also hide/truncate TOC entries so sidebar stays in sync
-    const tocItems = document.querySelectorAll('#toc li');
-    tocItems.forEach(li => {
-        const text = li.textContent.toLowerCase();
-        if (text.includes(lower) || query === '') {
-            li.style.display = '';
-        } else {
-            li.style.display = 'none';
-        }
-    });
+        root = root.replace(/\/$/, '');
+        return root + '/manual/';
+    }
+
+    const url = new URL(window.location.href);
+    const parts = url.pathname.split('/manual');
+    return parts[0].replace(/\/$/, '') + '/manual/';
+}
+
+// take you to a results page when the user hits Enter on the search box.
+// the results page itself will perform the actual lookup in generated.html.
+function handleSearchSubmit(query) {
+    if (!query) return;
+    const base = getManualBase();
+    // always navigate via an absolute path so we don't lose any prefix
+    // that might have been stripped by the dev server or the current
+    // pathname (e.g. `/manual/filter/` on the results page).
+    window.location.href = base + 'filter/?q=' + encodeURIComponent(query);
+}
+
+// on the filter page, fetch the generated manual HTML, parse it, and
+// build a list of matching elements. the results are placed into
+// #search-results container; the manual text itself is never rendered.
+function generateSearchResults(query) {
+    const container = document.getElementById('search-results');
+    if (!container || !query) return;
+    const lc = query.toLowerCase();
+    container.innerHTML = '<h2>Search results for “' + query + '”</h2>';
+    // fetch the static manual HTML and parse it
+    fetch(getManualBase() + 'generated.html')
+        .then(resp => resp.text())
+        .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const elements = doc.querySelectorAll('h2, p');
+            let results = [];
+            let lastHeading = null;
+            elements.forEach(el => {
+                if (el.tagName.toLowerCase().startsWith('h')) {
+                    lastHeading = el;
+                }
+                if (el.textContent.toLowerCase().includes(lc)) {
+                    results.push({heading: lastHeading, element: el});
+                }
+            });
+            if (results.length === 0) {
+                container.innerHTML += '<p><em>No matches found.</em></p>';
+                return;
+            }
+            results.forEach(r => {
+                const div = document.createElement('div');
+                const link = document.createElement('a');
+                // look for an inner anchor in the element or its heading for href
+                let href = null;
+                [r.element, r.heading].forEach(el => {
+                    if (!href && el) {
+                        const a = el.querySelector('a[href^="#"]');
+                        if (a) {
+                            href = a.getAttribute('href');
+                        }
+                    }
+                });
+                if (href) {
+                    link.href = getManualBase() + href;
+                }
+                // use the matched element's own text as the link label (trimmed)
+                let label = r.element.textContent.trim();
+                if (label.length > 100) {
+                    label = label.slice(0, 100) + '…';
+                }
+                link.textContent = label;
+                div.appendChild(link);
+                container.appendChild(div);
+            });
+        })
+        .catch(err => {
+            container.innerHTML += '<p><em>Error loading manual for search.</em></p>';
+            console.error('search fetch failed', err);
+        });
 }
 
 // wire up search input if present
 function initPageSearch() {
     const input = document.getElementById('page-search');
     if (!input) return;
-    input.addEventListener('input', () => {
-        filterPage(input.value);
+    input.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSearchSubmit(input.value.trim());
+        }
     });
 }
 
@@ -249,6 +339,12 @@ window.addEventListener('load', () => {
     adjustToc();
     initPageSearch();
     updateNavHeightVar();
+    // if we're on the filter page and a query exists, show results
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('q');
+    if (q && document.getElementById('search-results')) {
+        generateSearchResults(q);
+    }
     scrollToHash(location.hash);
 });
 
