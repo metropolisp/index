@@ -188,7 +188,7 @@ h1 { color:#b11226; }
 
 
 
-.highlight-red { color: var(--red); font-weight: 600; }
+.highlight-red { background: var(--red); color: white; font-weight: 600; padding: 0 .1rem; border-radius: 2px; }
 .highlight-yellow { color: var(--yellow); font-weight: 600; }
 
 

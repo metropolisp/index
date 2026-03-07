@@ -310,7 +310,14 @@ function generateSearchResults(query) {
                 if (label.length > 100) {
                     label = label.slice(0, 100) + '…';
                 }
-                link.textContent = label;
+                // highlight the query within the label; keep case but wrap
+                // matching portion in a red span. use a safe regex escape.
+                function escapeRegExp(s) {
+                    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                }
+                const re = new RegExp('(' + escapeRegExp(query) + ')', 'gi');
+                const highlighted = label.replace(re, '<span class="highlight-red">$1</span>');
+                link.innerHTML = highlighted;
                 div.appendChild(link);
                 container.appendChild(div);
             });
