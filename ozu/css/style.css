@@ -138,19 +138,43 @@ h1 { color:#b11226; }
        span still has its own 2rem width and will not overlap. */
     padding-left: 1rem;
     position: relative; /* allow absolutely‑positioned child numbers */
+    /* give a little extra top padding so a taller number block (if it
+       were to wrap) has some breathing room before impinging on the text */
+    padding-top: 0.25rem;
 }
 
 /* when the heading text is split by our script, the number is wrapped
    in a span.num that we position to the left of the divider line */
-.section h2 .num {
+.section h2 .num,
+#toc .tocnum {
     position: absolute;
-    left: -2.5rem; /* sit just outside the border */
+    /* anchor to the left edge of heading content (after the border) by
+       placing the right edge of the number at 100% of the h2's content
+       box. for TOC we position relative to the parent <a> element so it
+       behaves the same. */
+    right: 100%;
+    margin-right: 0.5rem;
     top: 50%;
     transform: translateY(-50%); /* vertically centre against divider */
-    width: 2rem; /* reserve space so digits don’t wrap */
     text-align: right;
     font-weight: 600;
     color: var(--red);
+    white-space: nowrap; /* keep the number on a single line */
+}
+
+/* single-digit headings and toc entries get a leading zero via pseudo
+   element; this avoids touching the generated HTML. */
+.section h2 .num.single::before,
+#toc .tocnum.single::before {
+    content: '0';
+    margin-right: 0.1rem;
+    color: var(--red);
+}
+
+/* multi-digit numbers simply extend left; no special rules required. */
+.section h2 .num.multi,
+#toc .tocnum.multi {
+    /* no additional offset needed */
 }
 
 

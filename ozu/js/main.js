@@ -138,10 +138,50 @@ function splitHeadingNumber() {
             const title = m[2];
             // avoid doing it twice if script runs again
             if (a.querySelector('.num')) return;
-            a.innerHTML = `<span class="num">${num}</span> ${title}`;
+            const span = document.createElement('span');
+            span.className = 'num';
+            if (num.length === 1) span.classList.add('single');
+            else if (num.length > 1) span.classList.add('multi');
+            span.textContent = num;
+            a.innerHTML = ''; // clear before appending
+            a.appendChild(span);
+            a.insertAdjacentText('beforeend', ` ${title}`);
         }
     });
 }
+
+// adjust the table-of-contents entries in the same way: wrap the numeric
+// prefix in its own span so CSS can add a leading zero (or reposition it).
+function adjustToc() {
+    const items = document.querySelectorAll('#toc li a');
+    items.forEach(a => {
+        const text = a.textContent.trim();
+        const m = text.match(/^(\d+)\s+(.*)$/);
+        if (m) {
+            const num = m[1];
+            const title = m[2];
+            if (a.querySelector('.tocnum')) return;
+            const spanNum = document.createElement('span');
+            spanNum.className = 'tocnum';
+            if (num.length === 1) spanNum.classList.add('single');
+            else if (num.length > 1) spanNum.classList.add('multi');
+            spanNum.textContent = num;
+            const spanText = document.createElement('span');
+            spanText.className = 'toctext';
+            spanText.textContent = ' ' + title;
+            a.innerHTML = '';
+            a.appendChild(spanNum);
+            a.appendChild(spanText);
+        }
+    });
+}
+
+// perform initial scroll if page loads with a hash
+window.addEventListener('load', () => {
+    splitHeadingNumber();
+    adjustToc();
+    scrollToHash(location.hash);
+});
 
 // perform initial scroll if page loads with a hash
 window.addEventListener('load', () => {
