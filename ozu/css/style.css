@@ -6,6 +6,7 @@
     --muted: #666;
     --red: #b11226;
     --yellow: #f4c430;
+    --orange: #cc7000; /* darker orange for search result count */
     --border: #e0e0e0;
 }
 
@@ -189,7 +190,15 @@ h1 { color:#b11226; }
 
 
 .highlight-red { background: var(--red); color: white; font-weight: 600; padding: 0 .1rem; border-radius: 2px; }
-.highlight-yellow { color: var(--yellow); font-weight: 600; }
+.highlight-yellow { background: var(--yellow); color: white; font-weight: 600; padding: 0 .1rem; border-radius: 2px; }
+/* header-specific classes for the search results title */
+.search-header-prefix { color: var(--red); font-weight: 600; }
+.search-header-term { color: var(--yellow); font-weight: 600; }
+.search-header-quote { color: black; }
+.search-header-quote-yellow { color: var(--yellow); }
+.search-header-count { color: black; }
+.search-header-paren { color: black; }
+.search-header-number { color: #666; font-weight: 600; }
 
 
 
@@ -232,8 +241,8 @@ h1 { color:#b11226; }
 
 /* filter page header with back link */
 .filter-page .filter-header {
-    text-align: right;
-    margin-bottom: 1rem;
+    text-align: left; /* keep the link left-justified */
+    margin-bottom: 0.5rem;
 }
 .filter-page .filter-header .back-link {
     color: var(--text);
@@ -245,6 +254,13 @@ h1 { color:#b11226; }
 }
 .filter-page .filter-header .back-link i {
     margin-right: 0.4rem;
+}
+
+/* explanatory note beneath back-link */
+.filter-page .filter-header .filter-note {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin: 0.25rem 0 0;
 }
 
 

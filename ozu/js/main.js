@@ -266,8 +266,21 @@ function handleSearchSubmit(query) {
 function generateSearchResults(query) {
     const container = document.getElementById('search-results');
     if (!container || !query) return;
-    const lc = query.toLowerCase();
-    container.innerHTML = '<h2>Search results for “' + query + '”</h2>';
+    // helper: escape a string so it can be used literally in a regex
+    function escapeRegExp(s) {
+        return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    // allow quoted terms for exact-word searching ("red" or 'red')
+    let exact = false;
+    let term = query;
+    if ((term.startsWith('"') && term.endsWith('"')) || (term.startsWith("'") && term.endsWith("'"))) {
+        exact = true;
+        term = term.slice(1, -1);
+    }
+    const lc = term.toLowerCase();
+    // the header will be filled once we know how many results we found
+    container.innerHTML = '';
     // fetch the static manual HTML and parse it
     fetch(getManualBase() + 'generated.html')
         .then(resp => resp.text())
@@ -281,10 +294,40 @@ function generateSearchResults(query) {
                 if (el.tagName.toLowerCase().startsWith('h')) {
                     lastHeading = el;
                 }
-                if (el.textContent.toLowerCase().includes(lc)) {
+                const text = el.textContent.toLowerCase();
+                let matched = false;
+                if (exact) {
+                    // match the term as a standalone word
+                    const wordRe = new RegExp('\\b' + escapeRegExp(lc) + '\\b');
+                    if (wordRe.test(text)) matched = true;
+                } else {
+                    if (text.includes(lc)) matched = true;
+                }
+                if (matched) {
                     results.push({heading: lastHeading, element: el});
                 }
             });
+            // add header with count, styling term and quotes separately
+            const cleaned = term; // query stripped of surrounding quotes
+            const prefixHtml = '<span class="search-header-prefix">Search results for</span> ';
+            const termHtml = '<span class="search-header-term">' + cleaned + '</span>';
+            // outer quotes always black; inner straight quotes yellow if user quoted
+            const outerLeft = '<span class="search-header-quote">“</span>';
+            const outerRight = '<span class="search-header-quote">”</span>';
+            let innerQuote = '';
+            if (exact) {
+                innerQuote = '<span class="search-header-quote-yellow">"</span>';
+            }
+            const header = '<h2>' + prefixHtml +
+                           outerLeft +
+                           innerQuote +
+                           termHtml +
+                           innerQuote +
+                           outerRight +
+                           ' <span class="search-header-paren">(</span>' +
+                           '<span class="search-header-number">' + results.length + '</span>' +
+                           '<span class="search-header-paren">)</span></h2>';
+            container.innerHTML = header;
             if (results.length === 0) {
                 container.innerHTML += '<p><em>No matches found.</em></p>';
                 return;
@@ -311,12 +354,14 @@ function generateSearchResults(query) {
                     label = label.slice(0, 100) + '…';
                 }
                 // highlight the query within the label; keep case but wrap
-                // matching portion in a red span. use a safe regex escape.
-                function escapeRegExp(s) {
-                    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                // matching portion in a red span.
+                let highlightRe;
+                if (exact) {
+                    highlightRe = new RegExp('\\b(' + escapeRegExp(term) + ')\\b', 'gi');
+                } else {
+                    highlightRe = new RegExp('(' + escapeRegExp(term) + ')', 'gi');
                 }
-                const re = new RegExp('(' + escapeRegExp(query) + ')', 'gi');
-                const highlighted = label.replace(re, '<span class="highlight-red">$1</span>');
+                const highlighted = label.replace(highlightRe, '<span class="highlight-yellow">$1</span>');
                 link.innerHTML = highlighted;
                 div.appendChild(link);
                 container.appendChild(div);
