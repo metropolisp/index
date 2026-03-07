@@ -205,7 +205,7 @@ h1 { color:#b11226; }
     display: flex;
     justify-content: center;
     z-index: 1500; /* below navbar but above content */
-    background: var(--bg); /* ensure legible when scrolling over content */
+    background: var(--yellow); /* yellow background behind filter bar */
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
 }
@@ -219,9 +219,32 @@ h1 { color:#b11226; }
     width: 80%;
     max-width: 400px;
     padding: 0.4rem 0.6rem;
-    border: 1px solid var(--yellow);
+    border: 1px solid var(--red);
     border-radius: 4px;
     font-size: 1rem;
+    background: white;
+}
+
+/* search results links should highlight in red on hover */
+#search-results a:hover {
+    color: var(--red);
+}
+
+/* filter page header with back link */
+.filter-page .filter-header {
+    text-align: right;
+    margin-bottom: 1rem;
+}
+.filter-page .filter-header .back-link {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+}
+.filter-page .filter-header .back-link:hover {
+    color: var(--red);
+}
+.filter-page .filter-header .back-link i {
+    margin-right: 0.4rem;
 }
 
 
