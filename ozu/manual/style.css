@@ -9,6 +9,19 @@
   --parsep: 0.3375rem;
 }
 
+/* prevent the manual itself from ever forcing a horizontal scrollbar */
+html, body {
+  overflow-x: hidden;
+}
+
+/* allow long technical identifiers or URLs in the manual to wrap
+   instead of blowing out the container width */
+#content, #content * {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
 @media (min-width: 70rem) {
   html {
     text-align: justify;
@@ -28,6 +41,8 @@
   }
   #toc {
     width: 0ex;
+    /* still hide any overflow from the table of contents container */
+    overflow: hidden;
   }
 }
 
@@ -356,12 +371,14 @@ a.symbol:hover { color: #229955; background-color: transparent; text-decoration:
 }
 
 #content {
-  /* bump width further; 120ch now gives about 120 characters per line
-     on wide monitors, or remove the max-width entirely if you prefer.
-     Leave padding so text doesn't touch the edges. */
-  max-width: 120ch;
-  padding-left: 0ch;
-  padding-right: 0ch;
+  /* allow the container to expand on wide screens but never exceed
+     the viewport on narrow/mobile devices; keep some padding for
+     readability and ensure long words can break. */
+  max-width: min(120ch, 100%);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 #toc {

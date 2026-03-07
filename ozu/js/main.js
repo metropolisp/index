@@ -124,5 +124,27 @@ navLinks.forEach(link => {
     });
 });
 
+// wrap numeric prefixes in manual headings so the number can be
+// styled separately (positioned left of the yellow divider).  This
+// operates on any h2> a text of the form "<digits> <title>" and is
+// safe to run on non‑manual pages where no such pattern exists.
+function splitHeadingNumber() {
+    const anchors = document.querySelectorAll('h2 > a');
+    anchors.forEach(a => {
+        const text = a.textContent.trim();
+        const m = text.match(/^(\d+)\s+(.*)$/);
+        if (m) {
+            const num = m[1];
+            const title = m[2];
+            // avoid doing it twice if script runs again
+            if (a.querySelector('.num')) return;
+            a.innerHTML = `<span class="num">${num}</span> ${title}`;
+        }
+    });
+}
+
 // perform initial scroll if page loads with a hash
-window.addEventListener('load', () => scrollToHash(location.hash));
+window.addEventListener('load', () => {
+    splitHeadingNumber();
+    scrollToHash(location.hash);
+});

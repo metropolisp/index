@@ -134,7 +134,23 @@ h1 { color:#b11226; }
     margin-bottom: 2rem;
     color: var(--red);
     border-left: 6px solid var(--yellow);
+    /* shrink padding further so text sits close to divider; the number
+       span still has its own 2rem width and will not overlap. */
     padding-left: 1rem;
+    position: relative; /* allow absolutely‑positioned child numbers */
+}
+
+/* when the heading text is split by our script, the number is wrapped
+   in a span.num that we position to the left of the divider line */
+.section h2 .num {
+    position: absolute;
+    left: -2.5rem; /* sit just outside the border */
+    top: 50%;
+    transform: translateY(-50%); /* vertically centre against divider */
+    width: 2rem; /* reserve space so digits don’t wrap */
+    text-align: right;
+    font-weight: 600;
+    color: var(--red);
 }
 
 
