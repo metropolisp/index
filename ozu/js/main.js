@@ -180,6 +180,25 @@ tocLinks.forEach(link => {
     });
 });
 
+// finally, intercept hash links inside main content (manual pages include
+// their own table-of-contents at the top). previously these used normal
+// anchor behaviour and ended up hidden beneath the filter bar; treat them
+// just like sidebar links.
+const mainAnchors = document.querySelectorAll('main a[href^="#"]');
+mainAnchors.forEach(link => {
+    // links inside the fixed sidebar (#toc) or in the nav are not part of
+    // this set since they are outside <main>, but guard anyway.
+    if (link.closest('#toc') || link.closest('.nav-links')) return;
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        scrollToHash(href);
+        if (location.hash !== href) {
+            history.pushState(null, '', href);
+        }
+    });
+});
+
 // wrap numeric prefixes in manual headings so the number can be
 // styled separately (positioned left of the yellow divider).  This
 // operates on any h2> a text of the form "<digits> <title>" and is
