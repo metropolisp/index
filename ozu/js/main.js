@@ -396,14 +396,27 @@ function generateSearchResults(query) {
                 const link = document.createElement('a');
                 // look for an inner anchor in the element or its heading for href
                 let href = null;
-                [r.element, r.heading].forEach(el => {
-                    if (!href && el) {
-                        const a = el.querySelector('a[href^="#"]');
-                        if (a) {
-                            href = a.getAttribute('href');
+                // First, if the matched element lives inside a list item (common for
+                // reference entries where the description is a separate <p>), try
+                // to find an anchor anywhere within that <li>. That covers the case
+                // where the description itself contains no <a> but the heading does.
+                const li = r.element.closest('li');
+                if (li) {
+                    const a = li.querySelector('a[href^="#"]');
+                    if (a) href = a.getAttribute('href');
+                }
+                // fallback to previous behaviour: look in the element or its
+                // heading for an anchor
+                if (!href) {
+                    [r.element, r.heading].forEach(el => {
+                        if (!href && el) {
+                            const a = el.querySelector('a[href^="#"]');
+                            if (a) {
+                                href = a.getAttribute('href');
+                            }
                         }
-                    }
-                });
+                    });
+                }
                 if (href) {
                     link.href = getManualBase() + href;
                 }
@@ -456,6 +469,16 @@ window.addEventListener('load', () => {
     if (q && document.getElementById('search-results')) {
         generateSearchResults(q);
     }
+    // scroll to any hash after everything is ready. also schedule a
+    // second scroll a short time later – in some edge cases (large
+    // images, slow layout) the initial automatic fragment jump happens
+    // after the load event and that can defeat our offset calculation.
+    scrollToHash(location.hash);
+    setTimeout(() => scrollToHash(location.hash), 50);
+});
+
+// keep scrolling when the hash changes (back/forward, manual edit)
+window.addEventListener('hashchange', () => {
     scrollToHash(location.hash);
 });
 

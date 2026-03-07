@@ -52,14 +52,30 @@ body:not(.home) {
 }
 
 /* ensure anchors don't get hidden under the sticky navbar */
-section {
+/*
+   The previous implementation only applied a top margin to <section>
+   elements, which was sufficient for the sidebar/TOC scenario because
+   those links always target sections.  When a user clicks a result on
+   the filter page the hash often points at a small <a> or a heading
+   (<h2>, <p>, etc.) inside the section, and the browser's automatic
+   jump lands the content immediately beneath the fixed header and
+   search bar.  the same problem was described in the comments as
+   "sidebar and table-of-contents hiding the top-level section
+   titles" and was fixed by giving sections a margin; this extends that
+   idea to any element that might be the target of a fragment link.
+*/
+section,
+a[id],
+h1, h2, h3, h4, h5, h6 {
     /* offset by navbar plus optional search bar. the CSS variables are
        updated by JS (see updateNavHeightVar) so static values are only
        used as fallbacks. */
     scroll-margin-top: calc(var(--nav-height,80px) + var(--search-height,0px));
 }
 @media(max-width:600px) {
-    section {
+    section,
+    a[id],
+    h1, h2, h3, h4, h5, h6 {
         scroll-margin-top: calc(var(--nav-height,120px) + var(--search-height,0px));
     }
 } 

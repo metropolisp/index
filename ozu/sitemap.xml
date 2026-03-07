@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/index/ozu/categories/</loc>
+    <loc>https://metropolisp.github.io/index/ozu/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/ozu/</loc>
+    <loc>https://metropolisp.github.io/index/ozu/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/ozu/manual/</loc>
+    <loc>https://metropolisp.github.io/index/ozu/manual/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/ozu/manual/filter/</loc>
+    <loc>https://metropolisp.github.io/index/ozu/manual/filter/</loc>
   </url><url>
-    <loc>http://localhost:1313/index/ozu/tags/</loc>
+    <loc>https://metropolisp.github.io/index/ozu/tags/</loc>
   </url>
 </urlset>
