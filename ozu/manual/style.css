@@ -382,7 +382,12 @@ a.symbol:hover { color: #229955; background-color: transparent; text-decoration:
 }
 
 #toc {
-  top: 0px;
+  /* start below the navbar + any page-search filter bar; these values are
+     maintained by JavaScript in the main site code (see updateNavHeightVar)
+     which sets --nav-height and --search-height on the document element.  The
+     manual sidebar is fixed so it must respect that offset or it will sit
+     underneath the filters. */
+  top: calc(var(--nav-height,0px) + var(--search-height,0px));
   left: 0px;
   height: 100%;
   position: fixed;

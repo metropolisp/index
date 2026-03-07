@@ -53,11 +53,14 @@ body:not(.home) {
 
 /* ensure anchors don't get hidden under the sticky navbar */
 section {
-    scroll-margin-top: 80px; /* default offset for desktop */
+    /* offset by navbar plus optional search bar. the CSS variables are
+       updated by JS (see updateNavHeightVar) so static values are only
+       used as fallbacks. */
+    scroll-margin-top: calc(var(--nav-height,80px) + var(--search-height,0px));
 }
 @media(max-width:600px) {
     section {
-        scroll-margin-top: 120px; /* a bit taller on mobile when navbar stacks */
+        scroll-margin-top: calc(var(--nav-height,120px) + var(--search-height,0px));
     }
 } 
 

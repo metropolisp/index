@@ -34,6 +34,14 @@ function handleScroll() {
             document.querySelectorAll('.nav-links a.active').forEach(l => l.classList.remove('active'));
             link.classList.add('active');
         }
+        // update sidebar TOC visibility/highlight as well
+        const tocLink = document.querySelector('#toc a[href*="#' + id + '"]');
+        if (tocLink) {
+            // ensure the active entry remains in view vertically
+            tocLink.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            document.querySelectorAll('#toc a.active').forEach(l => l.classList.remove('active'));
+            tocLink.classList.add('active');
+        }
         lastActiveSection = active;
     }
 }
@@ -48,6 +56,12 @@ window.addEventListener('load', () => {
     handleScroll();
     updateNavHeightVar();
 });
+
+// adjust the CSS variables whenever the window size changes, since the
+// navbar (and occasionally the search bar) may wrap to a different
+// height. this mirrors the behaviour on scroll and ensures fixed elements
+// like the manual sidebar stay in the correct position.
+window.addEventListener('resize', updateNavHeightVar);
 
     // the "accept" button only exists on the quickstart page; guard
     // against its absence so the script can run everywhere (otherwise a
@@ -103,11 +117,19 @@ function scrollToHash(hash) {
     if (target) {
         const rect = target.getBoundingClientRect();
         const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+        const searchHeight = document.querySelector('.page-search')?.offsetHeight || 0;
         // add a few pixels so header isn't flush against the bar
         const extra = 10;
-        const top = window.scrollY + rect.top - navHeight - extra;
+        const top = window.scrollY + rect.top - navHeight - searchHeight - extra;
         window.scrollTo({ top, behavior: 'smooth' });
         markActive('#' + id);
+        // also update the sidebar active class (scrollspy handles this on
+        // scroll but when triggered programmatically we do it here as well)
+        const tocLink = document.querySelector('#toc a[href*="#' + id + '"]');
+        if (tocLink) {
+            document.querySelectorAll('#toc a.active').forEach(l => l.classList.remove('active'));
+            tocLink.classList.add('active');
+        }
         // flash effect
         target.classList.add('highlighted');
         setTimeout(() => {
@@ -129,11 +151,29 @@ navLinks.forEach(link => {
         if (target) {
             const rect = target.getBoundingClientRect();
             const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
-            const extra = 10; // gap below navbar
-            const top = window.scrollY + rect.top - navHeight - extra;
+            const searchHeight = document.querySelector('.page-search')?.offsetHeight || 0;
+            const extra = 10; // gap below bars
+            const top = window.scrollY + rect.top - navHeight - searchHeight - extra;
             window.scrollTo({ top, behavior: 'smooth' });
             markActive(href);
         }
+        if (location.hash !== href) {
+            history.pushState(null, '', href);
+        }
+    });
+});
+
+// also handle clicks inside the manual sidebar so anchors respect the
+// fixed header/filter height and we can highlight the active entry. the
+// default browser behaviour jumps without offset, which caused the issue
+// described.
+const tocLinks = document.querySelectorAll('#toc a[href^="#"]');
+tocLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        // reuse scrollToHash which already handles offset and highlighting
+        scrollToHash(href);
         if (location.hash !== href) {
             history.pushState(null, '', href);
         }
