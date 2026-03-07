@@ -42,17 +42,46 @@ window.addEventListener('scroll', handleScroll);
 // run once on load in case the page is already scrolled or a hash is present
 window.addEventListener('load', handleScroll);
 
-    document.getElementById('accept-btn').addEventListener('click', () => {
-        document.getElementById('quickstart-content').style.display = 'block';
-        document.getElementById('accept-btn').style.display = 'none';
-        // show accepted message and extra warning in disclaimer
-        const msg = document.getElementById('accepted-msg');
-        const warn = document.getElementById('post-accept-warning');
-        if(msg) { msg.style.display = 'inline'; }
-        if(warn) { warn.style.display = 'inline'; }
-    });
+    // the "accept" button only exists on the quickstart page; guard
+    // against its absence so the script can run everywhere (otherwise a
+    // null reference aborts execution and nav click handlers never get
+    // attached).
+    const acceptBtn = document.getElementById('accept-btn');
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', () => {
+            const quick = document.getElementById('quickstart-content');
+            if (quick) quick.style.display = 'block';
+            acceptBtn.style.display = 'none';
+            // show accepted message and extra warning in disclaimer
+            const msg = document.getElementById('accepted-msg');
+            const warn = document.getElementById('post-accept-warning');
+            if(msg) { msg.style.display = 'inline'; }
+            if(warn) { warn.style.display = 'inline'; }
+        });
+    }
 
-// ensure nav links scroll the page and themselves correctly on first click
+// update the active link visually; called from scroll/hash handlers
+function markActive(href) {
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href')===href));
+    const current = document.querySelector(`.nav-links a[href="${href}"]`);
+    if (current) current.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+}
+
+// helper to scroll to a hashed element. sections already have a
+// scroll-margin-top rule so the navbar doesn't cover them; this works
+// reliably in both Chrome and Firefox.
+function scrollToHash(hash) {
+    if (!hash) return;
+    const target = document.querySelector(hash);
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        markActive(hash);
+    }
+}
+
+// attach click listeners that directly scroll the target into view.
+// avoids any hashchange/offset issues in Firefox.
 const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -60,18 +89,14 @@ navLinks.forEach(link => {
         const href = this.getAttribute('href');
         const target = document.querySelector(href);
         if (target) {
-            // compute vertical position with offset to account for sticky navbar
-            const navbar = document.querySelector('.navbar');
-            const navHeight = navbar ? navbar.offsetHeight : 0;
-            const targetY = target.getBoundingClientRect().top + window.scrollY - navHeight - 10;
-            window.scrollTo({ top: targetY, behavior: 'smooth' });
-            // update the hash without jumping immediately
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            markActive(href);
+        }
+        if (location.hash !== href) {
             history.pushState(null, '', href);
-            // center this link in the horizontal nav container
-            this.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
-            // mark active immediately
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
         }
     });
 });
+
+// perform initial scroll if page loads with a hash
+window.addEventListener('load', () => scrollToHash(location.hash));

@@ -20,6 +20,24 @@
     91.68%, 100% { transform: scaleY(1); }
 }
 
+/* the little blinking "eye" dot used in the ozu logo; previously
+   defined only inside the home hero partial, so the nav logo lost it. */
+.eye {
+    position: relative;
+}
+.eye::before {
+    content: '';
+    position: absolute;
+    top: 0.4em;
+    left: 0em;
+    width: 0.2em;
+    height: 0.2em;
+    background: currentColor;
+    border-radius: 50%;
+    animation: blink 3s infinite;
+    will-change: transform;
+}
+
 html {
     scroll-behavior: smooth;
 }
