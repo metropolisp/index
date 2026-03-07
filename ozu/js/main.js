@@ -28,8 +28,8 @@ function handleScroll() {
         const id = active.getAttribute('id');
         const link = document.querySelector('.nav-links a[href*="#' + id + '"]');
         if (link) {
-            // center newly active item
-            link.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+            // center newly active item (horizontal only)
+            scrollNavLinkIntoView(link);
             // update classes
             document.querySelectorAll('.nav-links a.active').forEach(l => l.classList.remove('active'));
             link.classList.add('active');
@@ -60,28 +60,46 @@ window.addEventListener('load', handleScroll);
         });
     }
 
+// helper that scrolls the horizontal nav container only, avoiding
+// any vertical scroll that can conflict with Firefox's sticky nav
+function scrollNavLinkIntoView(link) {
+    const container = link.closest('.nav-links');
+    if (!container) return;
+    const linkRect = link.getBoundingClientRect();
+    const contRect = container.getBoundingClientRect();
+    const offset = linkRect.left - contRect.left - (contRect.width - linkRect.width) / 2;
+    container.scrollBy({ left: offset, behavior: 'smooth' });
+}
+
 // update the active link visually; called from scroll/hash handlers
 function markActive(href) {
     const links = document.querySelectorAll('.nav-links a');
     links.forEach(l => l.classList.toggle('active', l.getAttribute('href')===href));
     const current = document.querySelector(`.nav-links a[href="${href}"]`);
-    if (current) current.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+    if (current) scrollNavLinkIntoView(current);
 }
 
 // helper to scroll to a hashed element. sections already have a
 // scroll-margin-top rule so the navbar doesn't cover them; this works
-// reliably in both Chrome and Firefox.
+// reliably in both Chrome and Firefox. do not use scrollIntoView on the
+// page itself because Firefox has exhibited bugs where subsequent
+// history.pushState or nav-link scrolling cancels the movement. calculating
+// the top coordinate and using window.scrollTo is more predictable.
 function scrollToHash(hash) {
     if (!hash) return;
     const target = document.querySelector(hash);
     if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const rect = target.getBoundingClientRect();
+        const top = window.scrollY + rect.top;
+        window.scrollTo({ top, behavior: 'smooth' });
         markActive(hash);
     }
 }
 
 // attach click listeners that directly scroll the target into view.
-// avoids any hashchange/offset issues in Firefox.
+// this avoids hashchange/offset issues in Firefox, but also guards against
+// the navigation being cancelled by our own scrollspy code. we compute a
+// raw `top` and call window.scrollTo, then update the hash via history API.
 const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -89,7 +107,9 @@ navLinks.forEach(link => {
         const href = this.getAttribute('href');
         const target = document.querySelector(href);
         if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const rect = target.getBoundingClientRect();
+            const top = window.scrollY + rect.top;
+            window.scrollTo({ top, behavior: 'smooth' });
             markActive(href);
         }
         if (location.hash !== href) {
