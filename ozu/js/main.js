@@ -4,10 +4,14 @@ function handleScroll() {
     const navbar = document.querySelector('.navbar');
     const hero = document.querySelector('.hero');
     const navHeight = navbar ? navbar.offsetHeight : 0;
-    if (window.scrollY > hero.offsetHeight) {
+    // always keep the nav "sticky" on manual pages so logo/back-to-top are
+    // visible; also guard against missing hero element (manual has none).
+    if (navbar && navbar.classList.contains('manual')) {
         navbar.classList.add('sticky');
+    } else if (!hero || window.scrollY > hero.offsetHeight) {
+        navbar && navbar.classList.add('sticky');
     } else {
-        navbar.classList.remove('sticky');
+        navbar && navbar.classList.remove('sticky');
     }
 
     // scrollspy: determine which section is currently under the navbar
