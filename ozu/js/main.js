@@ -84,13 +84,17 @@ function markActive(href) {
 // reliably in both Chrome and Firefox. do not use scrollIntoView on the
 // page itself because Firefox has exhibited bugs where subsequent
 // history.pushState or nav-link scrolling cancels the movement. calculating
-// the top coordinate and using window.scrollTo is more predictable.
+// the top coordinate and using window.scrollTo is more predictable. subtract
+// navbar height so headers are not hidden behind it.
 function scrollToHash(hash) {
     if (!hash) return;
     const target = document.querySelector(hash);
     if (target) {
         const rect = target.getBoundingClientRect();
-        const top = window.scrollY + rect.top;
+        const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+        // add a few pixels so header isn't flush against the bar
+        const extra = 10;
+        const top = window.scrollY + rect.top - navHeight - extra;
         window.scrollTo({ top, behavior: 'smooth' });
         markActive(hash);
     }
@@ -108,7 +112,9 @@ navLinks.forEach(link => {
         const target = document.querySelector(href);
         if (target) {
             const rect = target.getBoundingClientRect();
-            const top = window.scrollY + rect.top;
+            const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+            const extra = 10; // gap below navbar
+            const top = window.scrollY + rect.top - navHeight - extra;
             window.scrollTo({ top, behavior: 'smooth' });
             markActive(href);
         }
